@@ -1,3 +1,69 @@
-.account-masthead {
-  background-color: rgb(40, 40, 40);
+body {
+  font-family: helvetica, arial, sans-serif;
+  background: white;
 }
+
+/* header */
+.masthead {
+  min-height: 55px;
+  color: #ffffff;
+  background-color: #4b4b4b;
+  overflow: hidden;
+  padding: 1px 60px 0;
+  background-image : none;
+}
+
+.account-masthead {
+  min-height: 30px;
+  color: #ffffff;
+  background-color: #000;
+  background-image : none;
+}
+
+h1 a {
+  background: url(/images/logo.png) no-repeat 7px 0;
+  background-size: 18px;
+  border-left: 2px solid #fff;
+  color: #fff;
+  float: left;
+  font-size: 19px;
+  height: 27px;
+  margin: 13px 0;
+  padding: 5px 0 0 32px;
+  width: 265px;
+}
+
+/* footer */
+.site-footer {
+  background-color: #4b4b4b;
+  overflow: hidden;
+  padding: 1px 60px 0;
+}
+
+.site-footer li {
+  float: left;
+  margin: 25px 0 27px 40px;
+}
+
+.site-footer li:first-child {
+  margin-left: 0;
+}
+
+.site-footer a {
+  color: white;
+  display: block;
+}
+
+/* homepage */
+.hero {
+  background-color: #fff;
+  background-image : none;
+}
+
+/* search page */
+[role=main], .main {
+  position: relative;
+  padding-bottom: 20px;
+  background-image: none;
+}
+
