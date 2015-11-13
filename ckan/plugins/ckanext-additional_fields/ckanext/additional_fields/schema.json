@@ -1,0 +1,154 @@
+{
+  "scheming_version": 1,
+  "dataset_type": "dataset",
+  "about": "Custom schema used by the Data Catalogue",
+  "about_url": "http://github.com/open-data/ckanext-scheming",
+  "dataset_fields": [
+    {
+      "field_name": "title",
+      "label": "Title",
+      "preset": "title",
+      "form_placeholder": "eg. A descriptive title"
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "preset": "dataset_slug",
+      "form_placeholder": "eg. my-dataset"
+    },
+    {
+      "field_name": "business_area",
+      "label": "Business Areas",
+      "preset": "multiple_checkbox",
+      "choices": [
+        {
+          "value": "border_force",
+          "label": "Border Force"
+        },
+        {
+          "value": "corporate_services",
+          "label": "Corporate Services"
+        },
+        {
+          "value": "crime_and_policing_group",
+          "label": "Crime and Policing Group"
+        },
+        {
+          "value": "disclosure_and_barring_service",
+          "label": "Disclosure and Barring Service"
+        },
+        {
+          "value": "general_registry_office",
+          "label": "General Registry Office"
+        },
+        {
+          "value": "hm_passport_office",
+          "label": "HM Passport Office"
+        },
+        {
+          "value": "home_office_science",
+          "label": "Home Office Science"
+        },
+        {
+          "value": "human_resources",
+          "label": "Human Resources"
+        },
+        {
+          "value": "immigration_enforcement",
+          "label": "Immigration Enforcement"
+        },
+        {
+          "value": "policing",
+          "label": "Policing"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "uk_visas_and_immigration",
+          "label": "UK Visas and Immigration"
+        }
+      ]
+    },
+    {
+      "field_name": "dataset_type",
+      "label": "Type",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "collection_of_systems",
+          "label": "Collection of systems"
+        },
+        {
+          "value": "single_database_system",
+          "label": "Single database system"
+        },
+        {
+          "value": "access_database",
+          "label": "Access database"
+        },
+        {
+          "value": "spreadsheet",
+          "label": "Spreadsheet"
+        },
+        {
+          "value": "api",
+          "label": "API"
+        },
+        {
+          "value": "rest_api",
+          "label": "REST API"
+        }
+      ]
+    },
+    {
+      "field_name": "notes",
+      "label": "Description",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "eg. Some useful notes about the data"
+    },
+    {
+      "field_name": "tag_string",
+      "label": "Tags",
+      "preset": "tag_string_autocomplete",
+      "form_placeholder": "eg. economy, mental health, government"
+    },
+    {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization"
+    },
+    {
+      "field_name": "url",
+      "label": "Source",
+      "form_placeholder": "http://example.com/dataset.json",
+      "display_property": "foaf:homepage",
+      "display_snippet": "link.html"
+    }
+  ],
+  "resource_fields": [
+    {
+      "field_name": "url",
+      "label": "URL",
+      "preset": "resource_url_upload"
+    },
+    {
+      "field_name": "name",
+      "label": "Name",
+      "form_placeholder": "eg. January 2011 Gold Prices"
+    },
+    {
+      "field_name": "description",
+      "label": "Description",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "Some useful notes about the data"
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "preset": "resource_format_autocomplete"
+    }
+  ]
+}
