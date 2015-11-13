@@ -4,6 +4,9 @@ echo Loading Plugins
 
 cd $CKAN_HOME
 . bin/activate
-cd plugins/ckanext-datacatalogue_theme
-python setup.py develop
 
+cd plugins
+for subdir in `ls`;
+    do
+      (cd $subdir && python setup.py develop);
+    done
