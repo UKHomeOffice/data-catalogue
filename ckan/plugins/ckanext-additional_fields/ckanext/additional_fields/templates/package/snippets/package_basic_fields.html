@@ -1,5 +1,0 @@
-{% ckan_extends %}
-
-{% block package_basic_fields_custom %}
-{{ form.input('security_classication', label=_('Security Classification'), id='field-security_classication', placeholder=_('security classification'), value=data.security_classication, error=errors.security_classication, classes=['control-medium']) }}
-{% endblock %}
