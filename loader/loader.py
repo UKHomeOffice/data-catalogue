@@ -2,6 +2,8 @@ import sys
 import ckanapi
 import csv
 import re
+import os
+import json
 
 def create_id(name):
     removelist = ' '
@@ -10,6 +12,19 @@ def create_id(name):
 
 def create_tags(tags):
     return [{'name':x.strip()} for x in tags.split(',') if x!='']
+
+def create_labels(tags):
+    return [x.strip() for x in tags.split(',') if x!='']
+
+def labels_to_values(field, labels):
+    return [choice['value'] for choice in field['choices'] if choice['label'] in labels]
+
+#Load schema from somewhere?
+def load_schema():
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'ckan/plugins/ckanext-additional_fields/ckanext/additional_fields', 'schema.json')) as data_file:
+        data = json.load(data_file)
+        return { field['field_name']:field for field in data['dataset_fields'] }
+
 
 
 if(len(sys.argv)) != 3:
@@ -36,6 +51,8 @@ try:
 except:
     pass
 
+print 'Using schema'
+schema = load_schema()
 
 print 'Loading Datasets'
 with open(csv_location, 'rb') as csvfile:
@@ -51,7 +68,8 @@ with open(csv_location, 'rb') as csvfile:
             title=row['name'],
             owner_org='home-office',
             tags=create_tags(row['businessArea']),
-            notes=row['summary']
+            notes=row['summary'],
+            business_area=labels_to_values(schema['business_area'], create_labels(row['businessArea']))
         )
 
 print 'Finished'
