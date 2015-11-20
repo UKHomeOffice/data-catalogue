@@ -17,6 +17,12 @@
       "form_placeholder": "eg. my-dataset"
     },
     {
+      "field_name": "notes",
+      "label": "Summary",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "Summary information about the dataset"
+    },
+    {
       "field_name": "business_area",
       "label": "Business Areas",
       "preset": "multiple_checkbox",
@@ -104,10 +110,148 @@
       ]
     },
     {
-      "field_name": "notes",
-      "label": "Description",
-      "form_snippet": "markdown.html",
-      "form_placeholder": "eg. Some useful notes about the data"
+      "field_name": "security_classification",
+      "label": "Security Classification",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "official1",
+          "label": "Official"
+        },
+        {
+          "value": "official-sensitive2",
+          "label": "Official-sensitive"
+        },
+        {
+          "value": "secret3",
+          "label": "Secret"
+        },
+        {
+          "value": "top-secret4",
+          "label": "Top secret"
+        }
+      ]
+    },
+    {
+      "field_name": "can_be_public",
+      "label": "Can it be public",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "_yes_",
+          "label": "Yes"
+        },
+        {
+          "value": "_no_",
+          "label": "No"
+        },
+        {
+          "value": "_unknown_",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "field_name": "contains_personal_information",
+      "label": "Contains personal information",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "_yes_",
+          "label": "Yes"
+        },
+        {
+          "value": "_no_",
+          "label": "No"
+        },
+        {
+          "value": "_unknown_",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "field_name": "data_originates_in_ho",
+      "label": "Data originates entirely from within the Home Office",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "_yes_",
+          "label": "Yes"
+        },
+        {
+          "value": "_no_",
+          "label": "No"
+        },
+        {
+          "value": "_unknown_",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "field_name": "ho_responsible",
+      "label": "Home Office responsible for technical operation of system",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "_yes_",
+          "label": "Yes"
+        },
+        {
+          "value": "_no_",
+          "label": "No"
+        },
+        {
+          "value": "_unknown_",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "field_name": "register",
+      "label": "Register - an authoritative record for government",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "_yes_",
+          "label": "Yes"
+        },
+        {
+          "value": "_no_",
+          "label": "No"
+        },
+        {
+          "value": "_unknown_",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "field_name": "used_in_official_statistics",
+      "label": "Used in official statistics",
+      "preset": "select",
+      "display_snippet": "multiple_choice.html",
+      "choices": [
+        {
+          "value": "Yes",
+          "label": "Yes"
+        },
+        {
+          "value": "No",
+          "label": "No"
+        },
+        {
+          "value": "_unknown_",
+          "label": "Unknown"
+        }
+      ]
     },
     {
       "field_name": "tag_string",
