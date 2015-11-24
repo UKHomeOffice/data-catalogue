@@ -1,0 +1,589 @@
+,Artemis,"MIDA (Management Information Data Sevices) extract CID and ASYS data. This is then matched against CRS and API data before being transferred to a shared location for PRAU (Performance Reporting Analysis Unit) to access and reference.
+
+The extract is used to assign a 'score' or 'status' to individuals who have no extant leave to remain in the UK in order for Immigration Enforcement areas to dentify and prioritise individuals for action",No,No,"type: Information Asset Owner
+name: Andrew Wren
+email: andrew.wren@homeoffice.gsi.gov.uk",Immigration Enforcement,Excel,title: Immigration Enforcement,,,POISE Network,Low,Weekly,Official - Sensitive,No
+,Referral Tracker,"For Interventions and Sanctions Unit to record referrals from stakeholders (including NHS, Local Authorities, ICE Teams)",No,No,"type: Information Asset Owner
+name: Sonia Dower, Director IE Interventions and Sanctions Directorate
+email: sonia.dower2@homeoffice.gsi.gov.uk",Immigration Enforcement,Access database,"title: Immigration Enforcement
+description: Interventions and Sanctions",,,POISE Network,Medium,Daily,Official - Sensitive,No
+,Warehouse,"Warehouse (including NAT2), access through CID.  Used for checking English language / previous applications records / landing cards.",Yes,No,"type: Information Asset Owner
+name: Unknown","Immigration Enforcement, UKVI, Border Force",Unknown,"title: Immigration Enforcement
+
+title: Border Force
+
+title: UK Visas and Immigration",,,Atos,High,Continuously,Official - Sensitive,No
+,Police National Computer (PNC),"The Police National Computer (PNC) provides police forces and others with access to criminal records, data on names, vehicles, drivers' licenses, property and unsolved crimes.  It is closely linked to the IDENT1, NDAD and DVLA databases and has numerous interfaces to other systems.
+
+The Police National Computer (PNC) is the primary repository for the UK’s criminal records.  It contains information about:
+
+11.1 million people who have been convicted, cautioned or arrested; 55 million  driving-licence holders and details of 55.4 million  vehicles (i.e. every motor vehicle in the UK including the registered keeper and tax/insurance details).
+
+",No,,"type: Information Asset Owner
+name: Chief Constable Mike Barton (Durham)",Policing,Database system,title: Police ,,,,,,,
+,Police National Database (PND),"The Police National Database (PND) aggregates all UK police forces' intelligence data from local force systems and allows police forces to share and analyse intelligence. Also includes: facial images database (based on custody images) to allow national facial searching; child protection data; Domestic Violence data; and organised crime group flagging.
+
+The Police National Database allows users direct access to local force intelligence and other information.  The information held on the PND is not new information but comes from existing force systems that support force intelligence, crime, domestic and child abuse and custody business areas.  It is used by the 43 forces in England and Wales, Police Scotland, PSNI, British Transport Police and a number of other law enforcement agencies including the NCA, CEOP, the Ministry of Defence Police and Guarding Agency, ACRO, the Civil Nuclear Constabulary and the Serious Organised Analyis and Drug Enforcement Agency.
+",No,No,"type: Information Asset Owner
+name: Chief Constable Mike Barton (Durham)",Policing,Database system,"title: Police
+
+title: National Crime Agency",,,"Service provided and hosted by CGI at Bridgend, with DRS hosted by Vodaphone Swindon data centre, and Development in Reading",High,Daily,Official - Sensitive,No
+,IDENT1,"IDENT1 is the UK's central national database for holding, searching and comparing biometric information on those who into contact with the police as detainees after being arrested.  Information held includes fingerprints, palm prints and scene of crime marks.  IDENT1 is used by all UK police forces, by immigration, the MoD and for CT purposes.
+
+IDENT1 uses fingerprints to provide the principal means of forensically verifying or resolving identities in the UK. It verifies the identity of some 1,500,000 people taken into custody, and identifies some 75,000 scenes of crime marks each year.
+
+",No,,"type: Information Asset Owner
+name: Chief Constable Mike Barton (Durham)",Policing,Database system,"title: Police
+
+title: UKVI
+
+title: MOD",,,,,,,
+,Records Management System (RMS),"The Records Management System (RMS) is an electronic registration system for various immigration case file types.
+
+Accutrac. Web based accessed via Poise and Horizon",Yes,Yes,"type: Information Asset Owner
+name: Bob Boxer, Assistant director Information Management Compliance Unit
+email: bob.boxer@homeoffice.gsi.gov.uk",UKVI,Database system,title: UK Visas and Immigration,,,Via Iron Mountain UK,High,Daily,Official - Sensitive,No
+,Adelphi E-Business Suite,"Home Office Purchase to Pay and Finance Data (including DBS).
+
+Purchasing data (suppliers, catalogues, requisitions, purchase orders, goods receipts, purchase invoices), Receivables data (customers, sales invoices, debt collection), Cash data (cash receipts and payments and imported bank statements), Payroll data (imported from E-Payfact), General Ledger data (sets of books, trial balance, journals, budgets and forecasts).
+",Yes,Yes,"type: Information Asset Owner
+name: Ben Newton, Adelphi Services Unit
+email: ben.newton@homeoffice.gsi.gov.uk",HR,Database system,"title: Purchase to Pay
+description: Write - for catalogue only requisitioning and goods receipting - all 28,000 staff
+
+title: Finance
+description: Write - 250 staff; Read -1000 staff",,,Hosted on POISE,High,Continuously,Official - Sensitive,No
+,Adelphi Business Intelligence,"Home Office Purchase to Pay and Finance Data (including DBS).
+
+Adelphi BI copies selective data from Adelphi E-Business Suite into a data warehouse from which more user friendly reporting is available than E-Business Suite can offer.
+",Yes,Yes,"type: Information Asset Owner
+name: Ben Newton, Adelphi Services Unit
+email: ben.newton@homeoffice.gsi.gov.uk",HR,Database system,"title: Finance
+description: Read Only - 2,000 staff (including DBS)",,,Hosted on POISE,High,Continuously,Official - Sensitive,No
+,Carrier Liability System (CLS),Carrier Liability System (CLS) records demands to carriers who have transported clandestines to UK,Yes,,,Border Force,Access database,,,,,Medium,,,
+,Civil Penalty Central Administration Unit,Civil Penalty Central Administration Unit - investigation and collection of civil penalties,Yes,,,Border Force,Access database,,,,,Medium,,,
+,Landing Cards,System that green forms completed by visitors are entered into,Yes,,,Border Force,Access database,,,,,,,,
+,Shorts,Record of clandestines entering the country for sharing with partners nationally,,,"type: Information Asset Owner
+name: Christopher Bryan
+email: christopher.bryan@homeoffice.gsi.gov.uk",Border Force,Access database,,,,,Medium,,,
+,Warnings Index (WI),"The Warnings Index (WI) is the UK's 'watchlist' of adverse information and intelligence on individuals who we wish to prevent from entering the country. The information and intelligence covers individuals, documents and organisations and is drawn from a variety of sources, including the police and other government departments. It is longstanding policy not to discuss either the specific data held on the watchlist, the source of the data or how it is used,  as to do so would be counterproductive.",No,No,"type: Information Asset Owner
+name: Mike Stepney
+email: mike.stepney@homeoffice.gsi.gov.uk","Security, Border Force",Database system,,,,,High,Continuously,,No
+,Warnings Index Extract,Extract from Warnings Index,No,No,"type: Information Asset Owner
+name: Mike Stepney
+email: mike.stepney@homeoffice.gsi.gov.uk",Border Force,CSV,"title: Border Force
+description: Border Force NBTC, daily CSV extract, RMD, Mou agreed",,,"Postbox @ WICU, IBM Site C",High,Daily,Secret,
+,Collision Recording and Sharing,The Collision Recording and Sharing System (CRASH) is used by police to record and manage the investigation of road traffic collisions and to produce statistical returns for the Department for Transport and local authorities,No,No,"type: Information Asset Owner
+name: Chief Constable Suzette Davenport, Gloucestershire Constabulary",Policing,Database system,"title: Police
+description: Police force users have direct read, write, modify and delete access to the data via user logins to the CRASH system
+
+title: Extracts
+description: The Department of Transport and local authorities receive automated statistcial data extracts via email from the CRASH system",,,Hendon Data Centre,Medium,Continuously,Official,
+,ASYS Database Analysis System,"ADAS (ASYS Database Analysis System) contains ASYS Statistics, same schema as ASYS.  Statistical and data quality analysis in preparation for publication of statistics.  Being decommissioned.",Yes,No,"type: Information Asset Owner
+name: Dr Chris Kershaw
+email: chris.kershaw@homeoffice.gsi.gov.uk",UKVI,,,,,Poise (Atos data centre),Low,Less than once a month,Official,
+,Integrated Offender Management,"Integrated Offender Management (IOM) is used by police to manage priority and prolific offenders in the Integrated Offender Management Programme and to report on outcomes.
+
+IDIOM is a web-based offender tracking tool, provided by the Home Office to police forces, to support Integrated Offender Management (IOM) arrangements. The system holds Police National Computer (PNC) data on arrests, charges, and courts and other outcomes for identified individuals (updated from PNC nightly). Users use the system to monitor the reoffending of their IOM programmes.",No,No,"type: Information Asset Owner
+name: Acting Chief Constable John Long, Avon and Somerset Constabulary",Policing,Database system,"title: Police
+description: Police forces mark relevant data subjects on the Police National Computer with a ""PP"" marker, which triggers an overnight bulk transfer/update of the relevant records to/on IDIOM. MOJ prison release data is transferred to IDIOM on a weekly basis. Police force users are granted read/write/modify rights within IDIOM as required for their role.",,,Vodafone data centre in Swindon,Medium,Daily,Official,No
+,Record Management System (RMSys),"The Record Management System (RMSys) is used to record the corporate paper files held by the department in a bespoke file tracking system and track their movement.
+",No,No,"type: Information Asset Owner
+name: Susan Payne
+email: susan.payne@homeoffice.gsi.gov.uk",Corporate Services,Database system,"title: Corporate Services
+description: Members of the Knowledge and Information Management Unit staff in the information services centre and a couple of staff elsewhere",,,Home Office premises,High,Daily,Official - Sensitive,
+,"Forgery Records Examination, Data and Intelligence (FREDI)","Forgery Records Examination, Data and Intelligence (FREDI) is an Excel spreadsheet stored on POISE.  Scheduled to be superceeded by Amberhill.",No,No,"type: Information Asset Owner
+name: David Pennant
+email: david.pennant@homeoffice.gsi.gov.uk",Immigration Enforcement,Excel,"title: Home Office
+description: Nominated Home Office staff have read/write access. Embedded law enforcement staff have read/write access.",,,POISE - Serco / Fujitsu,High,Daily,Official,No
+,Immigration Liason Officer Risk Database,"RALON Immigration Liaison Officer (ILO) risk database (ILord) on Firecrest. Biographics, case and visa information for risk profiling passengers travelling to UK.",No,No,"type: Information Asset Owner
+name: David Pennant
+email: david.pennant@homeoffice.gsi.gov.uk",Immigration Enforcement,,"title: RALON
+description: Risk and Liason Overseas Network (RALON) staff overseas and at various UK locations (West Loindon / Croydon)",,,FCOS,Low,Daily,Official,No
+,Visa Asylum Database,"Visa Asylum Database (VAD) is a MS Excel spread sheet - Intelligence Use only contains records of all Asylum intake since May 2004 that has been biometrically matched to a visa issue. Used to generate inteliigence pictures - data is not shared outside of Intelligence. There are three excel statistical reports that are run off this database: MAVIS, VAMP and NEMO
+",,,,,,,,,,,,,
+,Centre Reference System (CRS),"Centre Reference System (CRS) containing information relating to overseas visa applications. Amalgamating all Proviso data and providing a platform to provide access to data for other government departments.
+",No,Yes,"type: Information Asset Owner
+name: Simon Peachey
+email: simon.peachey@homeoffice.gsi.gov.uk",UKVI,Database system,"title: Police
+
+title: Border Force
+
+title: Other Government",,,FCOS Hanslope Park,High,Continuously,Official - Sensitive,No
+,Immigration and Asylum Biometric System (IABS),"IABS is the Immigration & Asylum Biometric System. The system stores biometric images and templates for verfication (1:1) and identification (1:M) purposes for immigration and asylum products (e.g. Visas). Limited biographic data is also associated and stored with the biometrics. Biometric information is also used to identify those individuals of interest to UK Law Enforcement.
+
+Fingerprints and Facial Images of Foreign Nationals captured for immigration purposes (including but not exclusive to visa / BRP applicants, Asylum seekers).  Utilised for the purposes of verifying identity and immigration decision making.
+
+Biometrics for the purposes of issuing products, such as visas for entry clearance and also SecureID checks at the UK Border to undertake verification (1:1) checks to ensure the visa holder is the original applicant. Used to identify those individuals 'in-country' wishing to conceal their identity for  personal / financial gain. Identification of individuals of interest to UK Law Enforcement (eg Op Nexus). Immigration Enforcement can also access the system by capturing a biometric and looking it up on the system through RapID units.
+
+The system is not accessed directly and has a number of applications that interact and store data in it. Examples are Biometric Recording Stations, which is where biometrics are captured and sent through the back-end infrastructure to be stored in the database. User access controls are in place for all applications and there are strict physical access control also. Direct access to the database is limited to DV cleared database administrators.
+
+The Police fingerprint system (IDENT1) has an interface with IABS. This allows for the searching of suspected Foreign National Offenders against the IABS database. The 5CC have access to information that is derived from IABS. To a lesser extent the interface with Eurodac may also be deemed as access although all biometric searching and storage is undertaken  on the Eurodac Central System.
+",No,Yes,,"UKVI, Immigration Enforcement",Database system,,,,Multiple secure HO/Supplier sites,High,Continuously,Official - Sensitive,No
+,Integrity i-search,Warehouse application hold and identity search across consolidated application data,Yes,,,,Database system,,,,Oracle,High,Continuously,,No
+,Microsoft Dynamics CRM,Consideration and issuing of civil penalties to Employers/Landlords,No,No,"type: Information Asset Owner
+name: Shelley Gould, CPCT Team Leader
+email: shelley.gould@homeoffice.gsi.gov.uk",Immigration Enforcement,,"title: HMRC
+
+title: CPCT
+description: Civil Penalties Compliance Team",,,Cloud,High,Continuously,Official - Sensitive,No
+,Case Information Database (CID),"The Home Office utilise CID to collect and retain all immigration data related to Asylum, Nationality, Enforcement, Temporary/Permanent migration as well as Criminal and Border Control casework. The information stored is both person and case based including Biographic data to enable effective case management decisions. CID also has a template facility called DGP which allows HO staff to produce decision letters/notifications to recipients for example.
+
+The Case Information Database is used to support the administration of all Asylum, General Settlement and Nationality applications made to the Home Office, and details of all non-British Nationals that come to the attention of the immigration officials.
+
+CID is specifically utilised for immigration casework purposes and therefore all data is used by the Home Office. Seperated targeted extracts are provided to other bodies with an immigration interest as agreed through data sharing agreements.
+",,,"type: Information Asset Owner
+name: Mike Wells, Chief Operating Officer, UKVI
+email: mike.wells@homeoffice.gsi.gov.uk",UKVI,Database system,"title: Caseworkers
+description: Most CC staff read write modify. A limited number of staff have delete authority.",,,,High,Continuously,Official - Sensitive,No
+,Time and Motions System,Time and Motions System (TAMS) calculates Annulised Working hours (AWH),,Yes,,Corporate Services,,,,,,High,Continuously,Official - Sensitive,
+,DMZ MoveIT,Appeals bundles relating to NASS support appeals before the Asylum Support Tribunal. The system use MoveIT to upload appeal bundles for Presenting Officers to use at hearings,Yes,No,,"Immigration Enforcement, UKVI",,"title: Immigration Enforcement
+
+title: UKVI
+
+title: Appeals and Litigation",,,,Low,Weekly,Official - Sensitive,No
+,Biometric Residence Permit (BRP),"Biometric Resident Permit (BRP) System (formerly known as ICFN - Identity Cards for Foreign Nationals)/Immigration Platform Technologies (IPT).
+
+Biographical and biometic data (facial image and digital signature), type of leave ad conditions imposed. It is used to produced BRPs and to manage their production, as well s check the validity of information on the BRP/BRC
+",No,Yes,"type: Information Asset Owner
+name: Phillip Smith
+email: philip.smith@homeoffice.gsi.gov.uk",UKVI,,"title: DVLA
+description: read only
+
+title: HMPO",,,,High,Daily,Official - Sensitive,No
+,National Asylum Support Service Casework System,"ASYS-National Asylum Support service casework system, housing and subsistence administration. Holds infromation regarding supported FNOs.  Used mostly to manage and review s.4 supported FNOs
+",Yes,Yes,,,Database system,"title: Immigration Enforcement
+
+title: UKVI",,,,High,Continuously,Official - Sensitive,No
+,Collaboration Business Portal Compass,"Collaboration Business Portal Compass (CBP Compass) is a collaborative data sharing portal. It is used for Accommodation Requests for asylum applicants; Transport service request for asylum applicant; Communication of payment information to Providers; General sharing of data for asylum support processes; user manuals; Finance and Commercial Information; Workflow processes for Transport Requests.
+",No,No,,Corporate Services,,"title: Immigration Enforcement
+
+title: UKVI",,,,Medium,Continuously,Official - Sensitive,No
+,NOMS Public Protection Unit Database,"National Offender Management Service (NOMS) Protection Unit Database is used by the Mentally Disordered Offenders Team to monitor Foreign Criminals sectioned under the Mental Health Act.
+",No,No,,Immigration Enforcement,,,,,,High,Continuously,Official - Sensitive,No
+,Active,Monitors case owner performance against pre-determined timings for different aspects of caseworking.,Yes,No,"type: Information Asset Owner
+name: Alan Sharp
+email: alan.sharp1@homeoffice.gsi.gov.uk",Immigration Enforcement,,"title: Criminal Casework
+description: All Croydon Based Criminal Casework EO's and managers up to DD",,,,Low,Continuously,Official,
+,Joint Asset Recovery Database,"Joint Asset Recovery Database (JARD) is a financial database used to check for details of cash seizures, confiscation orders and restraint details
+",,,,"Immigration Enforcement, Border Force",,,,,,Medium,,Official - Sensitive,No
+,Fixed Penalties & Driver Retraining,"PentiP data is used to record and manage the business processes for Fixed Penalty Notices, Penalty Notices for Disorder, Cannabis & Khat Warnings, and other road traffic processes (e.g. request to produce documents - HORT; vehicle defect rectification scheme - VDRS)",No,No,"type: Information Asset Owner
+name: Chief Constable Suzette Davenport, Gloucestershire Police, NPCC National Lead for Roads Policing",Policing,,"title: Home Office
+description: Home Office provides national administration function by accessing the application.
+
+title: Police
+description: 43 police forces in England and Wales and HMCTS access PentiP via the application over the CJX. The police also import notice data from locally deployed adjudication systems and scanning solutions.
+
+title: Public
+description: General public interact with PentiP through on-line payments website (gov.uk), telephone payment system, and by logging into a public access system (to view photograph evidence of the offence).",,,Hosted by Vodafone in Swindon.Will be transitioned from Vodafone to a Northgate Shared Hosting Environment in Oct 2015,Medium,Daily,Official,No
+,Driver Offender Retraining Scheme,"Driver Offender Retraining Scheme (DORS). PentiP Local Police Adjudication systems. Course Provider Booking systems. DORS data is used to verify that a driver is eligible for a driver retraining course offer,  for low level Fixed Penalty Notice road traffic offences.
+",No,No,"type: Information Asset Owner
+name: Chief Constable Suzette Davenport, Gloucestershire Police, NPCC National Lead for Roads Policing",Policing,,"title: Home Office
+description: Home Office provides national administration function through accessing the application.
+
+title:Police
+description: Police forces in England, Wales and Northern Ireland, & Procurator Fiscal in Scotland, access the application and import from PentiP and/or local adjudication systems using web-services.
+
+title: Course Providers
+description: Course Providers (private companies, local authorities, and police forces) access the application and import from 3rd party course booking systems via web-services.
+
+title: Public
+description: General public access the application (to indentify suitable courses) over the internet.",,,Hosted in the Hendon Data Centre but will be transitioned out of the Home Office to a cloud environment delivered by Adapt in Aug 2015.,Medium,Daily,Official,No
+,Automatic Number Plate Recognition (ANPR),"The National ANPR Data Centre is a data warehouse containing ANPR (Automatic Number Plate Recognition) data captured from local force ANPR systems which comply with national ANPR standards.  Forces have basic query access to the NADC but this access is restricted to use for the purposes of serious and organisd crime investigations and counter-terrorism.  Planning for a replacement for the NADC when the current contract expires in March 2015 assumes a national service, with Home Office ownership.
+
+ANPR reads and images of vehicle movements identified by the Vehicle VRM (Vehicle Registration mark). Used for Counter Terrorism, Major and serious crime, both in preventing and detecting criminal activity).
+
+The NADC receives data 30 million numberplate ""reads"" from around 48,000 cameras on average during a typical week. The NADC currently has approximately 18 billion such records.
+",No,No,"type: Information Asset Owner
+name: ACC Paul Kennedy, North Yorkshire Police",Policing,,"title: Police
+description: Police Forces send data via Web Services to the NADC, but do not write directly to it.Access to the Data is read only via Web Services, the data is currently accessed over the CJX from Police Forces BOF's, the Security Service access via the Met Police and other LEAs",,,On Home Office Premises and Met Police Premises,Medium,Continuously,Official - Sensitive,No
+,National Firearms Licensing Management System,"National Firearms Licensing Management System (NFLMS) enables the police forces of England and Wales to manage all aspects of firearms and explosives licensing in line with current legislation. In addition NFLMS also enables OSCT to manage EPP licensing in line with current legislation.
+
+Consequently NFLMS holds data on firearms, explosives and EPP certificates along with information on the certificate holders and the conditions under which the certificates are issued.
+
+NFLMS has an interface to PNC in order to maintain the NFCHR for the police forces of England and Wales.
+
+NFLMS uses GUCCI to inform a number of police command and control systems of the potential location of weapons and explosives within the forces jurisdiction so they can provide a safer response to incidents at these locations.
+
+Finally it is used as a source of intelligence by NCA, the police forces of England and Wales.",No,No,"type: Information Asset Owner
+name: Chief Constable Andy Marsh (Hampshire), Police Lead for Firearms Licensing
+",Policing,Database system,"title: OSCT
+description: full access to NFLMS to read, update and delete certificates
+
+title: Firearms Licensing
+description: firearms licensing departments of the police forces of England and Wales have full access to NFLMS to read, update and delete certificates that they issue.
+
+title: Casework
+description: The Home Office Firearms Legislation and Casework Section has read access to enable them to progress their casework.
+
+title: NCA
+description: read access to enable them to perform weapons checks on individuals.
+
+title: Ministry of Defence Police
+description: read access to enable them to perform weapons checks on individuals.
+
+title: Royal Military Police
+description: read access to enable them to perform weapons checks on individuals.
+
+title: Other
+description: Other departments (e.g. Command and Control personnel) in forces have read access in order to check the location of weapons and/or explosives.
+
+",,,PNC Data center at Hendon,Medium,Continuously,Official,No
+,Disclosure Application System,"Disclosure application records are made available via the CRM (Customer Relationship Management) Disclosure Application System.
+
+The data is a mixture of personal data (e.g. name, date of birth), police conviction, reprimand or warning data (retrived from PNC) if any is matched to the individual disclousure applicant and Local Police Force intelligence data if any record is matched against a record and disclosed by any of the Police Forces or Law Enfocement Agencies.
+",No,No,,DBS,,"title: DBS
+description: No third party has direct access to the CRM system. We do however share some of the information stored on it with third parties for the purposes of issuing Disclosure certificates.
+
+title: Police
+description: Police Forces- this is covered by ACPO SLA.
+
+title: Security Industry Authority
+description: Via consent from applicants.
+
+title: HMPO
+description: for Fraud Investigation Purposes (MOUs in place).",,,On DBS and TCS (Tata Consultancy Services - DBS IT provider) premises in Liverpool and within Vodafone data centres.,High,Continuously,Official - Sensitive,No
+,Barring Casefile System,"Barring case records are made availalble via the uCRM (Customer Relationship Management) Barrring Casefile System.
+
+The data is a mixture of personal data (e.g. name, date of birth), referal information (from referring Parties) police conviction, reprimand or warning data (retrived from PNC) if any record is matched to the individual disclousure applicant and Local Police Force intelligence data if any is matched against a case and provided by any of the Police Forces or Law Enforcement Agencies
+
+",No,,,DBS,,"title: DBS
+description: No direct access to third parties to uCRM.
+
+title: Other
+description: Barring Information is however shared with Police, Keepers of Registers and some supervisory authorities (MOUs in place) .",,,On DBS premises in Darlington,High,Continuously,Official - Sensitive,No
+,National Ballistic Intelligence System,"National Ballistic Intelligence System (NABIS) is used for recording and making available ballistic information and intelligence to the police for law enforcement purposes. Also used for recording ballistic forensic examination reports, such as balistic clasification and comparison. Data used for analysis including gun crime hot spotting and crime pattern analysis. Evidential reports used for prosecution.
+",No,No,"type: Information Asset Owner
+name: Steve Rodhouse, Deputy Assistant Commissioner Metropolitan Police ",Policing,,"title: Police
+description: Police forces access rights, read/write/modify & delete. Method of access via CJX. A central team in Birmingham manage the service and provide system administration and governance. There are 3 hubs for forensic examination in London, Birmingham and Manchester that provide initial ballistic examination. There are currently 3 external forensic suppliers who provide in depth evidential reports that are added to the system, external forensic suppliers can have access to load evidential reports.",,,Hendon Data Centre,High,Daily,Official - Sensitive,No
+,Freedom of Information Database,"The Freedom of Information (FOI) Database is an FOI Case Register used to log FOI requests and track their progress (target date, clearance data, how responded to).
+
+It is being replaced by Hercule.",Yes,,"type: Information Asset Owner
+name: Teresa Bastow
+email: teresa.bastow@homeoffice.gsi.gov.uk",Corporate Services,Access database,"title: Home Office
+description: The majority of staff who handle FOI requests have access to the Case Register, as well as administrative staff who log requests, monitor the Case Register and run reports.  All rights are the same in terms of updating the Case Register however those running the reports may have access to other functions.",,,Corporate File Plan,Medium,Continuously,Official - Sensitive,No
+,Intelligence Management System,"The Intelligence Management System (IMS) is an Immigration Enforcement Database (Kana, SQL Server).  Provides management of intelligence/information received from the public and partners.",No,No,"type: Information Asset Owner
+name: David Pennant
+email: david.pennant@homeoffice.gsi.gov.uk",Immigration Enforcement,Database system,"title: Public
+description: Public have write access via online form located on gov.uk
+
+title: Immigration Enforcement
+description: Data can be written, read, edited and deleted by intelligence staff.
+
+title: Home Office
+description: Data can be written by Home Office staff via use of bespoke forms available on Horizon.",,,ATOS,High,Daily,Official,No
+,Animals Scientific Procedures System,Database of all licences applied for and granted by the Animals in Science Regulation Unit (ASRU).,Yes,Yes,"type: Information Asset Owner
+name: Will Reynolds
+email: william.reynolds10@homeoffice.gsi.gov.uk",Home Office Science,,"title: ASRU
+description: Only ASRU staff have access",,,,High,Continuously,Official - Sensitive,No
+,Animals Scientifc Procedures e-Licensing,e-Licensing system for the Animals in Science Regulation Unti - includes licence applications and details of all licences granted.  It is replacing ASPS.,Yes,Yes,"type: Information Asset Owner
+name: Will Reynolds
+email: william.reynolds10@homeoffice.gsi.gov.uk",Home Office Science,,"title: ASRU
+descripton: All ASRU staff have access
+
+title: Licence applicants
+description: External licence applicants have access to their own information as they apply online for a licence.",,,CenturyLink,High,Continuously,Official - Sensitive,No
+,Passports Main Index,"Post Issue application / passport data.  The Main Index (MI) contains the historical record of all Post issue (terminal state includes Issued and not issued) Passport data. Includes:
+
+- Passports processed through HMPO systems includng: PIMIS and PASS  (predecessors of the current Application Management System-AMS.
+
+- Passports issued to British Citizens by FCO (through FCO systems) prior to repatriation of this process to HMPO.
+
+- Brish Passport variants issued by the Crown Dependencies (Jersey, Guernsey, Isle of Man) and Gibraltar.
+
+- British Overseas Passport variants issued by the British Overseas Territories (since May 2015)
+
+Categories of data held includes Biographic (applicant details and depending on application type, data on parents, grandparents and countersignatory) and Biometric (electronic image of photo and signature). Organisations often this record as part of their Identiy checking process.
+",Yes,Yes,"type: Information Asset Owner
+name: Ian Forster
+email: ian.forster@hmpo.gsi.gov.uk",HMPO,Database system,"title: Data Validation
+descripton: Data Validation (DVA) provides a web browser and API interface showing controlled Main Index data to other Government Departments and other partners with MoUs.",,,CSC data centre,High,Continuously,Official - Sensitive,No
+,Passport Exemplar,The Passport Exemplar (PEX) contains pre issue passport application data for online passport applications.  Includes biographic and biometric information and payment details.,Yes,,"type: Information Asset Owner
+name: Ian Forster
+email: ian.forster@hmpo.gsi.gov.uk",HMPO,,,,,CSC data centre,High,Continuously,Official,
+,Passport Application Processing System,"The Application Processing System (APS) contains Work in Progress (WIP) pre issue passport applications being processed through the system.  Application data (biographic and biometric)  processed via AMS.  The AMS WIP DB  also holds reference data including letter templates & phrases. Some of the application data and all of the passport data  such as the new passport number (if issued)is moved to Main Index once a Issuance decision has been made. It is deleted from AMS after x days. AMS also has a document store of all supporting documentation recieved as part of an application.
+",Yes,N,"type: Information Asset Owner
+name: Ian Forster
+email: ian.forster@hmpo.gsi.gov.uk",HMPO,,,,,CSC data centre,High,Continuously,Official - Sensitive,
+,Consolidated View Database,"The Consolidated View Database (CVD) used to provide a consolidated view of all regional WIP data, which is replaced now by AMS. The residual Watch List and stop file functionality now remains.
+Name and DOB",Yes,No,"type: Information Asset Owner
+name: Ian Forster
+email: ian.forster@hmpo.gsi.gov.uk",HMPO,,,,,CSC data centre,High,Continuously,Official,
+,Facial Recognition System,Watch List of photos in Facial Recognition System (FRS1) contains biodata and biometrics - photo.,Yes,Yes,"type: Information Asset Owner
+name: Alan Gibson
+email: alan.gibson@hmpo.gsi.gov.uk",HMPO,Database system,,,,Globe House,High,Continuously,Official,
+,"Lost, Stolen, Recovered Passport records","Lost, Stolen, Recovered Passport records (LSR) contains biographic data.",Yes,,"type: Information Asset Owner
+name: Alan Gibson
+email: alan.gibson@hmpo.gsi.gov.uk",HMPO,,,,,CSC data centre,High,Continuously,Official,
+,ABIOS,Pre issue application data (biographic and biometric) for First Time adult applications who currently need an interview,Yes,No,"type: Information Asset Owner
+name: Ian Forster
+email: ian.forster@hmpo.gsi.gov.uk",HMPO,,,,,CSC data centre,Medium,Daily,Official,
+,Passport Fraud,"Pre and post issue Passport fraud cases in Fraud Main Index (Oracle 10g).
+
+Information includes: Applicant, Passport
+FMI case management data, Uploaded documents
+Browse entries and bring ups (stop files)
+Internal investigations (private enclave within FMI)
+Intelligence requests and bring ups.
+Links between cases under investigations
+Audit data
+User Data
+Policy data
+",,No,,HMPO,Database system,,,,Liverpool office,High,Continuously,Official - Sensitive,
+,Passport Investigations and Intelligence,"Pre and Post issue Passport Investigations and Intelligence, Fraud MI (oracle 10g), Interquest, Ibase.  Contains data related to investigations and intelligence
+
+",,No,,HMPO,,,,,Liverpool office,High,Continuously,Official - Sensitive,
+,Passport Archive,"Post Issue Archive on copies of Index cards microfilm, digital images and paper records of passports issues in UK and abroad. Might include all or part of the following Applicants name, dob, pob, telephone number, email, address, signature, passport number, photo and signature, parents and grandparents name, dob, pob
+",,No,"type: Information Asset Owner
+name: Danny Frost
+email: danny.frost@hmpo.gsi.gov.uk",HMPO,,,,,Fengate,,,Official,
+,"Marriage, Civil Partnerships, Births and Deaths","Marriage, Civil Partnerships, Births and deaths registers in England and Wales.  Contains biographic data: name, address, data of birth. (RON)",,,"type: Information Asset Owner (Marriages, Births, Deaths)
+name: Alison Tighe
+email: alison.tighe@gro.gsi.gov.uk
+
+type: Information Asset Owner (Civil Partnerships)
+name: Susan Brown
+email: sue.brown@gro.gsi.gov.uk",General Register Office,,,,,Southport,High,Continously,Official,
+,Adoptions,"General Register Office (GRO) register of adoptions made through the courts of England and Wales, and some foreign countries (paper records).",,,"type: Information Asset Owner
+name: Alison Tighe
+email: alison.tighe@gro.gsi.gov.uk",General Register Office,,,,,Southport,,,Official - Sensitive,
+,Adoptions Contact Register,General Register Office (GRO) Adoptions Contact Register linking adopted people and their relatives.,,,"type: Information Asset Owner
+name: Alison Tighe
+email: alison.tighe@gro.gsi.gov.uk",General Register Office,,,,,Southport,,,Official - Sensitive,
+,Adoptions and Parental Court Orders,General Register Office (GRO) Adoptions and Parental Order Court Orders contains orders made through the courts of England and Wales and in the case of adoptions from some foreign countries (paper records).,,,"type: Information Asset Owner
+name: Alison Tighe
+email: alison.tighe@gro.gsi.gov.uk",General Register Office,,,,,Southport,High,,Official - Sensitive,
+,General Register Office case notes,"General Register Office case notes contains details of re-registration of births, deaths, marriages and civil partnershipts, including the name and address of applicants.",,,"type: Information Asset Owner
+name: Susan Brown
+email: sue.brown@gro.gsi.gov.uk",General Register Office,,,,,,,,Official,
+,General Register Office authorised people,List of authorised people who can conduct a marriage in an authorised building.  Paper records and GRINSY.,,,"type: Information Asset Owner
+name: Susan Brown
+email: sue.brown@gro.gsi.gov.uk",General Register Office,,,,,,,,Official,
+,General Register Office gender recognition,Electronic register of entries made in certain circumstances for Gender recognition.,,,"type: Information Asset Owner
+name: Alison Tighe
+email: alison.tighe@gro.gsi.gov.uk",General Register Office,,,,,,,,Official - Sensitive,
+,General Register Office Missing and Stolen certificates,General Register Office Missing and Stolen certificates,,,"type: Information Asset Owner
+name: Anthony Birkett
+email: anthony.birkett@gro.gsi.gov.uk",General Register Office,,,,,,,,Official,
+,Elvis,Small local database of infant deaths,,,,General Register Office,Lotus Notes,,,,,,,,
+,Allegations Investigation Management System,"Allegations IMS,  Kana, SQL Server.",,,,UKVI,,,,,,,,,
+,Application Registration Card,Application Registration Card (ARC) - issues cards and stores fingerprints in database.  Includes details of access to financial support.,,,,UKVI,Database system,"title: Caseworkers
+description: Caseworkers via processing actions",,,,High,,Official - Sensitive,No
+,Call Capture System,"Call Capture System (CCS) retains details of employer, contact and migrant",,,,UKVI,,,,,,,,,
+,Complaints Management System,Complaints Management System (CMS) from members of the public.  Lagan (Kana) database.,,,,UKVI,,,,,,,,,
+,Integrity i-decide,"Caseworking system for student applications, includes visual record store",,,,UKVI,Database system,,,,,,,,
+,Management of Anti-Corruption,Management of Anti-Corruption (MAC) - checks Home Office staff and Immigration Sponsors,,,,UKVI,Database system,,,,,,,,
+,Proviso,"Consular recording/storage of data for visa applications, data feeds into CRS.  System data is held in Firecrest.",No,No,"type: Information Asset Owner
+name: Simon Peachey
+email: simon.peachey@homeoffice.gsi.gov.uk",UKVI,Database system,,,,Individual overseas missions,High,Continously,Official - Sensitive,No
+,Sponsor Management Unit Tracking Database,Sponsor Management Unit Tracking Database (SMUTD),,,,UKVI,Database system,,,,,,,,
+,Arrests Database,Details of arrests by Police,,,,UKVI,Excel,,,,,,,,
+,Asylum Support Adjudicators Appeal System,Asylum Support Adjudicators Appeal System,,,,UKVI,Access Database,,,,,,,,
+,Forgery Database,,,,,UKVI,Excel,,,,,,,,
+,Interpreters Database,List of accepted interpreters for Asylum cases,,,,UKVI,Access Database,,,,,,,,
+,Family Support Grants,,,,,UKVI,Excel,,,,,,,,
+,Interpreters Payments System,Interpreters Payments System (IPS) - records payment to interpreters,,,,UKVI,Access Database,,,,,,,,
+,Refugee Index,,,,,UKVI,Excel,,,,,,,,
+,Refusal Database,Details refusals at Ports,,,,UKVI,PC Express,,,,,,,,
+,National Operations Database,Based on person/address/person event,,,,Immigration Enforcement,Database system,,,,,,,,
+,Crime Directorate Case Management System,"CDCMS - at Borders, case, biographics, intel",,,,Immigration Enforcement,Skyscape,,,,,,,,
+,Athena,Immigration intelligence on standalone IL4 network,,,,Immigration Enforcement,Database system,,,,,,,,
+,National Absconder Tracking,"NATT, small case working system, under development",,,,Immigration Enforcement,Database system,,,,,,,,
+,Border Force National Intelligence Hub,BFNIH & Record - records intelligence and source,,,,Border Force,Access Database,,,,,,,,
+,Drug Licensing,Drugs licensing and compliance casework database,,,,CPG,Access Database,,,,,,,,
+,Firearms Compensation,Database of compensation re firearms,,,,CPG,Database system,,,,,,,,
+,Home Office Large Major Enquire System,"HOLMES 2, used for major incidents such as serial murders and serious fraud",,,,CPG,Database system,,,,,,,,
+,National Mobile Property Register,NMPR,,,,CPG,Database system,,,,,,,,
+,Homicide Index System,"HIS - includes biographics and case information, every homicide in the last 60 years",,,,CPG,Database system,,,,,,,,
+,Cogent Facial Identification Management System,CFIMS holds facial images captured as part of the BRP enrollment process.,Yes,,"type: Information Asset Owner
+name: Phillip Smith
+email: philip.smith@homeoffice.gsi.gov.uk",UKVI,Database system,,,,ATOS,High,Continously,Official - Sensitive,No
+,Subject Access Bureau,"SABRe - Subject Access Bureau Records. The database holds details of all immigration and border force subject access requests received by the Home Office. Internal workflow and MI tool.
+",Yes,No,"type: Information Asset Owner
+name: Dan Hobbs
+email: daniel.hobbs@homeoffice.gsi.gov.uk",,Database system,,,,POISE Servers,Medium,Continously,Official - Sensitive,No
+,Sick absence quarterly ,"Sick absence information reported quarterly to Cabinet Office (one quarter in arrears). Includes breakdown of sick absence by long and short term sick, cost of sick, staff employed during the period, staff with no sick together with a breakdown by: geographic region, gender, grade, and absence reason.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,,"title: Home Office
+description: Self Service access for those staff who can log on to Galena
+",,,POISE  ,Medium,Monthly,Official - Sensitive,No
+,HR Recruitment and Redeployment ,"Personal Information e.g. name, NI number and statistical data",No,Yes,"type: Information Asset Owner
+name: Paula McCombe
+email: paula.mccombe2@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: Recruitment team and People MI & Reporting Team",,,POISE,High,Continously,Official - Sensitive,No
+,Payroll ,Payroll reports & financial modelling tools based on the payroll reports. To model annual pay award proposals and other pay related issues. To calculate pay award increases for staff.,No,Yes,"type: Information Asset Owner
+name: Ian Johnston
+",HR,Access database,"title: HR
+description: Reward team and People MI & Reporting Team",,,POISE  ,High,Monthly,Official - Sensitive,No
+,HR Resourcing ,"Contains details of vacancies advertised, diversity information of applicants, details of pre-appointment checks completed for successful candidates.  Civil Service Resourcing system - WCN.",No,Yes,"type: Information Asset Owner
+name: Pete Thomas
+email: pete.thomas@homeoffice.gsi.gov.uk",HR,,"title: Home Office
+description: Individual Vacancy Holders have self service access agreed to log on to the system to process their vacancies.
+
+title: HR
+description: People MI & Reporting Team has access to MI area as does the Resourcing Team in Home Office.",,,POISE  ,High,Continously,Official - Sensitive,No
+,People Facts,"Publication of management information including workforce planning, sick absence and equality and diversity data in a BI Publisher booklet with automatic redaction in line with requirements of DPA.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team
+
+title: Home Office
+description: Self Service access for those staff who can log on to Galena",,,POISE  ,Low,Monthly,Official - Sensitive,No
+,Data View and Galena,A set of inter-connecting Access databases and an Oracle BI data warehouse used by specialist HR data experts. Provide the single source of Hannigan-compliant anonymised HR data for key performance indicator reporting across the Department and its businesses on a monthly basis.,No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+descripton: People MI & Reporting Team
+
+title: Home Office
+description: Self Service access (to final data set not feeder databases) for those staff who can log on to Galena",,,POISE  ,High,Monthly,Official - Sensitive,No
+,Bonus ,Summary-level information is currently published on data.gov.uk relating to the Non Consolidated Performance Related Pay annual return (NCPRP). We hold yearly data sets of this data to inform this statutory return.,No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Total Remuneration (Hutton) ,"Summary-level information is currently published in each year's Annual Report and Accounts (see, for example, the Staffing Table, and the Remuneration Statements). We hold yearly data sets of this data to inform this legal requirement for annual reporting.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Promotion ,"These data sets include raw data: each data set is classified as ""Sensitive"" as it includes diversity and equality markers such as Sexual Orientation, Religious Belief, Ethnicity and Disability.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Pregnancy ,"These data sets include raw data: each data set is classified as ""Sensitive"" as it includes diversity and equality markers such as Sexual Orientation, Religious Belief, Ethnicity and Disability.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Maternity & Adoption ,"These data sets include raw data: each data set is classified as ""Sensitive"" as it includes diversity and equality markers such as Sexual Orientation, Religious Belief, Ethnicity and Disability.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Casework & Advisory ,"Bespoke data set produced each year in July for the previous financial year, to enable analysis of several more complex HR casework and advisory processes as part of the Department's Equality Duty e.g. Grievance, Misconduct, Employment Tribunals, Inefficiency and Regrading.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Monthly,Official - Sensitive,No
+,Redeployment ,"Bespoke data set produced each year in July for the previous financial year, to enable analysis of the redeployment process as part of the Department's Equality Duty.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Monthly,Official - Sensitive,No
+,Sick absence triggers,Monthly data set produced to enable analysis of the sick absence management process by senior managers (each month) and analysed once a year as part of the Department's Equality Duty.,No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Monthly,Official - Sensitive,No
+,Learning ,"Bespoke data set produced each year in July for the previous financial year, to enable analysis of the learning and development process as part of the Department's Equality Duty.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Recruitment ,"Bespoke data set produced each year in July for the previous financial year, to enable analysis of the recruitment process as part of the Department's Equality Duty.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,Performance Management ,"Bespoke data sets produced each year in July for the previous financial year, to enable analysis of the performance management process as part of the Department's Equality Duty.",No,Yes,"type: Information Asset Owner
+name: Leigh Hewitt
+email: leigh.hewitt@homeoffice.gsi.gov.uk",HR,Access database,"title: HR
+description: People MI & Reporting Team",,,POISE  ,High,Less than once a month,Official - Sensitive,No
+,B4 Nationality,B4 Nationality (B4 NAT) is a legacy data set which was used for case working nationality applications.,Yes,,"type: Information Asset Owner
+name: Unknown",UKVI,,,,,Andover data centre,,Less than once a month,Official - Sensitive,
+,Semaphore,Advanced Passenger Information database from carriers.,No,Unsure,"type: Information Asset Owner
+name: Rowena Dimond, Director BF Intelligence Directorate
+email: rowena.dimond@homeoffice.gsi.gov.uk",Border Force,Database system,"title: GAS
+description: near real-time XML extract, RWMD, MoU agreed
+
+title: MIDAS
+description: near real-time XML extract. RWMD, MoU agreed
+
+title: DQ
+description: daily csv extra and near real-time XML feed, RWMD, MoU agreed
+
+title: GAS ad hoc
+description: bulk CSV extract, RWMD, MoU agreed
+
+title: MIDAS ad hoc
+description: bulk CSV extract. RWMD, MoU agreed
+
+title: NPAC
+description: weekly bulk CSV extract. RWMD, MoU agreed
+
+title: HODAC
+description: weekly bulk CSV extract, RWMD, MoU agreed.
+
+title: Border Force
+description: BF remote access. RWM, MoU agreed. Limited number of licences Access via OSCTNet clients (xGSI workstations)
+
+title: Police
+description: Police remote access. RWM, MoU agreed. Limited number of licences Access via PNN (xCJX workstations)
+
+title: Immigration Group remote access
+description: Read Only MoU agreed. Limited number of licences. Access via OSCTNet clients
+
+title: GAS remote access
+description: Details on the permissions for the licences already allocated are unknown",,,Physical hosting at 5 separate sites (A-E),High,Continuously,Secret,Unsure
+,Pathfinder,Pathfinder is used to collate and prioritise caseworking information to enable departments to effectively manage their work.  It uses data from CID (Caseworking Information Dataabase) and ASYS (Asylum Support System) data which is fed into a MS Access and MS Excel front end,Yes,No,"type: Information Asset Owner
+name: Andrew Wren
+email: andrew.wren@homeoffice.gsi.gov.uk",Immigration Enforcement,Access Database,"title: Criminal Casework
+
+title: Asylum Casework
+
+title: Temporary and Permanent Migration ",,,POISE Network,High,Daily,Official - Sensitive,No
+,PERFORM,"PERFORM provides a weekly cut of data to Criminal Casework on Foreign National Criminals and stock ... SAS, MS Access and MS Excel",yes,No,"type: Information Asset Owner
+name: Andrew Wren
+email: andrew.wren@homeoffice.gsi.gov.uk",Immigration Enforcement,Access Database,title: Criminal Casework,,,POISE Network,High,Weekly,Official - Sensitive,No
+,Violent and Sexual Offenders Register (ViSOR),"Violent and Sexual Offenders Register (ViSOR) is a national database that supports Multi-Agency Public Protection Arrangements (MAPPA).  It facilitates the effective sharing of information and intelligence on violent and sexual offenders between the three MAPPA Responsible Authority agencies (police, probation and prisons), as well as the recording of joint risk assessments and risk management plans.  It has been expanded by the police to record information on some non-convicted subjects (knwn as potentially dangerous persons) and terrorist offenders.  ViSOR is to be used by MAPPA Responsible Authorities in discharging their statutory responsibilities to assess and manage the risks presented by known sexual and violent offenders.
+
+In ViSOR data takes the form of 'nominal' records of those individuals identified as posing a risk of serious harm to the public. This data is used to manage these individuals across multiple law enforcement agencies, principally all police forces in England, Scotland, Wales and NI, the Probation and Prison services and their related subordinates.",No,Yes,"type: Information Asset Owner
+name: Deputy Chief Constable Michelle Skeer, Cumbria Police
+email: michelle.skeer@cumbria.police.uk",Policing,Database system,"title: General
+description: Nominated and security vetted users at the given police forces and multiple agencies. Dependent on users role as Nominal Record Manager or Supervisor read, write, modify, delete access is stipulated within 'ViSOR Standards v3.1' dated 31st March 2015.",,,"PNC, Hendon",High,Daily,Official - Sensitive,No
+,NHS Debtors,Access database to hold and view NHS debt information received from the Department of Health,No,No,"type: Information Asset Owner
+name: Sonia Dower, Director IE Interventions and Sanctions Directorate
+email: sonia.dower2@homeoffice.gsi.gov.uk","NHS, Immigration Enforcement",Access Database,"title: Immigration Enforcement
+description: Interventions and Sanctions Directorate staff only with read access.",,,Home Office Premises,Medium,Monthly,Official - Sensitive,No
+,Second Generation Schengen Information System (SIS II),"Second Generation Schengen Information System (SIS II) holds European alert data based on Articles in the Schengen Convention:
+Article 26 - Persons wanted for arrest
+Article 32 - Missing Persons
+Article 34 - Witnesses, Absconders, subjects of criminal judgements
+Article 36 - People or vehicles - discreet checks
+Article 38 - Objects lost, stolen, sought for seizure
+The system is accessed by UK police forces, National Crime Agency (SIRENE Bureau) and Borders and allows partcipating countries to distribute information about individuals and property of interest - supporting law enforcement cooperation in Europe.
+
+Steria Interconnection Box (SIB) - connects UK to EU central SIS II system. Holds full copy of data. No direct user access to this system.
+N.SIS - master copy of SIS II data. Holds full copy of data. No direct user access to this system.
+SIRENE.SIS - local technical copy. Holds full copy of SIS II data. Provides access to SIS II data to UK NCA SIRENE Bureau via the NCA Case Information Management System (CIMS).
+PNC.SIS - local technical copy. Holds full copy of SIS II data excluding binaries. Provides access to SIS II data to UK Police Forces via the Police National Computer (PNC).
+Borders.SIS - local technical copy. Holds full copy of SIS II data excluding binaries. Provides access to SIS II data to UK National Border Targeting Centre via the Semaphore System.
+Warnings Index - will hold a subset of SIS II data for access by Primary Checkpoint staff.",No,Unsure,"type: Information Asset Owner (Home Office)
+name: IIPG International Criminality Information Exchange Team (ICIET)
+
+type: Information Asset Owner (Police)
+name: Police Service Assistant Chief Constable of the Hampshire Constabulary
+
+type: Information Asset Owner (National Crime Agency)
+name: Deputy Director of International
+
+
+",Policing,Database system,"title: TBD
+description: Embedded attachment - todo, look at",,,"The majority of the solution is based in the Home Office, Hendon Data Centre. CGI (on behalf of the NCA) host SIRENE.SIS and CIMS. Fujitsu host Warnings Index on behalf on Borders.IBM host Semaphore on behalf of Borders.",High,Daily,Official - Sensitive,No
+,National DNA Database,"The National DNA Database (NDNAD) contains DNA profile data from 'subjects' and 'crime scenes'.
+
+Entries consist of a DNA profile (a string of pairs of numbers that represents a persons profile), sample barcode number, ASN (for subjects), Date, Person's Name (for Subjects), Force code, Supplier Code, Lab Code (Forensic Service Supplier), Match groups - where scenes and subjects have matched, eliminations where a match no longer matches due to an upgraded profile.
+
+The data is used to match suspects against crimescenes and crime scenes to each other and subjects.",No,No,"type: Information Asset Owner
+name: Chief Constable Chris Sims (West Midland Police)
+email: NB he is leaving soon",Policing,Database system,"title: Police Live Services Administrators
+description: Police Live Services - Database Administrators (DBA) / System Administrators (SA) / ASI team
+
+title: Police Live Services - NDNAD
+description: Application Support Team
+
+title: NDNAD Delivery Unit Teams
+description: Service Delivery Team (SDT), NDNAD Assurance Service (NAS), Data Reconcilliation Team (DRT), Scientific Support, Security and Information Assurance.",,,Hendon Data Centre,High,Continuously,Unsure,No
+,Immigration Casework Analysis System (ICAS),ICAS Futrix (Immigration Casework Analysis System) contains statistical and data quality analysis in preparation for publication of statsitics.   Extracts include case information drawn from a selection of admin databases and landing cards.,Yes,No,"type: Information Asset Owner
+name: Dr Chris Kershaw
+email: chris.kershaw@homeoffice.gsi.gov.uk","UKVI, Immigration Enforcement",SAS,"title: Migration Statistics
+description: (MBA) read, write, modify and delete",,,Poise (Atos data centre),Medium,Monthly,Official,No
+,DVLA,Access database to hold information on Driving Licence revocations and functionality to casework revocations and produce MI,No,No,"type: Information Asset Owner
+name: Sonia Dower, Director IE Interventions and Sanctions Directorate
+email: sonia.dower2@homeoffice.gsi.gov.uk","DVLA, Immigration Enforcement",Access Database,"title: Immigration Enforcement
+description: Interventions and Sanctions Directorate referral tracker team only with read/write access",,,Home Office Premises,High,Continuously,Official - Sensitive,No
+,NHS Referrals,Access database to hold and view NHS referrals recieved via NHS trusts and internal Home Office. To complete action and produce MI.,No,No,"type: Information Asset Owner
+name: Sonia Dower, Director IE Interventions and Sanctions Directorate
+email: sonia.dower2@homeoffice.gsi.gov.uk","NHS, Immigration Enforcement",Access Database,"title: Immigration Enforcement
+description: Interventions and Sanctions Directorate referral tracker team only with read/write access",,,Home Office Premises,Medium,Continuously,Official - Sensitive,No
