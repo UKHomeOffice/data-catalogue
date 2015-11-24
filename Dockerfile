@@ -1,7 +1,7 @@
 FROM quay.io/ukhomeofficedigital/ckan:v1.0.0
-COPY configuration/ckan.ini $CKAN_CONFIG/ckan.ini
-COPY init/ $USER_SCRIPT_DIR
-COPY plugins $CKAN_PLUGINS
+COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
+COPY ckan/init/ $USER_SCRIPT_DIR
+COPY ckan/plugins $CKAN_PLUGINS
 RUN yum install -y wget && \
     yum clean all
 

@@ -10,7 +10,7 @@ solr:
   #   - "8983:8983"
 ckan:
   container_name: ckan
-  build: ./ckan
+  build: .
   ports:
     - "80:80"
   links:
