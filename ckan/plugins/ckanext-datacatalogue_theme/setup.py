@@ -59,7 +59,7 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=[],
+    install_requires=['ckan'],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
@@ -80,8 +80,8 @@ setup(
     entry_points='''
         [ckan.plugins]
         datacatalogue_theme=ckanext.datacatalogue_theme.plugin:Datacatalogue_ThemePlugin
-	[babel.extractors]
-	ckan = ckan.lib.extract:extract_ckan
+        [babel.extractors]
+        ckan = ckan.lib.extract:extract_ckan
     ''',
 
     # If you are changing from the default layout of your extension, you may

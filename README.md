@@ -10,6 +10,10 @@ docker-compose up db solr
 docker-compose up ckan
 ```
 
+## Deploying
+
+Kubernetes files can be found at [k8s/](k8s/)
+
 ## Loading data
 
 Requires *Python* and *pip*
