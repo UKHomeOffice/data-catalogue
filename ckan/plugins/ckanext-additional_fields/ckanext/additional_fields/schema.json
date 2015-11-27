@@ -18,9 +18,22 @@
     },
     {
       "required": false,
+      "field_name": "tag_string",
+      "label": "Tags",
+      "preset": "tag_string_autocomplete",
+      "form_placeholder": "eg. economy, mental health, government"
+    },
+    {
+      "required": false,
       "form_placeholder": "Summary",
       "field_name": "summary",
       "label": "Summary"
+    },
+    {
+      "required": false,
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization"
     },
     {
       "required": false,
@@ -86,7 +99,7 @@
       "required": false,
       "field_name": "dataset_type",
       "label": "Type",
-      "preset": "select",
+      "preset": "multiple_checkbox",
       "choices": [
         {
           "value": "collection_of_systems",
@@ -122,7 +135,7 @@
       "required": false,
       "field_name": "security_classification",
       "label": "Security Classification",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "official1",
@@ -146,7 +159,7 @@
       "required": false,
       "field_name": "can_be_public",
       "label": "Can it be public",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "_yes_",
@@ -166,7 +179,7 @@
       "required": false,
       "field_name": "contains_personal_information",
       "label": "Contains personal information",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "_yes_",
@@ -184,9 +197,15 @@
     },
     {
       "required": false,
+      "form_placeholder": "Other data sources feeding in",
+      "field_name": "other_data_sources_feeding_in",
+      "label": "Other data sources feeding in"
+    },
+    {
+      "required": false,
       "field_name": "data_originates_in_ho",
       "label": "Data originates entirely from within the Home Office",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "_yes_",
@@ -206,7 +225,7 @@
       "required": false,
       "field_name": "ho_responsible",
       "label": "Home Office responsible for technical operation of system",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "_yes_",
@@ -226,7 +245,7 @@
       "required": false,
       "field_name": "register",
       "label": "Register - an authoritative record for government",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "_yes_",
@@ -246,7 +265,7 @@
       "required": false,
       "field_name": "used_in_official_statistics",
       "label": "Used in official statistics",
-      "preset": "select",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "Yes",
@@ -264,47 +283,14 @@
     },
     {
       "required": false,
-      "field_name": "tag_string",
-      "label": "Tags",
-      "preset": "tag_string_autocomplete",
-      "form_placeholder": "eg. economy, mental health, government"
+      "form_placeholder": "How the data can be used (any policy and legal constraints)",
+      "field_name": "how_the_data_can_be_used_any_policy_and_legal_constraints",
+      "label": "How the data can be used (any policy and legal constraints)"
     },
     {
       "required": false,
-      "field_name": "owner_org",
-      "label": "Organization",
-      "preset": "dataset_organization"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Email",
-      "field_name": "email",
-      "label": "Email"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Number",
-      "field_name": "number",
-      "label": "Number"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Location",
-      "preset": "markdown",
-      "field_name": "location",
-      "label": "Location"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Type of contact (e.g. technical, support etc)",
-      "preset": "markdown",
-      "field_name": "type_of_contact_e_g_technical_support_etc",
-      "label": "Type of contact (e.g. technical, support etc)"
-    },
-    {
-      "required": false,
-      "form_placeholder": "API Status",
-      "preset": "select",
+      "form_placeholder": "Data Status",
+      "preset": "select_radio",
       "choices": [
         {
           "value": "discovery",
@@ -325,367 +311,6 @@
       ],
       "field_name": "api_status",
       "label": "API Status"
-    },
-    {
-      "required": false,
-      "form_placeholder": "API Project schedule",
-      "field_name": "api_project_schedule",
-      "label": "API Project schedule"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Source data sytem",
-      "preset": "markdown",
-      "field_name": "source_data_sytem",
-      "label": "Source data sytem"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Other data sources feeding in",
-      "field_name": "other_data_sources_feeding_in",
-      "label": "Other data sources feeding in"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Data originates entirely from within the Home Office",
-      "preset": "markdown",
-      "field_name": "data_originates_entirely_from_within_the_home_office",
-      "label": "Data originates entirely from within the Home Office"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Home Office responsible for technical operation of system",
-      "preset": "markdown",
-      "field_name": "home_office_responsible_for_technical_operation_of_system",
-      "label": "Home Office responsible for technical operation of system"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Number of records (approximate)",
-      "preset": "markdown",
-      "field_name": "number_of_records_approximate",
-      "label": "Number of records (approximate)"
-    },
-    {
-      "required": false,
-      "form_placeholder": "How the data can be used (any policy and legal constraints)",
-      "field_name": "how_the_data_can_be_used_any_policy_and_legal_constraints",
-      "label": "How the data can be used (any policy and legal constraints)"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Tel",
-      "field_name": "tel",
-      "label": "Tel"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Used for",
-      "preset": "markdown",
-      "field_name": "used_for",
-      "label": "Used for"
-    },
-    {
-      "required": false,
-      "form_placeholder": "MoU documentation",
-      "preset": "markdown",
-      "field_name": "mou_documentation",
-      "label": "MoU documentation"
-    },
-    {
-      "required": false,
-      "form_placeholder": "http://example.com/",
-      "preset": "link",
-      "field_name": "upload_mou",
-      "label": "Upload MoU"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Notifications summary",
-      "field_name": "notifications_summary",
-      "label": "Notifications summary"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Summary",
-      "field_name": "description",
-      "label": "Description"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Version (e.g. version or year)",
-      "field_name": "version_e_g_version_or_year",
-      "label": "Version (e.g. version or year)"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Update frequency",
-      "field_name": "update_frequency",
-      "label": "Update frequency"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Release Notes(e.g. for updates)",
-      "preset": "markdown",
-      "field_name": "release_notes_e_g_for_updates",
-      "label": "Release Notes(e.g. for updates)"
-    },
-    {
-      "required": false,
-      "form_placeholder": "How to Access Summary",
-      "preset": "markdown",
-      "field_name": "how_to_access_summary",
-      "label": "How to Access Summary"
-    },
-    {
-      "required": false,
-      "field_name": "url",
-      "form_placeholder": "http://example.com/",
-      "preset": "link",
-      "label": "Endpoint (URL)"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Accreditation",
-      "preset": "markdown",
-      "field_name": "accreditation",
-      "label": "Accreditation"
-    },
-    {
-      "required": false,
-      "form_placeholder": "http://example.com/",
-      "preset": "link",
-      "field_name": "client_library",
-      "label": "Client library"
-    },
-    {
-      "required": false,
-      "form_placeholder": "http://example.com/",
-      "display_property": "foaf:homepage",
-      "display_snippet": "link.html",
-      "field_name": "test_query_url",
-      "label": "Test query URL"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Parent datasets",
-      "preset": "markdown",
-      "field_name": "parent_datasets",
-      "label": "Parent datasets"
-    },
-    {
-      "required": false,
-      "preset": "select",
-      "choices": [
-        {
-          "value": "Yes",
-          "label": "Yes"
-        },
-        {
-          "value": "No",
-          "label": "No"
-        },
-        {
-          "value": "_unknown_",
-          "label": "Unknown"
-        }
-      ],
-      "field_name": "data_accessible_for_parliamentary_questions",
-      "label": "Data accessible for Parliamentary Questions"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Costs associated with access",
-      "preset": "markdown",
-      "field_name": "costs_associated_with_access",
-      "label": "Costs associated with access"
-    },
-    {
-      "required": false,
-      "preset": "select",
-      "display_snippet": "multiple_choice.html",
-      "choices": [
-        {
-          "value": "Yes",
-          "label": "Yes"
-        },
-        {
-          "value": "No",
-          "label": "No"
-        },
-        {
-          "value": "_unknown_",
-          "label": "Unknown"
-        }
-      ],
-      "field_name": "data_disclosable_under_freedom_of_information",
-      "label": "Data disclosable under Freedom of Information"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Exemptions",
-      "field_name": "exemptions",
-      "label": "Exemptions"
-    },
-    {
-      "required": false,
-      "preset": "select",
-      "choices": [
-        {
-          "value": "Yes",
-          "label": "Yes"
-        },
-        {
-          "value": "No",
-          "label": "No"
-        },
-        {
-          "value": "_unknown_",
-          "label": "Unknown"
-        }
-      ],
-      "field_name": "data_ever_archived",
-      "label": "Data ever archived"
-    },
-    {
-      "required": false,
-      "form_placeholder": "After what period of time?",
-      "field_name": "after_what_period_of_time",
-      "label": "After what period of time?"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Request for access turnaround time",
-      "field_name": "request_for_access_turnaround_time",
-      "label": "Request for access turnaround time"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Current capacity",
-      "field_name": "current_capacity",
-      "label": "Current capacity"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Maximum capacity",
-      "field_name": "maximum_capacity",
-      "label": "Maximum capacity"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Transaction Limits",
-      "field_name": "transaction_limits",
-      "label": "Transaction Limits"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Cost per use",
-      "field_name": "cost_per_use",
-      "label": "Cost per use"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Network",
-      "preset": "markdown",
-      "field_name": "network",
-      "label": "Network"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Special Handling Instructions",
-      "preset": "markdown",
-      "field_name": "special_handling_instructions",
-      "label": "Special Handling Instructions"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Security Requirements",
-      "preset": "markdown",
-      "field_name": "security_requirements",
-      "label": "Security Requirements"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Technical Requirements",
-      "preset": "markdown",
-      "field_name": "technical_requirements",
-      "label": "Technical Requirements"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Code examples",
-      "preset": "markdown",
-      "field_name": "code_examples",
-      "label": "Code examples"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Service Level Agreement",
-      "preset": "markdown",
-      "field_name": "service_level_agreement",
-      "label": "Service Level Agreement"
-    },
-    {
-      "required": false,
-      "preset": "select",
-      "choices": [
-        {
-          "value": "Yes",
-          "label": "Yes"
-        },
-        {
-          "value": "No",
-          "label": "No"
-        },
-        {
-          "value": "_unknown_",
-          "label": "Unknown"
-        }
-      ],
-      "field_name": "third_party_involvement",
-      "label": "Third party involvement"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Technical documentation",
-      "preset": "markdown",
-      "field_name": "technical_documentation",
-      "label": "Technical documentation"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Data schema",
-      "preset": "markdown",
-      "field_name": "data_schema",
-      "label": "Data schema"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Data Standards",
-      "preset": "markdown",
-      "field_name": "data_standards",
-      "label": "Data Standards"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Risk assessment",
-      "preset": "markdown",
-      "field_name": "risk_assessment",
-      "label": "Risk assessment"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Coding support",
-      "preset": "markdown",
-      "field_name": "coding_support",
-      "label": "Coding support"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Further information",
-      "preset": "markdown",
-      "field_name": "further_information",
-      "label": "Further information"
     }
   ],
   "resource_fields": [
