@@ -67,3 +67,7 @@ h1 a {
   background-image: none;
 }
 
+/* Select Box has invisible test */
+.select2-chosen {
+  font-size: 14px;
+}
