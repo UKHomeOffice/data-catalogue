@@ -289,28 +289,10 @@
     },
     {
       "required": false,
-      "form_placeholder": "Data Status",
-      "preset": "select_radio",
-      "choices": [
-        {
-          "value": "discovery",
-          "label": "Discovery"
-        },
-        {
-          "value": "alpha",
-          "label": "Alpha"
-        },
-        {
-          "value": "beta",
-          "label": "Beta"
-        },
-        {
-          "value": "live",
-          "label": "Live"
-        }
-      ],
-      "field_name": "api_status",
-      "label": "API Status"
+      "form_placeholder": "API URL",
+      "preset": "link",
+      "field_name": "api_url",
+      "label": "API URL"
     }
   ],
   "resource_fields": [
