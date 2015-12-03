@@ -1,1 +1,3 @@
 ckanapi
+openpyxl
+inflection
