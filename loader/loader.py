@@ -1,28 +1,28 @@
-import ckanapi
-import csv
 import json
+import logging
 import os
 import re
 import sys
-import logging
+import inflection
+import uuid
+
+import ckanapi
+from openpyxl import load_workbook
 
 
 def create_id(name):
-    removelist = ' '
-    tidied = re.sub(r'[^\w' + removelist + ']', '', name.lower())
-    return '-'.join(re.findall('\"[^\"]*\"|\S+', tidied))
+    return inflection.parameterize(name)
 
 
-def create_tags(tags):
-    return [{'name': x.strip()} for x in tags.split(',') if x != '']
+def label_to_value(field, label):
+    if not label == None:
+        sanitised_label = label.replace(u'\xa0', u' ').strip()
 
+        for choice in field['choices']:
+            if choice['label'] == sanitised_label:
+                return choice['value']
 
-def create_labels(tags):
-    return [x.strip() for x in tags.split(',') if x != '']
-
-
-def labels_to_values(field, labels):
-    return [choice['value'] for choice in field['choices'] if choice['label'] in labels]
+        raise Exception("Label not found in field", sanitised_label)
 
 
 # Load schema from somewhere?
@@ -34,13 +34,14 @@ def load_schema():
         return {field['field_name']: field for field in data['dataset_fields']}
 
 
-if (len(sys.argv)) != 3:
+if (len(sys.argv)) != 4:
     print """USAGE:
-    python loader.py [serviceLocation] [apikey]"""
+    python loader.py [serviceLocation] [apikey] [imputXlsDir]"""
     sys.exit()
 
 service_location = sys.argv[1]
 api_key = sys.argv[2]
+input_xls_directory = sys.argv[3]
 csv_location = 'formatted-examples.csv'
 
 service = ckanapi.RemoteCKAN(service_location,
@@ -61,32 +62,51 @@ print 'Using schema'
 schema = load_schema()
 
 print 'Loading Datasets'
-with open(csv_location, 'rb') as csvfile:
-    csvreader = csv.DictReader(csvfile,
-                               delimiter=',',
-                               fieldnames=['Database Columns', 'name', 'summary',
-                                           'homeOfficeControlled', 'registry',
-                                           'informationAssetOwner', 'businessArea', 'type',
-                                           'currentUsers', 'policyConstraints',
-                                           'processForAccessing']
-                               )
+for file_name in os.listdir(input_xls_directory):
+    full_path = os.path.join(input_xls_directory, file_name)
 
-    for row in csvreader:
-        id = create_id(row['name'])
-        try:
-            print '  ' + id
-            service.action.package_create(
-                name=id,
-                title=row['name'],
-                owner_org='home-office',
-                tags=create_tags(row['businessArea']),
-                notes=row['summary'],
-                business_area=labels_to_values(schema['business_area'],
-                                               create_labels(row['businessArea']))
-            )
-        except Exception, e:
-            logging.error(e, exc_info=True)
-            print id + ' failed'
-            pass
+    if os.path.isdir(full_path) or not file_name.endswith(".xlsx"):
+        continue
 
-    print 'Finished'
+    workbook = load_workbook(full_path)
+    sheet = workbook.active
+
+    if not sheet['F2'].value == None:
+        id = create_id(sheet['F2'].value)[:100]
+    else:
+        id = str(uuid.uuid4())
+
+    try:
+        print '  ' + id
+        service.action.package_create(
+            name=id,
+            title=sheet['F2'].value,
+            owner_org='home-office',
+            summary=sheet['F2'].value,
+            business_area=[label_to_value(schema['business_area'],
+                                         sheet['F8'].value)],
+            dataset_type=label_to_value(schema['dataset_type'],
+                                        sheet['F9'].value),
+            security_classification=label_to_value(schema['security_classification'],
+                                                   sheet['F10'].value),
+            can_be_public=label_to_value(schema['can_be_public'],
+                                         sheet['F11'].value),
+            contains_personal_information=label_to_value(schema['contains_personal_information'],
+                                                         sheet['F12'].value),
+            other_data_sources_feeding_in=sheet['F13'].value,
+            data_originates_in_ho=label_to_value(schema['data_originates_in_ho'],
+                                                 sheet['F14'].value),
+            ho_responsible=label_to_value(schema['ho_responsible'],
+                                          sheet['F15'].value),
+            register=label_to_value(schema['register'],
+                                    sheet['F16'].value),
+            used_in_official_statistics=label_to_value(schema['used_in_official_statistics'],
+                                                       sheet['F17'].value),
+            how_the_data_can_be_used_any_policy_and_legal_constraints=sheet['F18'].value
+        )
+    except Exception, e:
+        logging.error(e, exc_info=True)
+        print id + ' failed'
+        pass
+
+print 'Finished'
