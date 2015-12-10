@@ -126,19 +126,19 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "official1",
+          "value": "Official",
           "label": "Official"
         },
         {
-          "value": "official-sensitive2",
+          "value": "Official-sensitive",
           "label": "Official-sensitive"
         },
         {
-          "value": "secret3",
+          "value": "Secret",
           "label": "Secret"
         },
         {
-          "value": "top-secret4",
+          "value": "Top secret",
           "label": "Top secret"
         }
       ]
@@ -150,15 +150,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "Yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "No",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "Unknown",
           "label": "Unknown"
         }
       ]
@@ -166,19 +166,19 @@
     {
       "required": false,
       "field_name": "contains_personal_information",
-      "label": "Contains personal information",
+      "label": "Contains personal data",
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "Yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "No",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "Unknown",
           "label": "Unknown"
         }
       ]
@@ -196,15 +196,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "Yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "No",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "Unknown",
           "label": "Unknown"
         }
       ]
@@ -216,15 +216,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "Yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "No",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "Unknown",
           "label": "Unknown"
         }
       ]
@@ -236,15 +236,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "Yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "No",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "Unknown",
           "label": "Unknown"
         }
       ]
@@ -264,7 +264,7 @@
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "Unknown",
           "label": "Unknown"
         }
       ]
