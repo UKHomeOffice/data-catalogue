@@ -37,61 +37,49 @@
     },
     {
       "required": false,
-      "field_name": "business_area",
-      "label": "Business Areas",
+      "field_name": "category",
+      "label": "Category",
       "preset": "multiple_checkbox",
       "choices": [
         {
-          "value": "border_force",
+          "value": "Biometric",
+          "label": "Biometric"
+        },
+        {
+          "value": "Border Force",
           "label": "Border Force"
         },
         {
-          "value": "corporate_services",
-          "label": "Corporate Services"
+          "value": "Civil Registration",
+          "label": "Civil Registration"
         },
         {
-          "value": "criminal_policing_group",
-          "label": "Criminal Policing Group"
+          "value": "Disclosure and Barring Service",
+          "label": "Disclosure and Barring Service"
         },
         {
-          "value": "disclosure_and_barring_services",
-          "label": "Disclosure and Barring Services"
+          "value": "HO Corporate",
+          "label": "HO Corporate"
         },
         {
-          "value": "general_register_office",
-          "label": "General Register office"
+          "value": "HO Science",
+          "label": "HO Science"
         },
         {
-          "value": "hm_passport_office",
-          "label": "HM Passport Office"
+          "value": "Immigration",
+          "label": "Immigration"
         },
         {
-          "value": "home_office_science",
-          "label": "Home Office Science"
+          "value": "Intelligence",
+          "label": "Intelligence"
         },
         {
-          "value": "human_resources",
-          "label": "Human Resources"
+          "value": "Passport",
+          "label": "Passport"
         },
         {
-          "value": "immigration_enforcement",
-          "label": "Immigration Enforcement"
-        },
-        {
-          "value": "policing",
+          "value": "Policing",
           "label": "Policing"
-        },
-        {
-          "value": "security",
-          "label": "Security"
-        },
-        {
-          "value": "uk_visa_immigration",
-          "label": "UK visa & Immigration"
-        },
-        {
-          "value": "other_please_specify_in_the_comments",
-          "label": "Other (please specify in the comments)"
         }
       ]
     },

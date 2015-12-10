@@ -15,17 +15,17 @@ class Additional_FieldsPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetFor
     #IFacet interface
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
+        facets_dict['vocab_category'] = toolkit._('Category')
         facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
+        facets_dict['vocab_category'] = toolkit._('Category')
         facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
+        facets_dict['vocab_category'] = toolkit._('Category')
         facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
@@ -33,9 +33,9 @@ class Additional_FieldsPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetFor
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'schema.json')) as data_file:
             data = json.load(data_file)
             for dataset in data['dataset_fields']:
-                if dataset['field_name'] == 'business_area' and 'extras_business_area' in pkg_dict:
-                    ba = self.parse_multi_value(pkg_dict['extras_business_area'])
-                    pkg_dict['vocab_business_area'] = [self.map_to_label(dataset, value) for value in ba]
+                if dataset['field_name'] == 'category' and 'extras_category' in pkg_dict:
+                    ba = self.parse_multi_value(pkg_dict['extras_category'])
+                    pkg_dict['vocab_category'] = [self.map_to_label(dataset, value) for value in ba]
         return pkg_dict
 
     def map_to_label(self, definition, value):
