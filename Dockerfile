@@ -9,5 +9,4 @@ RUN wget -O /tmp/release-1.0.0.tar.gz \
          https://github.com/open-data/ckanext-scheming/archive/release-1.0.0.tar.gz && \
     tar -C $CKAN_PLUGINS -xvf /tmp/release-1.0.0.tar.gz && \
     mv $CKAN_PLUGINS/ckanext-scheming-release-1.0.0/ $CKAN_PLUGINS/ckanext-scheming/ && \
-    rm /tmp/release-1.0.0.tar.gz && \
-    ([ -e /var/run/httpd/httpd.pid ] && rm /var/run/httpd/httpd.pid) || echo nop 
+    rm /tmp/release-1.0.0.tar.gz
