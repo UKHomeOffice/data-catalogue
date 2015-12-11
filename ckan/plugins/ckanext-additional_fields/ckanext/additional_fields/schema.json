@@ -31,6 +31,30 @@
     },
     {
       "required": false,
+      "form_placeholder": "Contact Name",
+      "field_name": "Contact Name",
+      "label": "Contact Name"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Contact Email",
+      "field_name": "Contact Email",
+      "label": "Contact Email"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Contact Location",
+      "field_name": "Contact Location",
+      "label": "Contact Location"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Technical, Support, etc",
+      "field_name": "Contact Type",
+      "label": "Contact Type"
+    },
+    {
+      "required": false,
       "field_name": "owner_org",
       "label": "Organization",
       "preset": "dataset_organization"
