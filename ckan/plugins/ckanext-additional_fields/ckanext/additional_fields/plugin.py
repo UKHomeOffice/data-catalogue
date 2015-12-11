@@ -14,7 +14,6 @@ class Additional_FieldsPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetFor
         toolkit.add_template_directory(config, 'templates')
 
     # IFacet interface
-
     def dataset_facets(self, facets_dict, package_type):
         facets_dict['vocab_category'] = toolkit._('Category')
         facets_dict['security_classification'] = toolkit._('Security Classification')
