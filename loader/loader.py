@@ -49,15 +49,6 @@ service = ckanapi.RemoteCKAN(service_location,
                              apikey=api_key
                              )
 
-print 'Creating Organisation'
-try:
-    service.action.organization_create(
-        name='home-office',
-        title='Home Office (HO)'
-    )
-except:
-    pass
-
 print 'Using schema'
 schema = load_schema()
 
@@ -71,6 +62,19 @@ for file_name in os.listdir(input_xls_directory):
     workbook = load_workbook(full_path)
     sheet = workbook.active
 
+    organisation = "Unknown"
+    if not sheet['F8'].value == None:
+        organisation = sheet['F8'].value
+
+    print 'Creating Organisation'
+    try:
+        service.action.organization_create(
+                name=organisation,
+                title=organisation
+        )
+    except:
+        pass
+
     if not sheet['F2'].value == None:
         id = create_id(sheet['F2'].value)[:100]
     else:
@@ -81,10 +85,8 @@ for file_name in os.listdir(input_xls_directory):
         service.action.package_create(
             name=id,
             title=sheet['F2'].value,
-            owner_org='home-office',
+            owner_org=organisation,
             summary=sheet['F2'].value,
-            business_area=[label_to_value(schema['business_area'],
-                                         sheet['F8'].value)],
             dataset_type=label_to_value(schema['dataset_type'],
                                         sheet['F9'].value),
             security_classification=label_to_value(schema['security_classification'],
