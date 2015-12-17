@@ -36,7 +36,7 @@ def load_schema():
 
 if (len(sys.argv)) != 4:
     print """USAGE:
-    python loader.py [serviceLocation] [apikey] [imputXlsDir]"""
+    python loader.py [serviceLocation] [apikey] [inputXlsDir]"""
     sys.exit()
 
 service_location = sys.argv[1]
