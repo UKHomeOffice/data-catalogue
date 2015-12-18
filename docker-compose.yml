@@ -8,11 +8,19 @@ solr:
   image: quay.io/ukhomeofficedigital/ckan-solr:v0.1.0
   # ports:
   #   - "8983:8983"
+mailcatcher:
+  container_name: mailcatcher
+  image: helder/mailcatcher
+  ports:
+    - "1080:80"
 ckan:
   container_name: ckan
   build: .
+  environment:
+     - CKAN_SMTP_SERVER=mailcatcher:25
   ports:
     - "80:80"
   links:
     - solr:solr
     - db:db
+    - mailcatcher:mailcatcher
