@@ -151,19 +151,19 @@
       "choices": [
         {
           "value": "Official",
-          "label": "Official"
+          "label": "OFFICIAL"
         },
         {
           "value": "Official-sensitive",
-          "label": "Official-sensitive"
+          "label": "OFFICIAL-SENSITIVE"
         },
         {
           "value": "Secret",
-          "label": "Secret"
+          "label": "SECRET"
         },
         {
           "value": "Top secret",
-          "label": "Top secret"
+          "label": "TOP SECRET"
         }
       ]
     },
