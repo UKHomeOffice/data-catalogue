@@ -138,20 +138,20 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "official1",
-          "label": "Official"
+          "value": "official",
+          "label": "OFFICIAL"
         },
         {
-          "value": "official-sensitive2",
-          "label": "Official-sensitive"
+          "value": "official-sensitive",
+          "label": "OFFICIAL-SENSITIVE"
         },
         {
-          "value": "secret3",
-          "label": "Secret"
+          "value": "secret",
+          "label": "SECRET"
         },
         {
-          "value": "top-secret4",
-          "label": "Top secret"
+          "value": "top-secret",
+          "label": "TOP SECRET"
         }
       ]
     },
