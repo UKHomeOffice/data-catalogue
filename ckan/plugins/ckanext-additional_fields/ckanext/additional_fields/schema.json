@@ -31,79 +31,67 @@
     },
     {
       "required": false,
-      "form_placeholder": "Contact Name",
-      "field_name": "Contact Name",
-      "label": "Contact Name"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Contact Email",
-      "field_name": "Contact Email",
-      "label": "Contact Email"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Contact Location",
-      "field_name": "Contact Location",
-      "label": "Contact Location"
-    },
-    {
-      "required": false,
-      "form_placeholder": "Technical, Support, etc",
-      "field_name": "Contact Type",
-      "label": "Contact Type"
-    },
-    {
-      "required": false,
       "field_name": "owner_org",
       "label": "Organization",
       "preset": "dataset_organization"
     },
     {
       "required": false,
-      "field_name": "category",
-      "label": "Category",
+      "field_name": "business_area",
+      "label": "Business Areas",
       "preset": "multiple_checkbox",
       "choices": [
         {
-          "value": "Biometric",
-          "label": "Biometric"
-        },
-        {
-          "value": "Border Force",
+          "value": "border_force",
           "label": "Border Force"
         },
         {
-          "value": "Civil Registration",
-          "label": "Civil Registration"
+          "value": "corporate_services",
+          "label": "Corporate Services"
         },
         {
-          "value": "Disclosure and Barring Service",
-          "label": "Disclosure and Barring Service"
+          "value": "criminal_policing_group",
+          "label": "Criminal Policing Group"
         },
         {
-          "value": "HO Corporate",
-          "label": "HO Corporate"
+          "value": "disclosure_and_barring_services",
+          "label": "Disclosure and Barring Services"
         },
         {
-          "value": "HO Science",
-          "label": "HO Science"
+          "value": "general_register_office",
+          "label": "General Register office"
         },
         {
-          "value": "Immigration",
-          "label": "Immigration"
+          "value": "hm_passport_office",
+          "label": "HM Passport Office"
         },
         {
-          "value": "Intelligence",
-          "label": "Intelligence"
+          "value": "home_office_science",
+          "label": "Home Office Science"
         },
         {
-          "value": "Passport",
-          "label": "Passport"
+          "value": "human_resources",
+          "label": "Human Resources"
         },
         {
-          "value": "Policing",
+          "value": "immigration_enforcement",
+          "label": "Immigration Enforcement"
+        },
+        {
+          "value": "policing",
           "label": "Policing"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "uk_visa_immigration",
+          "label": "UK visa & Immigration"
+        },
+        {
+          "value": "other_please_specify_in_the_comments",
+          "label": "Other (please specify in the comments)"
         }
       ]
     },
@@ -150,20 +138,20 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Official",
-          "label": "OFFICIAL"
+          "value": "official1",
+          "label": "Official"
         },
         {
-          "value": "Official-sensitive",
-          "label": "OFFICIAL-SENSITIVE"
+          "value": "official-sensitive2",
+          "label": "Official-sensitive"
         },
         {
-          "value": "Secret",
-          "label": "SECRET"
+          "value": "secret3",
+          "label": "Secret"
         },
         {
-          "value": "Top secret",
-          "label": "TOP SECRET"
+          "value": "top-secret4",
+          "label": "Top secret"
         }
       ]
     },
@@ -174,15 +162,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Yes",
+          "value": "_yes_",
           "label": "Yes"
         },
         {
-          "value": "No",
+          "value": "_no_",
           "label": "No"
         },
         {
-          "value": "Unknown",
+          "value": "_unknown_",
           "label": "Unknown"
         }
       ]
@@ -190,19 +178,19 @@
     {
       "required": false,
       "field_name": "contains_personal_information",
-      "label": "Contains personal data",
+      "label": "Contains personal information",
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Yes",
+          "value": "_yes_",
           "label": "Yes"
         },
         {
-          "value": "No",
+          "value": "_no_",
           "label": "No"
         },
         {
-          "value": "Unknown",
+          "value": "_unknown_",
           "label": "Unknown"
         }
       ]
@@ -220,15 +208,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Yes",
+          "value": "_yes_",
           "label": "Yes"
         },
         {
-          "value": "No",
+          "value": "_no_",
           "label": "No"
         },
         {
-          "value": "Unknown",
+          "value": "_unknown_",
           "label": "Unknown"
         }
       ]
@@ -240,15 +228,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Yes",
+          "value": "_yes_",
           "label": "Yes"
         },
         {
-          "value": "No",
+          "value": "_no_",
           "label": "No"
         },
         {
-          "value": "Unknown",
+          "value": "_unknown_",
           "label": "Unknown"
         }
       ]
@@ -260,15 +248,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Yes",
+          "value": "_yes_",
           "label": "Yes"
         },
         {
-          "value": "No",
+          "value": "_no_",
           "label": "No"
         },
         {
-          "value": "Unknown",
+          "value": "_unknown_",
           "label": "Unknown"
         }
       ]
@@ -288,7 +276,7 @@
           "label": "No"
         },
         {
-          "value": "Unknown",
+          "value": "_unknown_",
           "label": "Unknown"
         }
       ]
