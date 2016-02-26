@@ -1,5 +1,6 @@
 ### Example Data
 /loader/*.csv
+/loader/*.xlsx
 
 ### Windows template
 # Windows image file caches
@@ -100,4 +101,7 @@ Temporary Items
 
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
+
+#External plugin
+ckan/plugins/ckanext-scheming-release-1.0.0
 
