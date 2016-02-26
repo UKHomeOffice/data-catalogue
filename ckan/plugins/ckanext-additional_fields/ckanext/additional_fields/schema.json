@@ -25,6 +25,12 @@
     },
     {
       "required": false,
+      "form_placeholder": "Description",
+      "field_name": "description",
+      "label": "Description"
+    },
+    {
+      "required": false,
       "form_placeholder": "Summary",
       "field_name": "summary",
       "label": "Summary"
@@ -162,15 +168,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "no",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "unknown",
           "label": "Unknown"
         }
       ]
@@ -182,15 +188,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "no",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "unknown",
           "label": "Unknown"
         }
       ]
@@ -208,15 +214,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "no",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "unknown",
           "label": "Unknown"
         }
       ]
@@ -228,15 +234,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "no",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "unknown",
           "label": "Unknown"
         }
       ]
@@ -248,15 +254,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "_yes_",
+          "value": "yes",
           "label": "Yes"
         },
         {
-          "value": "_no_",
+          "value": "no",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "unknown",
           "label": "Unknown"
         }
       ]
@@ -268,15 +274,15 @@
       "preset": "select_radio",
       "choices": [
         {
-          "value": "Yes",
+          "value": "yes",
           "label": "Yes"
         },
         {
-          "value": "No",
+          "value": "no",
           "label": "No"
         },
         {
-          "value": "_unknown_",
+          "value": "unknown",
           "label": "Unknown"
         }
       ]
