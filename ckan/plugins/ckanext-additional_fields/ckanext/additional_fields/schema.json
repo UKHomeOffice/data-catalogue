@@ -32,13 +32,13 @@
     {
       "required": false,
       "field_name": "owner_org",
-      "label": "Organization",
+      "label": "Managed by business area",
       "preset": "dataset_organization"
     },
     {
       "required": false,
       "field_name": "business_area",
-      "label": "Used by Business Areas",
+      "label": "Used by business areas",
       "preset": "multiple_checkbox",
       "choices": [
         {
