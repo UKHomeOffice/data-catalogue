@@ -38,7 +38,7 @@
     {
       "required": false,
       "field_name": "business_area",
-      "label": "Business Areas",
+      "label": "Used by Business Areas",
       "preset": "multiple_checkbox",
       "choices": [
         {
