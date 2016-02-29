@@ -22,7 +22,9 @@ def label_to_value(field, label):
             if choice['label'] == sanitised_label:
                 return choice['value']
 
-        raise Exception("Label not found in field", sanitised_label)
+        return ""
+
+        # raise Exception("Label not found in field", sanitised_label)
 
 
 # Load schema from somewhere?
@@ -57,21 +59,25 @@ workbook = load_workbook(input_xls)
 sheet = workbook.active
 
 for row in range(3, sheet.max_row):
+#for row in range(3, 126):
 
     organisation = "Unknown"
     if sheet.cell(row=row, column=7).value:
-        organisation = sheet.cell(row=row, column=7).value
+        organisationList = sheet.cell(row=row, column=7).value
+    #can be a list of organisations
+    organisations = organisationList.split(',');
+    
+    for org in organisations:
+        pprint.pprint(org)
 
-    pprint.pprint(organisation)
-
-    print 'Creating Organisation'
-    try:
-        service.action.organization_create(
-                name=organisation.lower(),
-                title=organisation
-        )
-    except:
-        pass
+        print 'Creating Organisation'
+        try:
+            service.action.organization_create(
+                name=org.strip().lower().replace(' ', '-'),
+                title=org
+            )
+        except:
+            pass
 
     title = "????"
 
@@ -81,25 +87,53 @@ for row in range(3, sheet.max_row):
     else:
         continue
 
+    businessAreaList = sheet.cell(row=row, column=9).value
+
+    businessAreaArray = businessAreaList.split(',');
+    baValueArray = []
+
+    for ba in businessAreaArray:
+        baValueArray.append(label_to_value(schema['business_area'],ba.strip()))
+        
     try:
-        pprint.pprint(organisation)
+        pprint.pprint( " -- " + organisations[0] + " -- " + organisations[0].lower().replace(' ', '-'))
+
+        pprint.pprint( " -- id -- " + id)
+        pprint.pprint( " -- title -- " + title)
+        pprint.pprint( " -- sheet.cell(row=row, column=3).value -- " + sheet.cell(row=row, column=3).value)
+        pprint.pprint( " -- sheet.cell(row=row, column=15).value -- " + sheet.cell(row=row, column=15).value)
+        pprint.pprint( " -- sheet.cell(row=row, column=4).value -- " + sheet.cell(row=row, column=4).value)
+        pprint.pprint( " -- sheet.cell(row=row, column=10).value -- " + sheet.cell(row=row, column=10).value)
+	ho_responsible=label_to_value(schema['ho_responsible'],
+                                              sheet.cell(row=row, column=4).value)
+	pprint.pprint("ho_responsible " + ho_responsible)
+        pprint.pprint("sheet.cell(row=row, column=18).value " + sheet.cell(row=row, column=18).value)
+        pprint.pprint("baValueArray " + baValueArray)
+
 
         print '  ' + id
         service.action.package_create(
                 name=id,
-                title=title,
-                owner_org=organisation.lower(),
-                summary=sheet.cell(row=row, column=3).value,
-                # dataset_type=[label_to_value(schema['dataset_type'],
-                #                            sheet.cell(row=row, column=8).value)],
-                security_classification=label_to_value(schema['security_classification'],
-                                                       sheet.cell(row=row, column=15).value),
-                ho_responsible=label_to_value(schema['ho_responsible'],
+               title=title,
+               owner_org=organisations[0].strip().lower().replace(' ', '-'),
+               summary=sheet.cell(row=row, column=3).value,
+                 dataset_type=[label_to_value(schema['dataset_type'],
+                                            sheet.cell(row=row, column=8).value)],
+               security_classification=sheet.cell(row=row, column=15).value.lower(),
+               ho_responsible=label_to_value(schema['ho_responsible'],
                                               sheet.cell(row=row, column=4).value),
-                register=label_to_value(schema['register'],
+               register=label_to_value(schema['register'],
                                         sheet.cell(row=row, column=4).value),
-                how_the_data_can_be_used_any_policy_and_legal_constraints=sheet.cell(row=row,
-                                                                                     column=10).value)
+#               how_the_data_can_be_used_any_policy_and_legal_constraints=sheet.cell(row=row, column=10).value,
+#               business_area=["criminal_policing_group", "border_force"],
+               business_area=baValueArray,
+               api_url=sheet.cell(row=row, column=18).value,
+               description=sheet.cell(row=row, column=19).value,
+               can_be_public=label_to_value(schema['can_be_public'],
+                                        sheet.cell(row=row, column=16).value),
+               used_in_official_statistics=label_to_value(schema['used_in_official_statistics'],
+                                        sheet.cell(row=row, column=17).value),
+               how_the_data_can_be_used_any_policy_and_legal_constraints=sheet.cell(row=row,column=10).value)
 
     except Exception, e:
         logging.error(e, exc_info=True)
