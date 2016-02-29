@@ -1,6 +1,7 @@
 ### Example Data
 /loader/*.csv
 /loader/*.xlsx
+/loader/*.xls
 
 ### Windows template
 # Windows image file caches
