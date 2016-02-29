@@ -8,7 +8,7 @@
       "field_name": "title",
       "label": "Title",
       "preset": "title",
-      "form_placeholder": "eg. A descriptive title"
+      "form_placeholder": "Enter the name of your data"
     },
     {
       "field_name": "name",
@@ -25,20 +25,20 @@
     },
     {
       "required": false,
-      "form_placeholder": "Summary",
+      "form_placeholder": "Enter a description of what your data is used for",
       "field_name": "summary",
       "label": "Summary"
     },
     {
       "required": false,
       "field_name": "owner_org",
-      "label": "Organization",
+      "label": "Managed by business area",
       "preset": "dataset_organization"
     },
     {
       "required": false,
       "field_name": "business_area",
-      "label": "Business Areas",
+      "label": "Used by business areas",
       "preset": "multiple_checkbox",
       "choices": [
         {
@@ -197,7 +197,7 @@
     },
     {
       "required": false,
-      "form_placeholder": "Other data sources feeding in",
+      "form_placeholder": "List any other data sources that your data is comprised of",
       "field_name": "other_data_sources_feeding_in",
       "label": "Other data sources feeding in"
     },
@@ -283,13 +283,13 @@
     },
     {
       "required": false,
-      "form_placeholder": "How the data can be used (any policy and legal constraints)",
+      "form_placeholder": "Detail any policy or legal constraints around the use of this data",
       "field_name": "how_the_data_can_be_used_any_policy_and_legal_constraints",
       "label": "How the data can be used (any policy and legal constraints)"
     },
     {
       "required": false,
-      "form_placeholder": "API URL",
+      "form_placeholder": "Enter the URL of the system used to access this data (if applicable)",
       "preset": "link",
       "field_name": "api_url",
       "label": "API URL"
