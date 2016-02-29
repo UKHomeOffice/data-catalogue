@@ -108,7 +108,8 @@ for row in range(3, sheet.max_row):
                                               sheet.cell(row=row, column=4).value)
 	pprint.pprint("ho_responsible " + ho_responsible)
         pprint.pprint("sheet.cell(row=row, column=18).value " + sheet.cell(row=row, column=18).value)
-        pprint.pprint("baValueArray " + baValueArray)
+        pprint.pprint("baValueArray: ")
+        pprint.pprint(baValueArray)
 
 
         print '  ' + id
