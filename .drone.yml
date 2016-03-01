@@ -1,4 +1,4 @@
 build:
-  image: http://quay.io/ukhomeofficedigital/ckan:v1.1.0
+  image: quay.io/ukhomeofficedigital/ckan:v1.1.0
   commands:
       - build -t ckan .
