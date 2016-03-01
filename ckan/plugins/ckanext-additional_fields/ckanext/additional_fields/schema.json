@@ -26,8 +26,9 @@
     {
       "required": false,
       "form_placeholder": "Description",
-      "field_name": "description",
-      "label": "Description"
+      "field_name": "notes",
+      "label": "Description",
+      "preset": "markdown"
     },
     {
       "required": false,
