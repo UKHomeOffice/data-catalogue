@@ -129,7 +129,7 @@ for row in range(3, sheet.max_row):
 #               business_area=["criminal_policing_group", "border_force"],
                business_area=baValueArray,
                api_url=sheet.cell(row=row, column=18).value,
-               description=sheet.cell(row=row, column=19).value,
+               notes=sheet.cell(row=row, column=19).value,
                can_be_public=label_to_value(schema['can_be_public'],
                                         sheet.cell(row=row, column=16).value),
                used_in_official_statistics=label_to_value(schema['used_in_official_statistics'],
