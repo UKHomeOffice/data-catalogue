@@ -25,7 +25,7 @@
     },
     {
       "required": false,
-      "form_placeholder": "Description",
+      "form_placeholder": "Enter a short description of what your data is used for",
       "field_name": "notes",
       "label": "Description",
       "preset": "markdown"
