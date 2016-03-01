@@ -206,7 +206,8 @@
       "required": false,
       "form_placeholder": "List any other data sources that your data is comprised of",
       "field_name": "other_data_sources_feeding_in",
-      "label": "Other data sources feeding in"
+      "label": "Other data sources feeding in",
+      "preset": "markdown"
     },
     {
       "required": false,
@@ -292,7 +293,8 @@
       "required": false,
       "form_placeholder": "Detail any policy or legal constraints around the use of this data",
       "field_name": "how_the_data_can_be_used_any_policy_and_legal_constraints",
-      "label": "How the data can be used (any policy and legal constraints)"
+      "label": "How the data can be used (any policy and legal constraints)",
+      "preset": "markdown"
     },
     {
       "required": false,
