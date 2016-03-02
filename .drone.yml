@@ -1,7 +1,7 @@
 -build:
   image: quay.io/ukhomeofficedigital/ckan:v1.1.0
   script:
-    - COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
+    - go build
 publish:
   docker:
     registry: quay.io
