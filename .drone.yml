@@ -1,4 +1,4 @@
 -build:
-  image: node:4.2.1
-  script:
-    - echo Hello World
+  image: quay.io/ukhomeofficedigital/ckan:v1.1.0
+  commands:
+    - echo "Hello World"
