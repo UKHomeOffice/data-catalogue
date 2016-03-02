@@ -1,7 +1,6 @@
 -build:
   image: quay.io/ukhomeofficedigital/ckan:v1.1.0
   commands:
-    - echo "Hello World"
     - env
     - cp ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
     - cp ckan/init/ $USER_SCRIPT_DIR
