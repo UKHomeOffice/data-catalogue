@@ -21,7 +21,7 @@ Requires *Python* and *pip*
 ```
 cd loader
 pip install -r requirements.txt
-python loader.py http://your-docker-instance your-api-key
+python baseloader.py http://your-docker-instance your-api-key
 ```
 
 
