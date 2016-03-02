@@ -27,14 +27,14 @@
       "required": false,
       "form_placeholder": "Enter a short description of what your data is used for",
       "field_name": "notes",
-      "label": "Description",
-      "preset": "markdown"
+      "label": "Description"
     },
     {
       "required": false,
       "form_placeholder": "Enter a description of what your data is used for",
       "field_name": "summary",
-      "label": "Summary"
+      "label": "Summary",
+      "preset": "markdown"
     },
     {
       "required": false,
