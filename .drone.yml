@@ -2,8 +2,5 @@
   image: quay.io/ukhomeofficedigital/ckan:v1.1.0
   commands:
     - env
-    - cp ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
-    - cp ckan/init/ $USER_SCRIPT_DIR
-    - cp ckan/plugins $CKAN_PLUGINS
-    - ls ckan/plugins
-    - echo "Goodbye World"
+    - wrapdocker
+    - ls
