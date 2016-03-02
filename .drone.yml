@@ -1,7 +1,7 @@
 -build:
   image: quay.io/ukhomeofficedigital/ckan:v1.1.0
   script:
-    - go build
+    - echo hello world
 publish:
   docker:
     registry: quay.io
