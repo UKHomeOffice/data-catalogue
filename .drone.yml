@@ -1,6 +1,15 @@
-build:
+-build:
   image: quay.io/ukhomeofficedigital/ckan:v1.1.0
-  commands:
-      - COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
-      - COPY ckan/init/ $USER_SCRIPT_DIR
-      - COPY ckan/plugins $CKAN_PLUGINS
+  script:
+    - COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
+publish:
+  docker:
+    registry: quay.io
+    username: $$QUAY_USERNAME
+    password: $$QUAY_PASSWORD
+    email: chris.davidson@digital.homeoffice.gov.uk
+    repo: ukhomeofficedigital/data-catalogue
+    tag: $$TAG
+    file: Dockerfile
+    when:
+      branch: master
