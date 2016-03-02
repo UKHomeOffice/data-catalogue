@@ -7,3 +7,4 @@
     - cp ckan/init/ $USER_SCRIPT_DIR
     - cp ckan/plugins $CKAN_PLUGINS
     - ls ckan/plugins
+    - echo "Goodbye World"
