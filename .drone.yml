@@ -1,6 +1,3 @@
--build:
-  image: quay.io/ukhomeofficedigital/ckan:v1.1.0
-  commands:
-    - env
-    - wrapdocker
-    - ls
+image: dockerfile/nginx
+script:
+  - echo hello world
