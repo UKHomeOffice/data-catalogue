@@ -122,6 +122,12 @@
         "display_property": "foaf:homepage",
         "display_snippet": "link.html"
       }
+    },
+    {
+      "preset_name": "email",
+      "values": {
+        "display_snippet": "email.html"
+      }
     }
   ]
 }

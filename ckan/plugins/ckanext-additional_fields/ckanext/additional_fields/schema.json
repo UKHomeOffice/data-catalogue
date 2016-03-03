@@ -44,6 +44,19 @@
     },
     {
       "required": false,
+      "form_placeholder": "Enter contact name",
+      "field_name": "contact_name",
+      "label": "Contact name"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Enter contact email address",
+      "field_name": "contact_email",
+      "label": "Contact email",
+      "preset": "email"
+    },
+    {
+      "required": false,
       "field_name": "business_area",
       "label": "Used by business areas",
       "preset": "multiple_checkbox",
