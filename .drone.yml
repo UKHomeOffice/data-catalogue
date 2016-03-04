@@ -1,4 +1,4 @@
 build:
-  image: dockerfile/nginx
+  image: quay.io/ukhomeofficedigital/ckan:v1.1.0
   script:
     - echo hello world
