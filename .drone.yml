@@ -10,6 +10,12 @@ build:
     - tar -C $CKAN_PLUGINS -xvf /tmp/release-1.0.0.tar.gz 
     - mv $CKAN_PLUGINS/ckanext-scheming-release-1.0.0/ $CKAN_PLUGINS/ckanext-scheming/
     - rm /tmp/release-1.0.0.tar.gz
+compose:
+  database:
+    image: ckan/postgresql
+    environment:
+      - POSTGRES_USER=ckan
+      - POSTGRES_PASSWORD=ckan
 publish:
   docker:
     environment:
