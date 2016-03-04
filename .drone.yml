@@ -5,7 +5,7 @@ build:
     - cp ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
     - cp ckan/init/* $USER_SCRIPT_DIR
     - mkdir $CKAN_PLUGINS
-    - cp ckan/plugins/* $CKAN_PLUGINS
+    - cp -r ckan/plugins/* $CKAN_PLUGINS
     - ls $CKAN_PLUGINS
     - ls $CKAN_PLUGINS/ckanext-additional_fields
     - yum install -y wget && yum clean all
