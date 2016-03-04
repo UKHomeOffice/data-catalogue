@@ -19,7 +19,7 @@ publish:
     password: $$QUAY_PASSWORD
     email: $$QUAY_EMAIL
     repo: quay.io/ukhomeofficedigital/data-catalogue
-    storage_driver: vfs
+    storage_driver: overlay
     tag:
       - latest
       - "$$BUILD_NUMBER"
