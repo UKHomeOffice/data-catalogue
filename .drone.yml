@@ -4,7 +4,6 @@ build:
     - echo hello world
     - cp ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
     - env
-    - cp ckan/init/ $USER_SCRIPT_DIR
+    - cp ckan/init $USER_SCRIPT_DIR
     - cp ckan/plugins $CKAN_PLUGINS
-    - ls
     - yum install -y wget && yum clean all
