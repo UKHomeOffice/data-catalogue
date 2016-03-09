@@ -22,6 +22,6 @@ publish:
     storage_driver: overlay
     tag:
       - latest
-      - "$$DRONE_BUILD_NUMBER"
+      - v.4.0."$$BUILD_NUMBER"
     when:
       branch: drone
