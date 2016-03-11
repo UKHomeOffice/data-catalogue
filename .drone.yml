@@ -31,3 +31,16 @@ publish:
       - v.4.0.$$BUILD_NUMBER
     when:
       branch: drone
+
+deploy:
+  kubernetes:
+    image: quay.io/ukhomeofficedigital/drone-kubernetes
+    replicationcontrollers:
+      - k8s/ckan.rc.yaml
+    services: []
+    token: $$TOKEN
+    apiserver: $$APISERVER
+    namespace:  data-catalogue
+    tag: "$$BUILD_NUMBER"
+    when:
+      branch: drone
