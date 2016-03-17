@@ -11,6 +11,9 @@ script:
   - sudo docker run -d --privileged=true --name=ckan -p 80:80 --link db:db --link solr:solr homeofficeckan
   - sleep 30
   - curl -o /tmp/homeofficeckan.output.html localhost
+  - ls /
+  - cd /app/ckan/plugins/ckanext-datacatalogue_theme
+  - nosetests --ckan --with-pylons=test.ini ckanext/iauthfunctions/tests
 
 after_failure:
   - docker logs homeofficeckan
