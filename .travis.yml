@@ -10,7 +10,7 @@ script:
   - sudo docker run -d --privileged=true --name=db ckan/postgresql
   - sudo docker run -d --privileged=true --name=ckan -p 80:80 --link db:db --link solr:solr homeofficeckan
   - sleep 30
-  - sudo docker logs ckan
+  - sudo docker logs homeofficeckan
   - curl -o /tmp/homeofficeckan.output.html localhost
   - cat /tmp/homeofficeckan.output.html
 
