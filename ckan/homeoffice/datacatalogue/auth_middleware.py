@@ -1,3 +1,4 @@
+# /ckan/plugins/ckanext-datacatalogue_theme/ckanext/datacatalogue_theme/plugin.py
 
 non_auth_list = ['/user/login', '/user/register', '/user/reset']
 
