@@ -3,18 +3,25 @@ import ckan.plugins.toolkit as toolkit
 import json
 import os
 
+from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IMiddleware)
 
     # IConfigurer
-
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'datacatalogue_theme')
+
+    # IMiddleware
+    def make_middleware(self, app, config):
+        app = DCAuthMiddleware(app)
+        return app
+
 
     #IFacet interface
 
