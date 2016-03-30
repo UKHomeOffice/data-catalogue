@@ -1,0 +1,7 @@
+/* our css */
+.content { 
+    background-color: yellow;
+}
+div.content li {
+    display: inline;
+}
