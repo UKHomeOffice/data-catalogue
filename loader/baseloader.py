@@ -30,7 +30,7 @@ def label_to_value(field, label):
 # Load schema from somewhere?
 def load_schema():
     with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..',
-                           'ckan/plugins/ckanext-additional_fields/ckanext/additional_fields',
+                           'ckan/plugins/ckanext-datacatalogue_theme/ckanext/datacatalogue_theme',
                            'schema.json')) as data_file:
         data = json.load(data_file)
         return {field['field_name']: field for field in data['dataset_fields']}
