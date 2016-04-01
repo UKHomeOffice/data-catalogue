@@ -26,12 +26,12 @@
 
     <div class="comment-wrapper">
     {% for comment in thread.comments %}
-        {{ comment.id }}
+        <!--{{ comment.id }}-->
         <div class="comment">
             {% if comment.state != 'deleted' %}
-                <h3>{{ comment.subject }}</h3>
+                <h4>{{ comment.subject }}</h4>
             {% else %}
-                <h3>{{ _('This comment was deleted.') }}</h3>
+                <h4>{{ _('This comment was deleted.') }}</h4>
             {% endif %}
             <div class="submitted">
                 <span>{{ h.render_datetime(comment.creation_date, "%d.%m.%Y %H:%M") }} {{  h.linked_user(comment.user_id, 0, 10) }}</span>
@@ -59,7 +59,6 @@
                     <li><a onclick="ShowCommentForm('reply_{{ comment.id }}')">{{ _('Reply') }}</a> </li>
                     {{ comment_form(comment, empty=True, prefix='reply_', action='reply') }}
                 {% endif %}
-
             </ul>
             {% endif %}
             </div>
@@ -71,8 +70,8 @@
     </div>
 
 {% endmacro %}
-<h3 id="comments">{{ _('Comments') }}</h3>
 <div class="comment-container">
+    <h3 id="comments">{{ _('Comments') }}</h3>
     {{ comment_thread(thread) }}
 </div>
 
