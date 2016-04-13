@@ -25,7 +25,7 @@ publish:
     password: $$QUAY_PASSWORD
     email: $$QUAY_EMAIL
     repo: quay.io/ukhomeofficedigital/data-catalogue
-    storage_driver: aufs
+    storage_driver: devicemapper
     tag:
       - latest
       - v.4.0.$$BUILD_NUMBER
