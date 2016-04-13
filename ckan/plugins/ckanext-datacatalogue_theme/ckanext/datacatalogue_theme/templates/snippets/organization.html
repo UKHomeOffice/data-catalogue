@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block image %}
+    <div class="image">
+        <a href="{{ url }}">
+        <img src="{{ organization.image_display_url or h.url_for_static('/images/homeOfficeLogo.png') }}" width="220" alt="{{ organization.name }}" />
+        </a>
+    </div>
+{% endblock %}

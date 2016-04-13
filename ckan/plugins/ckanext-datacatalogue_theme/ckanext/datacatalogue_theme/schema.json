@@ -1,0 +1,337 @@
+{
+  "scheming_version": 1,
+  "dataset_type": "dataset",
+  "about": "Custom schema used by the Data Catalogue",
+  "about_url": "http://github.com/open-data/ckanext-scheming",
+  "dataset_fields": [
+    {
+      "field_name": "title",
+      "label": "Title",
+      "preset": "title",
+      "form_placeholder": "Enter the name of your data"
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "preset": "dataset_slug",
+      "form_placeholder": "eg. my-dataset"
+    },
+    {
+      "required": false,
+      "field_name": "tag_string",
+      "label": "Tags",
+      "preset": "tag_string_autocomplete",
+      "form_placeholder": "eg. economy, mental health, government"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Enter a short description of what your data is used for",
+      "field_name": "notes",
+      "label": "Description"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Enter a description of what your data is used for",
+      "field_name": "summary",
+      "label": "Summary",
+      "preset": "markdown"
+    },
+    {
+      "required": false,
+      "field_name": "owner_org",
+      "label": "Managed by business area",
+      "preset": "dataset_organization"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Enter contact name",
+      "field_name": "contact_name",
+      "label": "Contact name"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Enter contact email address",
+      "field_name": "contact_email",
+      "label": "Contact email",
+      "preset": "email"
+    },
+    {
+      "required": false,
+      "field_name": "business_area",
+      "label": "Used by business areas",
+      "preset": "multiple_checkbox",
+      "choices": [
+        {
+          "value": "border_force",
+          "label": "Border Force"
+        },
+        {
+          "value": "corporate_services",
+          "label": "Corporate Services"
+        },
+        {
+          "value": "criminal_policing_group",
+          "label": "Criminal Policing Group"
+        },
+        {
+          "value": "disclosure_and_barring_services",
+          "label": "Disclosure and Barring Services"
+        },
+        {
+          "value": "general_register_office",
+          "label": "General Register office"
+        },
+        {
+          "value": "hm_passport_office",
+          "label": "HM Passport Office"
+        },
+        {
+          "value": "home_office_science",
+          "label": "Home Office Science"
+        },
+        {
+          "value": "human_resources",
+          "label": "Human Resources"
+        },
+        {
+          "value": "immigration_enforcement",
+          "label": "Immigration Enforcement"
+        },
+        {
+          "value": "policing",
+          "label": "Policing"
+        },
+        {
+          "value": "security",
+          "label": "Security"
+        },
+        {
+          "value": "uk_visa_immigration",
+          "label": "UK Visa and Immigration"
+        },
+        {
+          "value": "other_please_specify_in_the_comments",
+          "label": "Other (please specify in the comments)"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "dataset_type",
+      "label": "Type",
+      "preset": "multiple_checkbox",
+      "choices": [
+        {
+          "value": "collection_of_systems",
+          "label": "Collection of systems"
+        },
+        {
+          "value": "single_database_system",
+          "label": "Single database system"
+        },
+        {
+          "value": "access_database",
+          "label": "Access database"
+        },
+        {
+          "value": "spreadsheet",
+          "label": "Spreadsheet"
+        },
+        {
+          "value": "api",
+          "label": "API"
+        },
+        {
+          "value": "rest_api",
+          "label": "REST API"
+        },
+        {
+          "value": "other_please_specify_in_the_comments",
+          "label": "Other (please specify in the comments)"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "security_classification",
+      "label": "Security Classification",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "official",
+          "label": "OFFICIAL"
+        },
+        {
+          "value": "official-sensitive",
+          "label": "OFFICIAL-SENSITIVE"
+        },
+        {
+          "value": "secret",
+          "label": "SECRET"
+        },
+        {
+          "value": "top-secret",
+          "label": "TOP SECRET"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "can_be_public",
+      "label": "Can it be public",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "contains_personal_information",
+      "label": "Contains personal information",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "form_placeholder": "List any other data sources that your data is comprised of",
+      "field_name": "other_data_sources_feeding_in",
+      "label": "Other data sources feeding in",
+      "preset": "markdown"
+    },
+    {
+      "required": false,
+      "field_name": "data_originates_in_ho",
+      "label": "Data originates entirely from within the Home Office",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "ho_responsible",
+      "label": "Home Office responsible for technical operation of system",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "register",
+      "label": "Register - an authoritative record for government",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "field_name": "used_in_official_statistics",
+      "label": "Used in official statistics",
+      "preset": "select_radio",
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ]
+    },
+    {
+      "required": false,
+      "form_placeholder": "Detail any policy or legal constraints around the use of this data",
+      "field_name": "how_the_data_can_be_used_any_policy_and_legal_constraints",
+      "label": "How the data can be used (any policy and legal constraints)",
+      "preset": "markdown"
+    },
+    {
+      "required": false,
+      "form_placeholder": "Enter the URL of the system used to access this data (if applicable)",
+      "preset": "link",
+      "field_name": "api_url",
+      "label": "API URL"
+    }
+  ],
+  "resource_fields": [
+    {
+      "field_name": "url",
+      "label": "URL",
+      "preset": "resource_url_upload"
+    },
+    {
+      "field_name": "name",
+      "label": "Name",
+      "form_placeholder": "eg. January 2011 Gold Prices"
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "preset": "resource_format_autocomplete"
+    }
+  ]
+}
