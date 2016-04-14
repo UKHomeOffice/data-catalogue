@@ -10,6 +10,7 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IMiddleware)
+    plugins.implements(plugins.IRoutes)
 
     # IConfigurer
     def update_config(self, config_):
@@ -65,3 +66,14 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
 
     def package_types(self):
         return []
+
+    # healthcheck endpoint
+
+    def before_map(self, map):
+        return map
+
+    def after_map(self, map):
+        controller = 'ckanext.datacatalogue_theme.controller:CustomController'
+        map.connect('healthcheck', '/healthcheck',
+                controller=controller, action='healthcheck')
+        return map
