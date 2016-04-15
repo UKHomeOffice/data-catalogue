@@ -2,6 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
+import hvac
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
@@ -65,3 +66,15 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
 
     def package_types(self):
         return []
+
+class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IConfigurable)
+    def configure(self, config):
+        client = hvac.Client()
+        print(client)
+        print(config)
+        print("Before " + config['sqlalchemy.url'])
+        config['sqlalchemy.url'] = "have i broken it?"
+        print("Configure")
+        print("After " + config['sqlalchemy.url'])
+

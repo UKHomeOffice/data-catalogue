@@ -7,4 +7,5 @@ RUN yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel
 
 RUN virtualenv $CKAN_HOME && \
     . $CKAN_HOME/bin/activate && \
-    $CKAN_HOME/bin/pip install --upgrade lxml
+    $CKAN_HOME/bin/pip install --upgrade lxml && \
+    $CKAN_HOME/bin/pip install --upgrade hvac
