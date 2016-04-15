@@ -38,7 +38,7 @@ deploy:
     replicationcontrollers: ["k8s/ckan.rc.yml"]
     services: []
     token: $$TOKEN
-    debug: true
+    debug: 'true'
     apiserver: $$APISERVER
     namespace:  data-catalogue
     tag: "$$BUILD_NUMBER"
