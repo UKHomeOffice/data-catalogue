@@ -7,7 +7,7 @@ build:
     - cp -r ckan/plugins/* $CKAN_PLUGINS
     - yum install -y wget && yum clean all
     - wget -O /tmp/release-1.0.0.tar.gz https://github.com/open-data/ckanext-scheming/archive/release-1.0.0.tar.gz
-    - tar -C $CKAN_PLUGINS -xvf /tmp/release-1.0.0.tar.gz 
+    - tar -C $CKAN_PLUGINS -xvf /tmp/release-1.0.0.tar.gz
     - mv $CKAN_PLUGINS/ckanext-scheming-release-1.0.0/ $CKAN_PLUGINS/ckanext-scheming/
     - rm /tmp/release-1.0.0.tar.gz
 compose:
@@ -44,3 +44,4 @@ deploy:
     tag: "$$BUILD_NUMBER"
     when:
       branch: drone
+debug: 'true'
