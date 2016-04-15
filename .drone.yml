@@ -39,7 +39,7 @@ deploy:
       - k8s/ckan.rc.yaml
     services: []
     token: $$TOKEN
-    debug: 'true'
+    debug: true
     apiserver: $$APISERVER
     namespace:  data-catalogue
     tag: "$$BUILD_NUMBER"
