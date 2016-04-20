@@ -11,9 +11,13 @@ docker build --no-cache -t ckan .
 
 docker run \
   --name=ckan \
-  -it \
+  -i \
   -p 80:80 \
   --link db:db \
   --link solr:solr \
   -e CKAN_SMTP_SERVER=mailcatcher:25 \
   ckan /userscripts/run-tests.sh
+
+  #cleanup containers.
+
+  docker rm -f db ckan solr
