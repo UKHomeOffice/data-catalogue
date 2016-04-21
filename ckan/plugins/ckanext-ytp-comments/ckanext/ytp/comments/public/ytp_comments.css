@@ -1,0 +1,21 @@
+/* our css */
+.content { 
+    /*background-color: lightgrey;*/
+}
+
+div.content li {
+    display: inline;
+}
+.comment:nth-child(odd) {
+    border-bottom: 1px solid;
+    background-color: lightcyan;
+}
+
+.comment:nth-child(even) {
+    background-color: lightgray;
+    border-bottom: 1px solid
+}
+
+.comment-container {
+    background-color: ghostwhite;
+}
