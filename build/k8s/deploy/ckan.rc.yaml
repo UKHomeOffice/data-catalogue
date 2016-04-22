@@ -25,7 +25,7 @@ spec:
             -
               name: SOLR_URL
               value: "http://solr:8983/"
-          image: "quay.io/ukhomeofficedigital/data-catalogue:v0.2.2"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
           imagePullPolicy: Always
 #          livenessProbe:
 #            httpGet:
@@ -46,6 +46,6 @@ spec:
 #            timeoutSeconds: 60
           resources:
            limits:
-            cpu: 400m
-            memory: 2048M
+            cpu: 200m
+            memory: 1024M
       restartPolicy: Always
