@@ -7,7 +7,7 @@ echo "building version number $version-$BUILD_NUMBER"
 docker build -t quay.io/homeofficedigital/data-catalogue:$version-$BUILD_NUMBER .
 
 #get docker config for pushing to s3
-s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.docker shared/config.json.encrypted
+/opt/bin/s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.docker shared/config.json.encrypted
 
 echo "Pushing version number $version-$BUILD_NUMBER"
 docker push quay.io/homeofficedigital/data-catalogue:$version-$BUILD_NUMBER
