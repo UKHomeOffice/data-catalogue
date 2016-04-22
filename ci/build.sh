@@ -1,4 +1,4 @@
-#!/bin/bash.
+#!/bin/bash
 #get access to push to repo.
 echo "run this script in jenkins only."
 version=$(grep -o '.*build' versions/ckan_container_version)
