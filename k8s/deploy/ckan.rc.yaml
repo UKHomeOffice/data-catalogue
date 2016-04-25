@@ -27,25 +27,25 @@ spec:
               value: "http://solr:8983/"
           image: "quay.io/ukhomeofficedigital/data-catalogue:v0.2.2"
           imagePullPolicy: Always
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 60
-            timeoutSeconds: 60
+#          livenessProbe:
+#            httpGet:
+#              path: /
+#              port: 80
+#            initialDelaySeconds: 60
+#            timeoutSeconds: 60
           name: data-catalogue
           ports:
             -
               containerPort: 80
               name: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 1
-            timeoutSeconds: 60
+#          readinessProbe:
+#            httpGet:
+#              path: /
+#              port: 80
+#            initialDelaySeconds: 1
+#            timeoutSeconds: 60
           resources:
-            limits:
-              cpu: 100m
-              memory: 500Mi
+           limits:
+            cpu: 400m
+            memory: 2048M
       restartPolicy: Always

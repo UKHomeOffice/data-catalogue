@@ -34,7 +34,7 @@ publish:
 
 deploy:
   kubernetes:
-    image: quay.io/ukhomeofficedigital/drone-kubernetes
+    image: quay.io/ukhomeofficedigital/kb8or:v0.6.12
     replicationcontrollers: ["k8s/ckan.rc.yml"]
     services: []
     token: $$TOKEN
