@@ -6,7 +6,7 @@ COPY ckan/plugins $CKAN_PLUGINS
 
 RUN yum clean all && rpm --rebuilddb
 
-RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel  ||  yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel ) && \
+RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel  ||  yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel )
 
 RUN virtualenv $CKAN_HOME && \
     . $CKAN_HOME/bin/activate && \
