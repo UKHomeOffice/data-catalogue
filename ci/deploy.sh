@@ -3,7 +3,7 @@
 set -e
 source ci/s3.cfg
 #get kubeconfig from s3 bucket
-s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.kube shared/config.encrypted
+s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.kube shared/kube/config.encrypted
 
 docker run --rm \
  -v /home/giles/.kube:/root/.kube/ \
