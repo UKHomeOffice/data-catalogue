@@ -2,7 +2,8 @@
 # Script used as deployment entrypoint
 
 set -e
-
+#get kubeconfig from s3 bucket
+s3secrets --region ${AWS_DEFAULT_REGION} -p dsp-ci s3 get --bucket ${SECRETS_BUCKET} -d ~/.kube shared/config.encrypted
 DEPLOY_SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 DEPLOY_HOME=${DEPLOY_SCRIPT_DIR}/..
 unset ENV

@@ -1,0 +1,6 @@
+---
+UsePrivateRegistry: false
+Kb8Context: hod-dsp-dev
+Deploys:
+  - path: ./k8s/deploy
+    NoRollingUpdate: false
