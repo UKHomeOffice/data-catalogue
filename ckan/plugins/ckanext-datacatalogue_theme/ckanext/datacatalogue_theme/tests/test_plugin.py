@@ -4,7 +4,7 @@ import pylons.test
 import paste.fixture
 import logging
 import os
-from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
+from ckanext.datacatalogue_theme.homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
 
 log = logging.getLogger(__name__)
