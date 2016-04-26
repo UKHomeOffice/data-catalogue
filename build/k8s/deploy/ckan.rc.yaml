@@ -25,7 +25,7 @@ spec:
             -
               name: SOLR_URL
               value: "http://solr:8983/"
-          image: "quay.io/ukhomeofficedigital/data-catalogue:"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
           imagePullPolicy: Always
 #          livenessProbe:
 #            httpGet:
