@@ -2,7 +2,7 @@
 #get access to push to repo.
 echo "run this script in jenkins only."
 source build/s3.cfg
-version=$(cat versions/ckan_container_version)
+version=$(cat build/versions/ckan_container_version)
 echo "building version number $version-$BUILD_NUMBER"
 docker build -t quay.io/ukhomeofficedigital/data-catalogue:$version-$BUILD_NUMBER .
 
