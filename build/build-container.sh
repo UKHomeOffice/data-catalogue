@@ -1,8 +1,8 @@
 #!/bin/bash
 #get aws credentials.
 
-AWS_ACCESS_KEY_ID=$(aws configure --profile=dsp-ci get aws_access_key_id)
-AWS_SECRET_ACCESS_KEY=$(aws configure --profile=dsp-ci get aws_secret_access_key)
+AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 
 DOCKER_TAG=kb8-deployer
 
