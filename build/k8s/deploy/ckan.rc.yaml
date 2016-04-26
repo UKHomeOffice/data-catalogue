@@ -46,6 +46,6 @@ spec:
 #            timeoutSeconds: 60
           resources:
            limits:
-            cpu: 400m
-            memory: 2048M
+            cpu: 200m
+            memory: 1024M
       restartPolicy: Always
