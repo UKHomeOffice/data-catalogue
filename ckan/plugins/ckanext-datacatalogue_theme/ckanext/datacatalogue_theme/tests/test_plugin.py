@@ -47,6 +47,13 @@ class TestAuthorizationPlugin(object):
         check = middleware.checkUser(os.environ)
         assert check == True
 
+    def test_no_username_reset_page_with_key(self):
+        self.app = paste.fixture.TestApp(pylons.test.pylonsapp)
+        middleware = DCAuthMiddleware(self.app)
+        os.environ['PATH_INFO'] = '/user/reset/ebe0c59e-5d27-4331-8a7c-17ead7ac7f38?key=d1d7a7df0a'
+        check = middleware.checkUser(os.environ)
+        assert check == True
+
     def test_with_api_key(self):
         self.app = paste.fixture.TestApp(pylons.test.pylonsapp)
         middleware = DCAuthMiddleware(self.app)

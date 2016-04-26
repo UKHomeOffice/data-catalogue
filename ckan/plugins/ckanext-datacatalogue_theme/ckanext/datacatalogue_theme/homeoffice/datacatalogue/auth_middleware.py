@@ -18,7 +18,7 @@ class DCAuthMiddleware(object):
     #non-auth pages
     def checkUser(self, environ):
         if environ.get('REMOTE_USER') is None and environ.get('HTTP_X_CKAN_API_KEY') is None:
-            if environ.get('PATH_INFO') in non_auth_list:
+            if environ.get('PATH_INFO') is not None and environ.get('PATH_INFO').lower().startswith(tuple(non_auth_list)):
                 return True
             else:
                 return False
