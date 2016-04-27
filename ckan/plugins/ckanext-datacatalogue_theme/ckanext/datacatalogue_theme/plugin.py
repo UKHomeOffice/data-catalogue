@@ -5,12 +5,19 @@ import os
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
+def get_version_number():
+    value = os.environ.get("DC_VERSION", None)
+    if value is None:
+        value = "DC_VERSION env variable not set"
+    return value
+
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IMiddleware)
     plugins.implements(plugins.IRoutes)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IConfigurer
     def update_config(self, config_):
@@ -77,3 +84,11 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
         map.connect('healthcheck', '/healthcheck',
                 controller=controller, action='healthcheck')
         return map
+    
+    def get_helpers(self):
+        return {'datacatalogue_theme_get_version_number': get_version_number,
+            }
+
+
+
+
