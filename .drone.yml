@@ -1,4 +1,4 @@
 -build:
-  image: quay.io/ukhomeofficedigital/ckan:v1.1.0
-  commands:
-    - echo "Hello World"
+    image: quay.io/ukhomeofficedigital/ckan:v1.1.0
+    commands:
+     - echo "Hello World"

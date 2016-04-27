@@ -1,0 +1,3 @@
+ContainerVersionGlobPath: ./versions/*_container_version
+DefaultEnvName: dev
+EnvFileGlobPath: ./k8s/environments/*.yml
