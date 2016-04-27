@@ -9,6 +9,5 @@ DOCKER_TAG=kb8-deployer
 
 #get kubeconfig from s3 bucket
 s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d /root/.kube shared/kube/config.encrypted
-ls
-cat /root/.kube/config
+
 kb8or -e $env --log-level debug data-catalogue.yaml
