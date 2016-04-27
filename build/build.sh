@@ -11,12 +11,6 @@ wget https://github.com/UKHomeOffice/s3secrets/releases/download/v0.1.3/s3secret
 
 /opt/bin/s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.docker shared/docker/config.json.encrypted
 
-#get docker config for pushing to s3
-s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.docker shared/config.json.encrypted
-
-#get docker config for pushing to s3
-s3secrets --region ${AWS_DEFAULT_REGION} s3 get --bucket ${SECRETS_BUCKET} -d ~/.docker shared/config.json.encrypted
-
 echo "Pushing version number $version-$BUILD_NUMBER"
 docker push quay.io/ukhomeofficedigital/data-catalogue:$version-$BUILD_NUMBER
 
