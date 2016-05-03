@@ -3,7 +3,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
-non_auth_list = ['/user/login', '/user/register', '/user/reset']
+non_auth_list = ['/user/login', '/user/register', '/user/reset', '/healthcheck']
 
 class DCAuthMiddleware(object):
     def __init__(self, app):
