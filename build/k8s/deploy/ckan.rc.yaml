@@ -17,7 +17,26 @@ spec:
         version: v0
     spec:
       containers:
-        -
+        - name: proxy
+          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.0.0
+          imagePullPolicy: Always
+          env:
+            - name: PROXY_SERVICE_HOST
+              value: '127.0.0.1'
+            - name: PROXY_SERVICE_PORT
+              value: '5000'
+            - name: NAXSI_USE_DEFAULT_RULES
+              value: 'FALSE'
+            - name: ENABLE_UUID_PARAM
+              value: 'FALSE'
+          ports:
+           - name: https
+             containerPort: 443
+           - name: http
+             containerPort: 80
+        - name: data-catalogue
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-102"
+          imagePullPolicy: Always
           env:
             -
               name: DATABASE_URL
@@ -25,25 +44,22 @@ spec:
             -
               name: SOLR_URL
               value: "http://solr:8983/"
-          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
-          imagePullPolicy: Always
-#          livenessProbe:
-#            httpGet:
-#              path: /
-#              port: 80
-#            initialDelaySeconds: 60
-#            timeoutSeconds: 60
-          name: data-catalogue
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 300
+            timeoutSeconds: 60
           ports:
             -
               containerPort: 80
               name: http
-#          readinessProbe:
-#            httpGet:
-#              path: /
-#              port: 80
-#            initialDelaySeconds: 1
-#            timeoutSeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 300
+            timeoutSeconds: 60
           resources:
            limits:
             cpu: 200m

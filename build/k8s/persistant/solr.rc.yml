@@ -44,5 +44,5 @@ spec:
           resources:
             limits:
               cpu: 100m
-              memory: 12Gi
+              memory: 500m
       restartPolicy: Always

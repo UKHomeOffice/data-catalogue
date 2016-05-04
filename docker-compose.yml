@@ -12,15 +12,28 @@ mailcatcher:
   container_name: mailcatcher
   image: helder/mailcatcher
   ports:
-    - "1080:80"
+    - "8080:80"
 ckan:
   container_name: ckan
   build: .
   environment:
      - CKAN_SMTP_SERVER=mailcatcher:25
   ports:
-    - "80:80"
+    - "8800:8800"
   links:
     - solr:solr
     - db:db
     - mailcatcher:mailcatcher
+proxy:
+  container_name: proxy
+  image: quay.io/ukhomeofficedigital/nginx-proxy:v1.1.6
+  environment:
+    - PROXY_SERVICE_HOST=https://ckan
+    - PROXY_SERVICE_PORT=8800
+    - NAXSI_USE_DEFAULT_RULES=FALSE
+    - ENABLE_UUID_PARAM=FALSE
+  ports:
+    - "443:443"
+    - "80:80"
+  links:
+    - ckan:ckan
