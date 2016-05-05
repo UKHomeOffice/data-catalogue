@@ -19,7 +19,7 @@ ckan:
   environment:
      - CKAN_SMTP_SERVER=mailcatcher:25
   ports:
-    - "8800:8800"
+    - "5000:5000"
   links:
     - solr:solr
     - db:db
@@ -28,8 +28,8 @@ proxy:
   container_name: proxy
   image: quay.io/ukhomeofficedigital/nginx-proxy:v1.1.6
   environment:
-    - PROXY_SERVICE_HOST=https://ckan
-    - PROXY_SERVICE_PORT=8800
+    - PROXY_SERVICE_HOST=https://172.17.0.5
+    - PROXY_SERVICE_PORT=5000
     - NAXSI_USE_DEFAULT_RULES=FALSE
     - ENABLE_UUID_PARAM=FALSE
   ports:
