@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{# Changed Manage to Edit on button #}
+{% block content_action %}
+  {% if h.check_access('group_update', {'id': c.group_dict.id}) %}
+    {% link_for _('Edit'), controller='group', action='edit', id=c.group_dict.name, class_='btn', icon='wrench' %}
+  {% endif %}
+{% endblock %}

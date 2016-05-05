@@ -1,0 +1,11 @@
+{% ckan_extends %}
+
+
+{# change Manage to Edit in breadcrumb #}
+{% block breadcrumb_content %}
+  <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
+  {% block breadcrumb_content_inner %}
+    <li>{% link_for organization.display_name|truncate(35), controller='organization', action='read', id=organization.name %}</li>
+    <li class="active">{% link_for _('Edit'), controller='organization', action='edit', id=organization.name %}</li>
+  {% endblock %}
+{% endblock %}
