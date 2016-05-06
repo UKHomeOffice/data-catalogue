@@ -153,30 +153,6 @@
     },
     {
       "required": false,
-      "field_name": "security_classification",
-      "label": "Security Classification",
-      "preset": "select_radio",
-      "choices": [
-        {
-          "value": "official",
-          "label": "OFFICIAL"
-        },
-        {
-          "value": "official-sensitive",
-          "label": "OFFICIAL-SENSITIVE"
-        },
-        {
-          "value": "secret",
-          "label": "SECRET"
-        },
-        {
-          "value": "top-secret",
-          "label": "TOP SECRET"
-        }
-      ]
-    },
-    {
-      "required": false,
       "field_name": "can_be_public",
       "label": "Can it be public",
       "preset": "select_radio",
