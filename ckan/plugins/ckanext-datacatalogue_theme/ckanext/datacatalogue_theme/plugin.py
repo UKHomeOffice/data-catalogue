@@ -2,6 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
+import pylons.config as config
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
@@ -10,6 +11,13 @@ def get_version_number():
     if value is None:
         value = "DC_VERSION env variable not set"
     return value
+
+def get_facets():
+    facetsList = config.get(
+        'ckan.datacatalogue.search_facets', 'organization vocab_business_area res_format')
+    print facetsList.split()
+    return facetsList.split()
+
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
@@ -35,12 +43,10 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
 
     def dataset_facets(self, facets_dict, package_type):
         facets_dict['vocab_business_area'] = toolkit._('Business areas')
-        facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):
         facets_dict['vocab_business_area'] = toolkit._('Business areas')
-        facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type, package_type):
@@ -87,6 +93,7 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     
     def get_helpers(self):
         return {'datacatalogue_theme_get_version_number': get_version_number,
+                'datacatalogue_theme_get_facets': get_facets,
             }
 
 
