@@ -44,15 +44,15 @@
     },
     {
       "required": false,
-      "form_placeholder": "Enter contact name",
-      "field_name": "contact_name",
-      "label": "Contact name"
+      "form_placeholder": "Enter information asset owner name",
+      "field_name": "information_asset_owner_name",
+      "label": "Information asset owner"
     },
     {
       "required": false,
-      "form_placeholder": "Enter contact email address",
-      "field_name": "contact_email",
-      "label": "Contact email",
+      "form_placeholder": "Enter information asset owner email address",
+      "field_name": "information_asset_owner_email",
+      "label": "Information asset owner email",
       "preset": "email"
     },
     {
