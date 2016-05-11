@@ -17,37 +17,6 @@ spec:
         version: v0
     spec:
       containers:
-<<<<<<< Updated upstream
-        -
-          env:
-            -
-              name: OVERRIDE_SOLR_PORT
-              value: "8983"
-          image: "quay.io/ukhomeofficedigital/ckan-solr:v0.2.0"
-          imagePullPolicy: Always
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8983
-            initialDelaySeconds: 10
-            timeoutSeconds: 1
-          name: solr
-          ports:
-            -
-              containerPort: 8983
-              name: solr
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8983
-            initialDelaySeconds: 1
-            timeoutSeconds: 1
-          resources:
-            limits:
-              cpu: 100m
-              memory: 12Gi
-      restartPolicy: Always
-=======
           - name: vaultjks
             image: quay.io/ukhomeofficedigital/vaultjks:v0.0.4
             imagePullPolicy: Always
@@ -97,7 +66,7 @@ spec:
                 memory: 500m
             restartPolicy: Always
             volumeMounts:
-            - mountPath: /elasticsearch/config/certs
+            - mountPath: /config/certs
               name: certs
       volumes:
         - emptyDir: {}
@@ -105,4 +74,3 @@ spec:
         - name: vault
           secret:
             secretName: vault
->>>>>>> Stashed changes
