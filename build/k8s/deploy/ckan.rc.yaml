@@ -30,14 +30,14 @@ spec:
             - name: ENABLE_UUID_PARAM
               value: 'FALSE'
             - name: SERVER_KEY
-              value: /etc/secrets/platform_tls
+              value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
-              value: /etc/secrets/platform_tls
+              value: /etc/secrets/platform_tls.crt
           ports:
            - name: https
              containerPort: 443
-#           - name: http
-#             containerPort: 80
+           - name: http
+             containerPort: 80
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets
@@ -67,7 +67,7 @@ spec:
             cpu: 200m
             memory: 800M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-110"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
           imagePullPolicy: Always
           env:
             -
@@ -76,6 +76,12 @@ spec:
             -
               name: SOLR_URL
               value: "http://solr:8983/"
+            -
+              name: SSL_CERT
+              value: /etc/secrets/platform_tls.crt
+            -
+              name: SSL_KEY
+              value: /etc/secrets/platform_tls.key
 #          livenessProbe:
 #            httpGet:
 #              path: /
@@ -85,8 +91,8 @@ spec:
           name: data-catalogue
           ports:
             -
-              containerPort: 80
-              name: http
+              containerPort: 5000
+              name: https
 #          readinessProbe:
 #            httpGet:
 #              path: /
