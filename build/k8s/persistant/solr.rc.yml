@@ -17,6 +17,7 @@ spec:
         version: v0
     spec:
       containers:
+<<<<<<< Updated upstream
         -
           env:
             -
@@ -46,3 +47,62 @@ spec:
               cpu: 100m
               memory: 12Gi
       restartPolicy: Always
+=======
+          - name: vaultjks
+            image: quay.io/ukhomeofficedigital/vaultjks:v0.0.4
+            imagePullPolicy: Always
+            resources:
+              limits:
+                memory: "100Mi"
+              requests:
+                memory: "50Mi"
+            env:
+              - name: VAULT_ADDR
+                value: "https://vault.vault.svc.cluster.local:8200"
+              - name: VAULT_AUTH_FILE
+                value: /vault/vault
+              - name: SLEEP_FOREVER
+                value: "true"
+              - name: IP_SAN
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+            volumeMounts:
+              - mountPath: /data
+                name: certs
+              - mountPath: /vault
+                name: vault
+                readOnly: true
+          - name: solr
+            image: "quay.io/ukhomeofficedigital/ckan-solr:v0.2.0"
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 8983
+                name: solr
+            readinessProbe:
+              httpGet:
+                path: /
+                port: 8983
+              initialDelaySeconds: 1
+              timeoutSeconds: 1
+            livenessProbe:
+              httpGet:
+                path: /
+                port: 8983
+              initialDelaySeconds: 10
+              timeoutSeconds: 1
+            resources:
+              limits:
+                cpu: 100m
+                memory: 500m
+            restartPolicy: Always
+            volumeMounts:
+            - mountPath: /elasticsearch/config/certs
+              name: certs
+      volumes:
+        - emptyDir: {}
+          name: certs
+        - name: vault
+          secret:
+            secretName: vault
+>>>>>>> Stashed changes
