@@ -19,7 +19,7 @@ ckan:
   environment:
      - CKAN_SMTP_SERVER=mailcatcher:25
   ports:
-    - "80:80"
+    - "5000:5000"
   links:
     - solr:solr
     - db:db
