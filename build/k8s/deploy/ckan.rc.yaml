@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: proxy
-          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.0.0
+          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.1.6
           imagePullPolicy: Always
           env:
             - name: PROXY_SERVICE_HOST
