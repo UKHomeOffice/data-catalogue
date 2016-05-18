@@ -91,7 +91,7 @@ spec:
               value: /etc/secrets/.postgres_creds
             -
               name: SOLR_URL
-              value: "http://solr:9000/"
+              value: "http://solr:8983/"
             -
               name: SSL_CERT
               value: /etc/secrets/platform_tls.crt
