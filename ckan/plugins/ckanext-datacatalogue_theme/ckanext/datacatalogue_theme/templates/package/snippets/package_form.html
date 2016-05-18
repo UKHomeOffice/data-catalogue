@@ -1,0 +1,6 @@
+{% ckan_extends %}
+
+{% block save_button %}
+    <button class="btn btn-primary" name="save" value="go-metadata" type="submit">{{ _('Finish') }}</button>
+    <button class="btn btn-primary" type="submit" name="save">{% block save_button_text %}{{ _('Add Data') }}{% endblock %}</button>
+{% endblock %}
