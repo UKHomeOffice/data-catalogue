@@ -52,7 +52,8 @@ spec:
             - -tls-skip-verify=true
             - -auth=/vault/vault.yml
             - -cn=secret:platform/secrets/platform_tls:fmt=cert,file=platform_tls
-      #      - -cn=secret:platform/secrets/platform_tls:file=platform_tls
+            - -cn=secret:data-catalogue/postgres/creds:file=.postgres_creds
+          #  - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
           env:
           - name: VAULT_ADDR
             value: https://vault.vault.svc.cluster.local:8200
@@ -71,11 +72,26 @@ spec:
           imagePullPolicy: Always
           env:
             -
+              name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: datacatalogue-rds
+                  key: host
+            -
+              name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: datacatalogue-rds
+                  key: port
+            -
               name: DATABASE_URL
               value: "postgresql://ckan:ckan@db/ckan"
             -
+              name: DB_CREDS
+              value: /etc/secrets/.postgres_creds
+            -
               name: SOLR_URL
-              value: "http://solr:8983/"
+              value: "http://solr:9000/"
             -
               name: SSL_CERT
               value: /etc/secrets/platform_tls.crt
