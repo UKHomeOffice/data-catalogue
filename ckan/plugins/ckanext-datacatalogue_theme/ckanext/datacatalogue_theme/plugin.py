@@ -83,6 +83,7 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     # healthcheck endpoint
 
     def before_map(self, map):
+        map.connect('home', '/', controller='package', action='search')
         return map
 
     def after_map(self, map):
