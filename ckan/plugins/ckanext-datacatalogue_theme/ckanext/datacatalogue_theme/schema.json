@@ -52,7 +52,7 @@
       "required": false,
       "form_placeholder": "Enter information asset owner email address",
       "field_name": "information_asset_owner_email",
-      "label": "Information asset owner email",
+      "label": "Contact",
       "preset": "email"
     },
     {
