@@ -73,46 +73,6 @@
     },
     {
       "required": false,
-      "field_name": "register",
-      "label": "Register - an authoritative record for government",
-      "preset": "select_radio",
-      "choices": [
-        {
-          "value": "yes",
-          "label": "Yes"
-        },
-        {
-          "value": "no",
-          "label": "No"
-        },
-        {
-          "value": "unknown",
-          "label": "Unknown"
-        }
-      ]
-    },
-    {
-      "required": false,
-      "field_name": "used_in_official_statistics",
-      "label": "Used in official statistics",
-      "preset": "select_radio",
-      "choices": [
-        {
-          "value": "yes",
-          "label": "Yes"
-        },
-        {
-          "value": "no",
-          "label": "No"
-        },
-        {
-          "value": "unknown",
-          "label": "Unknown"
-        }
-      ]
-    },
-    {
-      "required": false,
       "form_placeholder": "Detail any policy or legal constraints around the use of this data",
       "field_name": "data_use_restrictions",
       "label": "Restrictions on using the data",
