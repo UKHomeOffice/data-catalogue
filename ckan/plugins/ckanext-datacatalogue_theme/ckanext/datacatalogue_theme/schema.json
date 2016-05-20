@@ -304,10 +304,6 @@
         {
           "value": "no",
           "label": "No"
-        },
-        {
-          "value": "unknown",
-          "label": "Unknown"
         }
       ]
     },
