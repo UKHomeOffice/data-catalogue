@@ -25,15 +25,15 @@
     },
     {
       "required": false,
-      "form_placeholder": "Enter a short description of what your data is used for",
+      "form_placeholder": "Enter a short summary of what your data is used for",
       "field_name": "notes",
-      "label": "Description"
+      "label": "Summary"
     },
     {
       "required": false,
       "form_placeholder": "Enter a description of what your data is used for",
-      "field_name": "summary",
-      "label": "Summary",
+      "field_name": "Description",
+      "label": "Description",
       "preset": "markdown"
     },
     {
@@ -102,8 +102,88 @@
           "label": "Policing"
         },
         {
+          "value": "corporate_services",
+          "label": "Corporate Services"
+        },
+        {
+          "value": "hmic",
+          "label": "HMIC"
+        },
+        {
+          "value": "dbs",
+          "label": "DBS"
+        },
+        {
+          "value": "security_industry_authority",
+          "label": "Security Industry Authority"
+        },
+        {
+          "value": "data_validation",
+          "label": "Data Validation"
+        },
+        {
+          "value": "ogd",
+          "label": "OGD"
+        },
+        {
+          "value": "asru",
+          "label": "ASRU"
+        },
+        {
+          "value": "licence_applicants",
+          "label": "Licence applicants"
+        },
+        {
+          "value": "purchase_to_pay",
+          "label": "Purchase to Pay"
+        },
+        {
+          "value": "finance",
+          "label": "Finance"
+        },
+        {
+          "value": "hr",
+          "label": "HR"
+        },
+        {
+          "value": "ralon",
+          "label": "RALON"
+        },
+        {
+          "value": "hmrc",
+          "label": "HMRC"
+        },
+        {
           "value": "security",
           "label": "Security"
+        },
+        {
+          "value": "uk_visa_immigration",
+          "label": "UK Visa and Immigration"
+        },
+        {
+          "value": "gas",
+          "label": "GAS"
+        },
+        {
+          "value": "midas",
+          "label": "MIDAS"
+        },
+        {
+          "value": "dq",
+          "label": "DQ"
+        },
+        {
+          "value": "npac",
+          "label": "NPAC"
+        },
+        {
+          "value": "immigration_group",
+          "label": "Immigration Group"
+        },
+        {
+          "value": "home_office",
+          "label": "Home Office"
         },
         {
           "value": "uk_visa_immigration",
@@ -145,6 +225,46 @@
           "value": "rest_api",
           "label": "REST API"
         },
+        {
+          "value": "csv",
+          "label": "CSV"
+        },
+        {
+          "value": "business_objects_database",
+          "label": "Business Objects database"
+        },
+        {
+          "value": "spss_database",
+          "label": "SPSS database"
+        },
+        {
+          "value": "lotus_notes",
+          "label": "Lotus Notes"
+        },
+        {
+          "value": "skyscape",
+          "label": "Skyscape"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        },
+        {
+          "value": "oracle_database",
+          "label": "Oracle Database"
+        },
+        {
+          "value": "pc_express",
+          "label": "PC Express"
+        },
+        {
+          "value": "sas",
+          "label": "SAS"
+        },
+        {
+          "value": "data_extract",
+          "label": "Data Extract"
+        },        
         {
           "value": "other_please_specify_in_the_comments",
           "label": "Other (please specify in the comments)"
