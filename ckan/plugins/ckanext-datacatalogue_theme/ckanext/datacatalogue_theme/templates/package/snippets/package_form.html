@@ -6,3 +6,7 @@
     {% endif %}
     <button class="btn btn-primary" type="submit" name="save">{% block save_button_text %}{{ _('Attach File') }}{% endblock %}</button>
 {% endblock %}
+
+{# remove license text #}
+      {% block disclaimer %}
+      {% endblock %}
