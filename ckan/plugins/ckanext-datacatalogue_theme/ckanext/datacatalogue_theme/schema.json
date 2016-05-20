@@ -401,8 +401,8 @@
     {
       "required": false,
       "form_placeholder": "Detail any policy or legal constraints around the use of this data",
-      "field_name": "how_the_data_can_be_used_any_policy_and_legal_constraints",
-      "label": "How the data can be used (any policy and legal constraints)",
+      "field_name": "data_use_restrictions",
+      "label": "Restrictions on using the data",
       "preset": "markdown"
     },
     {
