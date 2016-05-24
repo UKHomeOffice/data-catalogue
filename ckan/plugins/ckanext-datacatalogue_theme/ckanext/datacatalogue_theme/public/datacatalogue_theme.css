@@ -81,3 +81,8 @@ h1 a {
 .comment-container {
     background-color: #FFFFFF ;
 }
+
+.media-heading {
+	word-break:keep-all;
+	hyphens:none;
+}
