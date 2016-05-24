@@ -47,6 +47,8 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type, package_type):
+        #hide facets on orgs
+        facets_dict.clear()
         return facets_dict
 
     def before_index(self, pkg_dict):
