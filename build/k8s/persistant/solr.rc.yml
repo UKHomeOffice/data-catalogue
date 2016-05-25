@@ -17,60 +17,88 @@ spec:
         version: v0
     spec:
       containers:
-          - name: vaultjks
-            image: quay.io/ukhomeofficedigital/vaultjks:v0.0.4
-            imagePullPolicy: Always
-            resources:
-              limits:
-                memory: "100Mi"
-              requests:
-                memory: "50Mi"
-            env:
-              - name: VAULT_ADDR
-                value: "https://vault.vault.svc.cluster.local:8200"
-              - name: VAULT_AUTH_FILE
-                value: /vault/vault
-              - name: SLEEP_FOREVER
-                value: "true"
-              - name: IP_SAN
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
-            volumeMounts:
-              - mountPath: /data
-                name: certs
-              - mountPath: /vault
-                name: vault
-                readOnly: true
+      - name: solr
+        image: "quay.io/ukhomeofficedigital/ckan-solr:v0.2.0"
+        imagePullPolicy: Always
+        ports:
           - name: solr
-            image: "quay.io/ukhomeofficedigital/ckan-solr:v0.2.0"
-            imagePullPolicy: Always
-            ports:
-              - containerPort: 8983
-                name: solr
-            readinessProbe:
-              httpGet:
-                path: /
-                port: 8983
-              initialDelaySeconds: 1
-              timeoutSeconds: 1
-            livenessProbe:
-              httpGet:
-                path: /
-                port: 8983
-              initialDelaySeconds: 10
-              timeoutSeconds: 1
-            resources:
-              limits:
-                cpu: 100m
-                memory: 500m
-            restartPolicy: Always
-            volumeMounts:
-            - mountPath: /config/certs
-              name: certs
+            containerPort: 8983
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8983
+          initialDelaySeconds: 1
+          timeoutSeconds: 1
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8983
+          initialDelaySeconds: 10
+          timeoutSeconds: 1
+        env:
+          - name: SOLR_PORT
+            value: "8983"
+        resources:
+          limits:
+            cpu: 500m
+            memory: 500M
+        volumeMounts:
+        - mountPath: /etc/secrets
+          name: secrets
+      - name: proxy
+    #    image: "quay.io/gileshinchcliff/solr:testing"
+        image: "quay.io/gileshinchcliff/nginx:1.9-testing"
+        imagePullPolicy: Always
+        ports:
+          - name: solrtls
+            containerPort: 8980
+        env:
+          - name: PROXY_SERVICE_HOST
+            value: 'http://127.0.0.1'
+          - name: PROXY_SERVICE_PORT
+            value: '8983'
+        #  - name: NAXSI_USE_DEFAULT_RULES
+        #    value: 'FALSE'
+        #  - name: ENABLE_UUID_PARAM
+        #    value: 'FALSE'
+          - name: BASIC_AUTH
+            value: /etc/secrets/basic_auth
+          - name: HTTPS_LISTEN_PORT
+            value: '8980'
+          - name: ADD_NGINX_LOCATION_CFG
+            value: 'auth_basic "Restricted"; auth_basic_user_file /etc/secrets/.htpasswd;'
+        resources:
+          limits:
+            cpu: 100m
+            memory: 500M
+        volumeMounts:
+        - mountPath: /etc/secrets
+          name: secrets
+      - name: vault-side-kick
+        image: quay.io/ukhomeofficedigital/vault-sidekick:v0.0.9-2
+        args:
+          - -output=/etc/secrets
+          - -tls-skip-verify=true
+          - -auth=/vault/vault.yml
+          - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
+          - -cn=secret:platform/secrets/platform_tls:fmt=cert,file=platform_tls
+        env:
+        - name: VAULT_ADDR
+          value: https://vault.vault.svc.cluster.local:8200
+        volumeMounts:
+          - name: secrets
+            mountPath: /etc/secrets
+          - name: vault
+            mountPath: /vault
+            readOnly: true
+        resources:
+         limits:
+          cpu: 200m
+          memory: 200M
       volumes:
         - emptyDir: {}
-          name: certs
+          name: secrets
         - name: vault
           secret:
             secretName: vault
+      restartPolicy: Always
