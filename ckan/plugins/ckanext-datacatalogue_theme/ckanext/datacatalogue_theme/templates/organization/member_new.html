@@ -1,0 +1,23 @@
+{% ckan_extends %}
+
+{# changing org to ba #}
+{% block secondary_content %}
+{# from organization/edit-base.html which should get called through super #}
+{% snippet 'snippets/organization.html', organization=organization %}
+
+<div class="module module-narrow module-shallow">
+  <h2 class="module-heading">
+    <i class="icon-large icon-info-sign"></i>
+    {{ _('What are roles?') }}
+  </h2>
+  <div class="module-content">
+    {% trans %}
+      <p><strong>Admin:</strong> Can add/edit and delete datasets, as well as
+        manage business area members.</p>
+      <p><strong>Editor:</strong> Can add and edit datasets, but not manage
+        business area members.</p>
+      <p><strong>Member:</strong> Can view the business area's private
+        datasets, but not add new datasets.</p>
+    {% endtrans %}
+  </div>
+{% endblock %}

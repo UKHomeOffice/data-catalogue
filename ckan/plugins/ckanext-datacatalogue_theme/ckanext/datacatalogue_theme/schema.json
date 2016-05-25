@@ -32,7 +32,7 @@
     {
       "required": false,
       "form_placeholder": "Enter a description of what your data is used for",
-      "field_name": "Description",
+      "field_name": "description",
       "label": "Description",
       "preset": "markdown"
     },

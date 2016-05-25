@@ -14,8 +14,7 @@ def get_version_number():
 
 def get_facets():
     facetsList = config.get(
-        'ckan.datacatalogue.search_facets', 'organization vocab_business_area res_format')
-    print facetsList.split()
+        'ckan.datacatalogue.search_facets', 'organization tags')
     return facetsList.split()
 
 
@@ -42,16 +41,14 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     #IFacet interface
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
         return facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
-        facets_dict['security_classification'] = toolkit._('Security Classification')
+        #hide facets on orgs
+        facets_dict.clear()
         return facets_dict
 
     def before_index(self, pkg_dict):
