@@ -1,5 +1,8 @@
 {% ckan_extends %}
 
+{# changed org to ba #}
+{% block subtitle %}{{ c.group_dict.display_name }} - {{ _('Business Areas') }}{% endblock %}
+
 {# change Manage to Edit in button #}
 {% block content_action %}
   {% if h.check_access('organization_update', {'id': c.group_dict.id}) %}
