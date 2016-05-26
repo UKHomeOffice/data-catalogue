@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datacatalogue-rds
+data:
+  host: ddjpj3h7mwn4nn.coaznai19bkh.eu-west-1.rds.amazonaws.com
+  port: '5432'
