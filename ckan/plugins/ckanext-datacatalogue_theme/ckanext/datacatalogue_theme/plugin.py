@@ -78,18 +78,6 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     def package_types(self):
         return []
 
-
-class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IConfigurable)
-    def configure(self, config):
-        client = hvac.Client()
-        print(client)
-        print(config)
-        print("Before " + config['sqlalchemy.url'])
-        config['sqlalchemy.url'] = "have i broken it?"
-        print("Configure")
-        print("After " + config['sqlalchemy.url'])
-
     # healthcheck endpoint
 
     def before_map(self, map):
@@ -106,5 +94,23 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         return {'datacatalogue_theme_get_version_number': get_version_number,
                 'datacatalogue_theme_get_facets': get_facets,
             }
+
+
+
+class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IConfigurable)
+    def configure(self, config):
+        client = hvac.Client()
+        print(config)
+        url = "postgres://username:pass@"
+        url+=os.environ.get("DATABASE_HOST", None)
+        url+=":"
+        url+=os.environ.get("DATABASE_PORT", 5432)
+        url+="/ckan"
+
+        print("Before " + config['sqlalchemy.url'])
+        config['sqlalchemy.url'] = url
+        print("Configured?")
+        print("After " + config['sqlalchemy.url'])
 
 
