@@ -12,6 +12,11 @@ spec:
       nodePort: 30314
       port: 80
       targetPort: http
+    -
+      name: https
+      nodePort: 30315
+      port: 443
+      targetPort: https
   selector:
     name: data-catalogue
   type: NodePort

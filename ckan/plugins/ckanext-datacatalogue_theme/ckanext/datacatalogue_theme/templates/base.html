@@ -1,5 +1,10 @@
 {% ckan_extends %}
 
+{% block meta %}
+    {{ super() }}
+    <meta name="data-catalogue-version" value="{{ h.datacatalogue_theme_get_version_number() }}" />
+{% endblock %}
+
 {% block styles %}
 {{ super() }}
 <link rel="stylesheet" href="/datacatalogue_theme.css" />

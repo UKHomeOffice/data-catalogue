@@ -1,0 +1,18 @@
+{% ckan_extends %}
+
+{# changing org to ba #}
+{% block subtitle %}{{ _('Business areas') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Business areas'), controller='organization', action='index' %}</li>
+{% endblock %}
+
+{% block page_primary_action %}
+  {% if h.check_access('organization_create') %}
+    {% link_for _('Add Business Area'), controller='organization', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+  {% endif %}
+{% endblock %}
+
+  {% block organizations_search_form %}
+    {% snippet 'snippets/search_form.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search business areas...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
+  {% endblock %}

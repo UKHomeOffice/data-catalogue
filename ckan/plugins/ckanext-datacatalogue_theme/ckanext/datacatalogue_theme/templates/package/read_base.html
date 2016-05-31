@@ -1,7 +1,15 @@
 {% ckan_extends %}
 
+{# this is to change the word Manage to Edit #}
+{% block content_action %}
+  {% if h.check_access('package_update', {'id':pkg.id }) %}
+    {% link_for _('Edit'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
+  {% endif %}
+{% endblock %}
+
+{# removed groups #}
 {% block content_primary_nav %}
     {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
-    {{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name) }}
+    {#{{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name) }}#}
     {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name) }}
 {% endblock %}

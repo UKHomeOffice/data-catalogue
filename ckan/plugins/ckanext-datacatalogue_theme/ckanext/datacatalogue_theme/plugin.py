@@ -3,14 +3,29 @@ import ckan.plugins.toolkit as toolkit
 import json
 import os
 import hvac
+import pylons.config as config
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
+
+def get_version_number():
+    value = os.environ.get("DC_VERSION", None)
+    if value is None:
+        value = "DC_VERSION env variable not set"
+    return value
+
+def get_facets():
+    facetsList = config.get(
+        'ckan.datacatalogue.search_facets', 'organization tags')
+    return facetsList.split()
+
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IMiddleware)
+    plugins.implements(plugins.IRoutes)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IConfigurer
     def update_config(self, config_):
@@ -27,18 +42,14 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     #IFacet interface
 
     def dataset_facets(self, facets_dict, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
-        facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
-        facets_dict['security_classification'] = toolkit._('Security Classification')
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type, package_type):
-        facets_dict['vocab_business_area'] = toolkit._('Business areas')
-        facets_dict['security_classification'] = toolkit._('Security Classification')
+        #hide facets on orgs
+        facets_dict.clear()
         return facets_dict
 
     def before_index(self, pkg_dict):
@@ -67,6 +78,7 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
     def package_types(self):
         return []
 
+
 class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
@@ -77,4 +89,22 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         config['sqlalchemy.url'] = "have i broken it?"
         print("Configure")
         print("After " + config['sqlalchemy.url'])
+
+    # healthcheck endpoint
+
+    def before_map(self, map):
+        map.connect('home', '/', controller='package', action='search')
+        return map
+
+    def after_map(self, map):
+        controller = 'ckanext.datacatalogue_theme.controller:CustomController'
+        map.connect('healthcheck', '/healthcheck',
+                controller=controller, action='healthcheck')
+        return map
+    
+    def get_helpers(self):
+        return {'datacatalogue_theme_get_version_number': get_version_number,
+                'datacatalogue_theme_get_facets': get_facets,
+            }
+
 
