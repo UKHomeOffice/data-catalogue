@@ -103,8 +103,8 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         client = hvac.Client()
         print(config)
         creds_file = os.environ.get("DB_CREDS", None)
-        creds_string = read_creds_file(creds_file)
-        creds = readCreds(creds_string)
+        creds_string = self.read_creds_file(creds_file)
+        creds = self.readCreds(creds_string)
         url = "postgres://"
         url += creds[0]
         url += ":"
