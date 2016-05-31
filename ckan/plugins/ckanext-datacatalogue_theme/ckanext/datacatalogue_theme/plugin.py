@@ -101,19 +101,24 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
         client = hvac.Client()
-        creds_file = os.environ.get("DB_CREDS", None)
-        if creds_file is None:
+        database_user = os.environ.get("DATABASE_USER", None)
+        database_password = os.environ.get("DATABASE_PASSWORD", None)
+        database_host = os.environ.get("DATABASE_HOST", None)
+        database_port = os.environ.get("DATABASE_PORT", None)
+        if database_user is None or database_password is None or database_host is None:
             return
-        creds_string = self.read_creds_file(creds_file)
-        creds = self.readCreds(creds_string)
+        if database_port is None:
+            #use the default
+            database_port = "5432"
+
         url = "postgres://"
-        url += creds[0]
+        url += database_user
         url += ":"
-        url += creds[1]
+        url += database_password
         url += "@"
-        url += os.environ.get("DATABASE_HOST", None)
+        url += database_host
         url += ":"
-        url += os.environ.get("DATABASE_PORT", 5432)
+        url += database_port
         url += "/ckan"
 
         print("Before " + config['sqlalchemy.url'])
