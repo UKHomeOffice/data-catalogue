@@ -1,6 +1,7 @@
 """Tests for plugin.py."""
 import ckanext.datacatalogue_theme.plugin as plugin
 import pylons.test
+from nose.tools import *
 import paste.fixture
 import logging
 import os
@@ -77,11 +78,48 @@ class TestAuthorizationPlugin(object):
         assert name_and_password[0] == "myname"
         assert name_and_password[1] == "password"
 
+    def test_read_creds_no_space(self):
+        name_and_password = []
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.readCreds("myname:password")
+        assert name_and_password[0] == "myname"
+        assert name_and_password[1] == "password"
+
+
+    def test_read_creds_extra_white_space(self):
+        name_and_password = []
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.readCreds("    myname:    password     ")
+        assert name_and_password[0] == "myname"
+        assert name_and_password[1] == "password"
+
+    def test_read_creds_empty(self):
+        name_and_password = []
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.readCreds("")
+        assert 0 == len(name_and_password)
+
+    def test_read_creds_wrong_format(self):
+        name_and_password = []
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.readCreds("just some words")
+        assert 0 == len(name_and_password)
+
+    def test_read_creds_just_colon(self):
+        name_and_password = []
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.readCreds(":")
+        assert 0 == len(name_and_password)
+
     def test_read_first_line(self):
         dbplugin = plugin.Datacatalogue_DBPlugin()
         name_and_password = dbplugin.read_creds_file("ckanext/datacatalogue_theme/tests/credsfile.txt")
-        print("**********************")
-        print(name_and_password)
+        assert name_and_password == "1234567890"
+
+    @raises(IOError)
+    def test_read_first_line_no_file(self):
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.read_creds_file("idontexist.txt")
         assert name_and_password == "1234567890"
 
 
