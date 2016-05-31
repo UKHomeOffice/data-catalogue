@@ -2,6 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
+import hvac
 import pylons.config as config
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
@@ -95,5 +96,21 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             }
 
 
+
+class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IConfigurable)
+    def configure(self, config):
+        client = hvac.Client()
+        print(config)
+        url = "postgres://username:pass@"
+        url+=os.environ.get("DATABASE_HOST", None)
+        url+=":"
+        url+=os.environ.get("DATABASE_PORT", 5432)
+        url+="/ckan"
+
+        print("Before " + config['sqlalchemy.url'])
+        config['sqlalchemy.url'] = url
+        print("Configured?")
+        print("After " + config['sqlalchemy.url'])
 
 
