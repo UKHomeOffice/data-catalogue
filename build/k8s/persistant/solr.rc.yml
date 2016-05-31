@@ -23,25 +23,29 @@ spec:
         ports:
           - name: solr
             containerPort: 8983
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8983
-          initialDelaySeconds: 1
-          timeoutSeconds: 1
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8983
-          initialDelaySeconds: 10
-          timeoutSeconds: 1
+#        readinessProbe:
+#          httpGet:
+#            path: /
+#          port: 8983
+#          initialDelaySeconds: 10
+#          timeoutSeconds: 5
+#        livenessProbe:
+#          httpGet:
+#            path: /
+#            port: 8983
+#          initialDelaySeconds: 10
+#          timeoutSeconds: 5
         env:
           - name: SOLR_PORT
             value: "8983"
+          - name: SOLR_HOST
+            value: 127.0.0.1
+          - name: SOLR_HEAP
+            value: 1g
         resources:
           limits:
-            cpu: 500m
-            memory: 500M
+            cpu: 100m
+            memory: 500Mi
         volumeMounts:
         - mountPath: /etc/secrets
           name: secrets
@@ -65,12 +69,10 @@ spec:
             value: /etc/secrets/basic_auth
           - name: HTTPS_LISTEN_PORT
             value: '8980'
-          - name: ADD_NGINX_LOCATION_CFG
-            value: 'auth_basic "Restricted"; auth_basic_user_file /etc/secrets/.htpasswd;'
         resources:
           limits:
             cpu: 100m
-            memory: 500M
+            memory: 500Mi
         volumeMounts:
         - mountPath: /etc/secrets
           name: secrets
@@ -93,8 +95,8 @@ spec:
             readOnly: true
         resources:
          limits:
-          cpu: 200m
-          memory: 200M
+          cpu: 100m
+          memory: 200Mi
       volumes:
         - emptyDir: {}
           name: secrets
