@@ -70,4 +70,18 @@ class TestAuthorizationPlugin(object):
         if 'REMOTE_USER' in os.environ:
             del os.environ['REMOTE_USER']
 
+    def test_read_creds(self):
+        name_and_password = []
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.readCreds("myname: password")
+        assert name_and_password[0] == "myname"
+        assert name_and_password[1] == "password"
+
+    def test_read_first_line(self):
+        dbplugin = plugin.Datacatalogue_DBPlugin()
+        name_and_password = dbplugin.read_creds_file("ckanext/datacatalogue_theme/tests/credsfile.txt")
+        print("**********************")
+        print(name_and_password)
+        assert name_and_password == "1234567890"
+
 

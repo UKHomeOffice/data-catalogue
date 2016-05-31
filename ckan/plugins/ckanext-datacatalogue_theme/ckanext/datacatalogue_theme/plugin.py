@@ -102,15 +102,35 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     def configure(self, config):
         client = hvac.Client()
         print(config)
-        url = "postgres://username:pass@"
-        url+=os.environ.get("DATABASE_HOST", None)
-        url+=":"
-        url+=os.environ.get("DATABASE_PORT", 5432)
-        url+="/ckan"
+        creds_file = os.environ.get("DB_CREDS", None)
+        creds_string = read_creds_file(creds_file)
+        creds = readCreds(creds_string)
+        url = "postgres://"
+        url += creds[0]
+        url += ":"
+        url += creds[1]
+        url += "@"
+        url += os.environ.get("DATABASE_HOST", None)
+        url += ":"
+        url += os.environ.get("DATABASE_PORT", 5432)
+        url += "/ckan"
 
         print("Before " + config['sqlalchemy.url'])
         config['sqlalchemy.url'] = url
         print("Configured?")
         print("After " + config['sqlalchemy.url'])
+
+    def readCreds(self, creds):
+        name_and_password = creds.split(":")
+        name_and_password[1] = name_and_password[1].strip()
+        return name_and_password
+
+    def read_creds_file(self, creds_file):
+        creds_string = ""
+        with open(creds_file, 'r') as f:
+            creds_string = f.readline()
+        return creds_string.strip()
+
+
 
 
