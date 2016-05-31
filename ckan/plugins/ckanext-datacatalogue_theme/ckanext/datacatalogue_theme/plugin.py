@@ -101,8 +101,9 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
         client = hvac.Client()
-        print(config)
         creds_file = os.environ.get("DB_CREDS", None)
+        if creds_file is None:
+            return
         creds_string = self.read_creds_file(creds_file)
         creds = self.readCreds(creds_string)
         url = "postgres://"
@@ -121,7 +122,11 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         print("After " + config['sqlalchemy.url'])
 
     def readCreds(self, creds):
+        if(creds is None or ":" not in creds or creds == ":"):
+            return []
         name_and_password = creds.split(":")
+        
+        name_and_password[0] = name_and_password[0].strip()
         name_and_password[1] = name_and_password[1].strip()
         return name_and_password
 
