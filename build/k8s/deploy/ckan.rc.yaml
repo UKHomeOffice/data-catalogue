@@ -36,15 +36,13 @@ spec:
           ports:
            - name: https
              containerPort: 443
-           - name: http
-             containerPort: 80
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets
           resources:
            limits:
             cpu: 200m
-            memory: 800M
+            memory: 400M
         - name: vault-side-kick
           image: quay.io/ukhomeofficedigital/vault-sidekick:v0.0.9-2
           args:
@@ -66,9 +64,10 @@ spec:
           resources:
            limits:
             cpu: 200m
-            memory: 800M
+            memory: 400M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+      #    image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+          image: "quay.io/gileshinchcliff/data-catalogue:testing"
           imagePullPolicy: Always
           env:
             -
@@ -90,6 +89,12 @@ spec:
               name: DB_CREDS
               value: /etc/secrets/.postgres_creds
             -
+              name: SOLR_USER
+              value: admin
+            -
+              name: SOLR_PASSWORD
+              value: testing
+            -
               name: SOLR_URL
               value: "http://solr:8983/"
             -
@@ -98,27 +103,27 @@ spec:
             -
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
-#          livenessProbe:
-#            httpGet:
-#              path: /
-#              port: 80
-#            initialDelaySeconds: 60
-#            timeoutSeconds: 60
+    #      livenessProbe:
+    #        httpGet:
+    #          path: /
+    #          port: 80
+    #        initialDelaySeconds: 300
+    #        timeoutSeconds: 60
           name: data-catalogue
           ports:
             -
               containerPort: 5000
               name: https
-#          readinessProbe:
-#            httpGet:
-#              path: /
-#              port: 80
-#            initialDelaySeconds: 1
-#            timeoutSeconds: 60
+  #        readinessProbe:
+  #          httpGet:
+  #            path: /
+  #            port: 80
+  #          initialDelaySeconds: 1
+  #          timeoutSeconds: 60
           resources:
            limits:
             cpu: 400m
-            memory: 800M
+            memory: 400M
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets
