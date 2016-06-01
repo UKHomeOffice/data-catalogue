@@ -2,6 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
+import hvac
 import pylons.config as config
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
@@ -93,6 +94,52 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
         return {'datacatalogue_theme_get_version_number': get_version_number,
                 'datacatalogue_theme_get_facets': get_facets,
             }
+
+
+
+class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IConfigurable)
+    def configure(self, config):
+        client = hvac.Client()
+        database_user = os.environ.get("DATABASE_USER", None)
+        database_password = os.environ.get("DATABASE_PASSWORD", None)
+        database_host = os.environ.get("DATABASE_HOST", None)
+        database_port = os.environ.get("DATABASE_PORT", None)
+        if database_user is None or database_password is None or database_host is None:
+            return
+        if database_port is None:
+            #use the default
+            database_port = "5432"
+
+        url = "postgres://"
+        url += database_user
+        url += ":"
+        url += database_password
+        url += "@"
+        url += database_host
+        url += ":"
+        url += database_port
+        url += "/ckan"
+
+        print("Before " + config['sqlalchemy.url'])
+        config['sqlalchemy.url'] = url
+        print("Configured?")
+        print("After " + config['sqlalchemy.url'])
+
+    def readCreds(self, creds):
+        if(creds is None or ":" not in creds or creds == ":"):
+            return []
+        name_and_password = creds.split(":")
+        
+        name_and_password[0] = name_and_password[0].strip()
+        name_and_password[1] = name_and_password[1].strip()
+        return name_and_password
+
+    def read_creds_file(self, creds_file):
+        creds_string = ""
+        with open(creds_file, 'r') as f:
+            creds_string = f.readline()
+        return creds_string.strip()
 
 
 

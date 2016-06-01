@@ -80,6 +80,7 @@ setup(
     entry_points='''
         [ckan.plugins]
         datacatalogue_theme=ckanext.datacatalogue_theme.plugin:Datacatalogue_ThemePlugin
+        datacatalogue_db=ckanext.datacatalogue_theme.plugin:Datacatalogue_DBPlugin
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
     ''',
