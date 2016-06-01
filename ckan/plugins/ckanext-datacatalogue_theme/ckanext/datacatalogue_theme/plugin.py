@@ -121,10 +121,8 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         url += database_port
         url += "/ckan"
 
-        print("Before " + config['sqlalchemy.url'])
         config['sqlalchemy.url'] = url
-        print("Configured?")
-        print("After " + config['sqlalchemy.url'])
+        print("Setting database " + database_host + ":" + database_port)
 
     def readCreds(self, creds):
         if(creds is None or ":" not in creds or creds == ":"):
