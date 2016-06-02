@@ -129,6 +129,8 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         solr_password = os.environ.get("SOLR_PASSWORD", None)
         config['solr_user'] =solr_user
         config['solr_password'] = solr_password
+        print("Talking to solr on " + config['solr_url'])
+        print("with the user " + config['solr_user'])
 
     def readCreds(self, creds):
         if(creds is None or ":" not in creds or creds == ":"):
