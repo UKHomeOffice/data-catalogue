@@ -94,8 +94,8 @@ spec:
               name: SOLR_PASSWORD
               value: testing
             -
-              name: SOLR_URL
-              value: "http://solr:8983/"
+              name: CKAN_SOLR_URL
+              value: "https://solr:8980/"
             -
               name: SSL_CERT
               value: /etc/secrets/platform_tls.crt
