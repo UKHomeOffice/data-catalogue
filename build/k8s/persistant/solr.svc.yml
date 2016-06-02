@@ -9,7 +9,11 @@ spec:
   ports:
     -
       name: solr
+      port: 8980
+      targetPort: 8980
+    -
+      name: solr
       port: 8983
-      targetPort: solr
+      targetPort: 8983
   selector:
     name: solr
