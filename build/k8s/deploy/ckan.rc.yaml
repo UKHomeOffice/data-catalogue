@@ -3,17 +3,17 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: data-catalogue
-  name: data-catalogue
+    name: data-catalogue-testing
+  name: data-catalogue-testing
 spec:
   replicas: 1
   selector:
-    name: data-catalogue
+    name: data-catalogue-testing
     version: v0
   template:
     metadata:
       labels:
-        name: data-catalogue
+        name: data-catalogue-testing
         version: v0
     spec:
       containers:
@@ -29,6 +29,8 @@ spec:
               value: 'FALSE'
             - name: ENABLE_UUID_PARAM
               value: 'FALSE'
+            - name: ADD_NGINX_LOCATION_CFG
+              value: 'proxy_set_heder X-Url-Scheme $scheme;'
             - name: SERVER_KEY
               value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
@@ -51,7 +53,7 @@ spec:
             - -auth=/vault/vault.yml
             - -cn=secret:platform/secrets/platform_tls:fmt=cert,file=platform_tls
             - -cn=secret:data-catalogue/postgres/creds:file=.postgres_creds
-          #  - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
+            - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
           env:
           - name: VAULT_ADDR
             value: https://vault.vault.svc.cluster.local:8200
@@ -66,8 +68,7 @@ spec:
             cpu: 200m
             memory: 400M
         - name: data-catalogue
-      #    image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
-          image: "quay.io/gileshinchcliff/data-catalogue:testing"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-142"
           imagePullPolicy: Always
           env:
             -
@@ -97,29 +98,18 @@ spec:
             -
               name: SOLR_URL
               value: "http://solr:8983/"
-            -
-              name: SSL_CERT
-              value: /etc/secrets/platform_tls.crt
-            -
-              name: SSL_KEY
-              value: /etc/secrets/platform_tls.key
-    #      livenessProbe:
-    #        httpGet:
-    #          path: /
-    #          port: 80
-    #        initialDelaySeconds: 300
-    #        timeoutSeconds: 60
-          name: data-catalogue
-          ports:
-            -
-              containerPort: 5000
-              name: https
-  #        readinessProbe:
-  #          httpGet:
-  #            path: /
-  #            port: 80
-  #          initialDelaySeconds: 1
-  #          timeoutSeconds: 60
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 300
+            timeoutSeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 300
+            timeoutSeconds: 60
           resources:
            limits:
             cpu: 400m
