@@ -30,7 +30,7 @@ spec:
             - name: ENABLE_UUID_PARAM
               value: 'FALSE'
             - name: ADD_NGINX_LOCATION_CFG
-              value: 'proxy_set_heder X-Url-Scheme $scheme;'
+              value: 'proxy_set_header X-Url-Scheme $scheme;'
             - name: SERVER_KEY
               value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
