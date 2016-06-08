@@ -4,6 +4,7 @@ import json
 import os
 import hvac
 import pylons.config as config
+import requests
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
@@ -17,6 +18,23 @@ def get_facets():
     facetsList = config.get(
         'ckan.datacatalogue.search_facets', 'organization tags')
     return facetsList.split()
+
+def scan_file(fileLocation):
+    print("Sending file for scan")
+    print(fileLocation)
+    r = requests.post('https://clamav.platform-services.svc.cluster.local/', files={fileLocation: open(fileLocation, 'rb')})
+
+    if(r.status_code == 200):
+        answer = r.content[18:].strip()
+        return answer == 'true'
+    else:
+        return False 
+
+class VirusFileError(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
 
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -146,6 +164,16 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         with open(creds_file, 'r') as f:
             creds_string = f.readline()
         return creds_string.strip()
+
+class ClamAVClient(plugins.SingletonPlugin):
+    def scan_file(self, fileLocation):
+        r = requests.post('http://localhost:8765', files={fileLocation: open(fileLocation, 'rb')})
+
+        if(r.status_code == 200):
+            answer = r.content[18:].strip()
+            return answer == 'true'
+        else:
+            return False 
 
 
 

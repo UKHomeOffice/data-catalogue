@@ -7,6 +7,13 @@ import logging
 import ckan.lib.munge as munge
 import ckan.logic as logic
 import ckan.plugins as plugins
+'''
+Home office addition start
+'''
+import ckanext.datacatalogue_theme.plugin as plugin
+'''
+Home office addition end
+'''
 
 config = pylons.config
 log = logging.getLogger(__name__)
@@ -148,7 +155,7 @@ class Upload(object):
         been validated and flushed to the db. This is so we do not store
         anything unless the request is actually good.
         max_size is size in MB maximum of the file'''
-
+        print("uploading 1")
         if self.filename:
             output_file = open(self.tmp_filepath, 'wb')
             self.upload_file.seek(0)
@@ -166,7 +173,17 @@ class Upload(object):
                         {self.file_field: ['File upload too large']}
                     )
             output_file.close()
+            '''
+            Home office addition start
+            '''
+            fileOK = plugin.scan_file(self.tmp_filepath)
+            if(!fileOk):
+                raise plugin.VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
+            '''
+            Home office addition end
+            '''
             os.rename(self.tmp_filepath, self.filepath)
+
             self.clear = True
 
         if (self.clear and self.old_filename
@@ -263,6 +280,15 @@ class ResourceUpload(object):
                         {'upload': ['File upload too large']}
                     )
             output_file.close()
+            '''
+            Home office addition start
+            '''
+            fileOK = plugin.scan_file(self.tmp_filepath)
+            if(!fileOk):
+                raise plugin.VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
+            '''
+            Home office addition end
+            '''
             os.rename(tmp_filepath, filepath)
             return
 

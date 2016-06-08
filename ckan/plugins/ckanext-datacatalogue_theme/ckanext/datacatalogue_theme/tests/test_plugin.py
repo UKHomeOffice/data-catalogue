@@ -122,4 +122,8 @@ class TestAuthorizationPlugin(object):
         name_and_password = dbplugin.read_creds_file("idontexist.txt")
         assert name_and_password == "1234567890"
 
+    #Test clamav client
+    def test_scan_func(self):
+        assert plugin.scan_file("ckanext/datacatalogue_theme/tests/testfile.txt") == True
+
 
