@@ -95,7 +95,7 @@ spec:
               value: testing
             -
               name: CKAN_SOLR_URL
-              value: "https://solr:8980/"
+              value: "https://solr:8980/solr/ckan"
             -
               name: SSL_CERT
               value: /etc/secrets/platform_tls.crt
