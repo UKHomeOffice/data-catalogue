@@ -99,18 +99,18 @@ spec:
             -
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 5000
-            initialDelaySeconds: 300
-            timeoutSeconds: 60
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 5000
-            initialDelaySeconds: 300
-            timeoutSeconds: 60
+      #    livenessProbe:
+      #      httpGet:
+      #        path: /
+      #        port: 5000
+      #      initialDelaySeconds: 300
+      #      timeoutSeconds: 60
+      #    readinessProbe:
+      #      httpGet:
+      #        path: /
+      #        port: 5000
+      #      initialDelaySeconds: 300
+      #      timeoutSeconds: 60
           resources:
            limits:
             cpu: 400m
