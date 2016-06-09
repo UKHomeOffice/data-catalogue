@@ -23,23 +23,23 @@ spec:
         ports:
           - name: solr
             containerPort: 8983
-#        readinessProbe:
-#          httpGet:
-#            path: /
-#          port: 8983
-#          initialDelaySeconds: 10
-#          timeoutSeconds: 5
-#        livenessProbe:
-#          httpGet:
-#            path: /
-#            port: 8983
-#          initialDelaySeconds: 10
-#          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /solr/ckan/admin/ping
+            port: 8983
+          initialDelaySeconds: 100
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /solr/ckan/admin/ping
+            port: 8983
+          initialDelaySeconds: 100
+          timeoutSeconds: 5
         env:
           - name: SOLR_PORT
             value: "8983"
-          - name: SOLR_HOST
-            value: 127.0.0.1
+        #  - name: SOLR_HOST
+        #    value: 127.0.0.1
           - name: SOLR_HEAP
             value: 1g
         resources:
@@ -61,8 +61,8 @@ spec:
             value: 'http://127.0.0.1'
           - name: PROXY_SERVICE_PORT
             value: '8983'
-        #  - name: NAXSI_USE_DEFAULT_RULES
-        #    value: 'FALSE'
+          - name: NAXSI_USE_DEFAULT_RULES
+            value: 'FALSE'
         #  - name: ENABLE_UUID_PARAM
         #    value: 'FALSE'
           - name: BASIC_AUTH
