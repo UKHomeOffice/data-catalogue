@@ -69,7 +69,8 @@ spec:
             cpu: 200m
             memory: 400M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+#          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-182"
           imagePullPolicy: Always
           env:
             -
@@ -99,18 +100,18 @@ spec:
             -
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
-      #    livenessProbe:
-      #      httpGet:
-      #        path: /
-      #        port: 5000
-      #      initialDelaySeconds: 300
-      #      timeoutSeconds: 60
-      #    readinessProbe:
-      #      httpGet:
-      #        path: /
-      #        port: 5000
-      #      initialDelaySeconds: 300
-      #      timeoutSeconds: 60
+          readinessProbe:
+           exec:
+            command:
+              - /userscripts/healthcheck.sh
+           initialDelaySeconds: 60
+           timeoutSeconds: 10
+          livenessProbe:
+            exec:
+             command:
+              - /userscripts/healthcheck.sh
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
           resources:
            limits:
             cpu: 400m
