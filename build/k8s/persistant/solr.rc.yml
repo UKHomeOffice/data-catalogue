@@ -50,8 +50,7 @@ spec:
         - mountPath: /etc/secrets
           name: secrets
       - name: proxy
-    #    image: "quay.io/gileshinchcliff/solr:testing"
-        image: "quay.io/gileshinchcliff/nginx:1.9-testing"
+        image: "quay.io/ukhomeofficedigital/nginx-proxy:v1.2.0"
         imagePullPolicy: Always
         ports:
           - name: solrtls
