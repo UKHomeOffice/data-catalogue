@@ -8,12 +8,33 @@ import ckan.lib.munge as munge
 import ckan.logic as logic
 import ckan.plugins as plugins
 
+#Home office import start
+from ofs import get_impl
+#Home office import end
+
 config = pylons.config
 log = logging.getLogger(__name__)
 
 _storage_path = None
 _max_resource_size = None
 _max_image_size = None
+
+#Home office method start
+def move_file_into_store(tmpFile, filepath):
+    ofs_impl = config.get('ofs.impl')
+    if(ofs_impl != 's3'):
+        #then treat it as local storage
+        os.rename(tmpFile, filepath)
+    else:
+        kw = {}
+        kw['aws_access_key_id'] = config['ofs.s3.aws_access_key_id']
+        kw['aws_secret_access_key'] = config['ofs.s3.aws_secret_access_key']
+        ofs = get_impl('s3')(**kw)
+
+        BUCKET = config['ofs.s3.bucket']
+        ofs.put_stream(BUCKET, filepath, open(tmpFile, 'r'))
+        
+#Home office method end
 
 
 def get_uploader(upload_to, old_filename=None):
@@ -148,6 +169,7 @@ class Upload(object):
                 data_dict[url_field] = ''
 
     def upload(self, max_size=2):
+        print('Uploading file')
         ''' Actually upload the file.
         This should happen just before a commit but after the data has
         been validated and flushed to the db. This is so we do not store
@@ -171,7 +193,9 @@ class Upload(object):
                         {self.file_field: ['File upload too large']}
                     )
             output_file.close()
-            os.rename(self.tmp_filepath, self.filepath)
+            #Home office change start
+            move_file_into_store(self.tmp_filepath, self.filepath)
+            #Home office change end
             self.clear = True
 
         if (self.clear and self.old_filename
@@ -180,7 +204,6 @@ class Upload(object):
                 os.remove(self.old_filepath)
             except OSError:
                 pass
-
 
 class ResourceUpload(object):
     def __init__(self, resource):
@@ -222,6 +245,8 @@ class ResourceUpload(object):
         return filepath
 
     def upload(self, id, max_size=10):
+        
+        print('Uploading resource')
         '''Actually upload the file.
 
         :returns: ``'file uploaded'`` if a new file was successfully uploaded
@@ -254,6 +279,7 @@ class ResourceUpload(object):
             output_file = open(tmp_filepath, 'wb+')
             self.upload_file.seek(0)
             current_size = 0
+
             while True:
                 current_size = current_size + 1
                 # MB chunks
@@ -267,7 +293,9 @@ class ResourceUpload(object):
                         {'upload': ['File upload too large']}
                     )
             output_file.close()
-            os.rename(tmp_filepath, filepath)
+            #Home office change start
+            move_file_into_store(tmp_filepath, filepath)
+            #Home office change end
             return
 
         # The resource form only sets self.clear (via the input clear_upload)
@@ -280,3 +308,4 @@ class ResourceUpload(object):
                 os.remove(filepath)
             except OSError, e:
                 pass
+    
