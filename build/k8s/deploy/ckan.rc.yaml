@@ -3,17 +3,17 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: data-catalogue-testing
-  name: data-catalogue-testing
+    name: data-catalogue
+  name: data-catalogue
 spec:
   replicas: 1
   selector:
-    name: data-catalogue-testing
+    name: data-catalogue
     version: v0
   template:
     metadata:
       labels:
-        name: data-catalogue-testing
+        name: data-catalogue
         version: v0
     spec:
       containers:
@@ -30,7 +30,7 @@ spec:
             - name: ENABLE_UUID_PARAM
               value: 'FALSE'
             - name: ADD_NGINX_LOCATION_CFG
-              value: 'proxy_set_heder X-Url-Scheme $scheme;'
+              value: 'proxy_set_header X-Url-Scheme $scheme;'
             - name: SERVER_KEY
               value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
@@ -91,17 +91,14 @@ spec:
               name: DB_CREDS
               value: /etc/secrets/.postgres_creds
             -
-              name: SOLR_URL
-              value: "http://solr:8983/"
+              name: CKAN_SOLR_URL
+              value: "https://solr:8980/solr/ckan"
+            -
+              name: SSL_CERT
+              value: /etc/secrets/platform_tls.crt
             -
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
-            - 
-              name: SOLR_USER
-              value: admin
-            - 
-              name: SOLR_PASSWORD
-              value: testing
       #    livenessProbe:
       #      httpGet:
       #        path: /
