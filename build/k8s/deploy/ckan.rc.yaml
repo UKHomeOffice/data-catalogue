@@ -3,17 +3,17 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: data-catalogue
-  name: data-catalogue
+    name: data-catalogue-test
+  name: data-catalogue-test
 spec:
   replicas: 1
   selector:
-    name: data-catalogue
+    name: data-catalogue-test
     version: v0
   template:
     metadata:
       labels:
-        name: data-catalogue
+        name: data-catalogue-test
         version: v0
     spec:
       containers:
@@ -70,7 +70,7 @@ spec:
             memory: 400M
         - name: data-catalogue
 #          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
-          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-182"
+          image: "quay.io/gileshinchcliff/data-catalogue:testing"
           imagePullPolicy: Always
           env:
             -
@@ -100,16 +100,20 @@ spec:
             -
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
+            - name: SOLR_USER
+              value: admin
+            - name: SOLR_PASSWORD
+              value: testing
           readinessProbe:
            exec:
             command:
-              - /userscripts/healthcheck.sh
+              - /docker/healthcheck.sh
            initialDelaySeconds: 60
            timeoutSeconds: 10
           livenessProbe:
             exec:
              command:
-              - /userscripts/healthcheck.sh
+              - /docker/healthcheck.sh
             initialDelaySeconds: 60
             timeoutSeconds: 10
           resources:
