@@ -22,7 +22,9 @@ def get_facets():
 def scan_file(fileLocation):
     print("Sending file for scan")
     print(fileLocation)
-    r = requests.post('https://clamav.platform-services.svc.cluster.local/', files={fileLocation: open(fileLocation, 'rb')})
+    clamav_url = config.get(
+        'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
+    r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
 
     if(r.status_code == 200):
         answer = r.content[18:].strip()
@@ -165,15 +167,6 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
             creds_string = f.readline()
         return creds_string.strip()
 
-class ClamAVClient(plugins.SingletonPlugin):
-    def scan_file(self, fileLocation):
-        r = requests.post('http://localhost:8765', files={fileLocation: open(fileLocation, 'rb')})
-
-        if(r.status_code == 200):
-            answer = r.content[18:].strip()
-            return answer == 'true'
-        else:
-            return False 
 
 
 
