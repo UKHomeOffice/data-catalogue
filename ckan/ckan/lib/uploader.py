@@ -169,7 +169,6 @@ class Upload(object):
                 data_dict[url_field] = ''
 
     def upload(self, max_size=2):
-        print('Uploading file')
         ''' Actually upload the file.
         This should happen just before a commit but after the data has
         been validated and flushed to the db. This is so we do not store
@@ -245,8 +244,6 @@ class ResourceUpload(object):
         return filepath
 
     def upload(self, id, max_size=10):
-        
-        print('Uploading resource')
         '''Actually upload the file.
 
         :returns: ``'file uploaded'`` if a new file was successfully uploaded
