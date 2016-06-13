@@ -24,6 +24,9 @@ BLOCK_SIZE = 4096 * 16
 
 __all__ = ['DataApp', 'FileApp', 'DirectoryApp', 'ArchiveStore']
 
+def isLocalFile(filename):
+    return self.filename.startswith('/usr/lib')
+
 class DataApp(object):
     """
     Returns an application that will send content in a single chunk,
@@ -210,7 +213,7 @@ class FileApp(DataApp):
     def get(self, environ, start_response):
         is_head = environ['REQUEST_METHOD'].upper() == 'HEAD'       
         #Home Office Edit start
-        if(self.filename.startswith('/usr/lib')):
+        if(isLocalFile(self.filename)):
             if 'max-age=0' in CACHE_CONTROL(environ).lower():
                 self.update(force=True) # RFC 2616 13.2.6
             else:
@@ -218,7 +221,7 @@ class FileApp(DataApp):
         #Home Office Edit end
         if not self.content:
             #Home office edit start
-            if self.filename.startswith('/usr/lib') and not os.path.exists(self.filename):
+            if isLocalFile(self.filename) and not os.path.exists(self.filename):
             #Home office edit end
                 exc = HTTPNotFound(
                     'The resource does not exist',
@@ -227,7 +230,7 @@ class FileApp(DataApp):
             try:
                 #Home Office Edit start
                 ofs_impl = config.get('ofs.impl')
-                if(self.filename.startswith('/usr/lib')):
+                if(isLocalFile(self.filename)):
                     #then treat it as local storage
                     file = open(self.filename, 'rb')
                 else:
