@@ -70,7 +70,8 @@ spec:
             memory: 400M
         - name: data-catalogue
 #          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
-          image: "quay.io/gileshinchcliff/data-catalogue:testing"
+#          image: "quay.io/gileshinchcliff/data-catalogue:testing"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-185"
           imagePullPolicy: Always
           env:
             -
