@@ -13,6 +13,12 @@ import os, time, mimetypes, zipfile, tarfile
 from paste.httpexceptions import *
 from paste.httpheaders import *
 
+#Home Office imports start
+import pylons
+from ofs import get_impl
+config = pylons.config
+#Home Office imports end
+
 CACHE_SIZE = 4096
 BLOCK_SIZE = 4096 * 16
 
@@ -202,19 +208,38 @@ class FileApp(DataApp):
             LAST_MODIFIED.update(self.headers, time=self.last_modified)
 
     def get(self, environ, start_response):
-        is_head = environ['REQUEST_METHOD'].upper() == 'HEAD'
-        if 'max-age=0' in CACHE_CONTROL(environ).lower():
-            self.update(force=True) # RFC 2616 13.2.6
-        else:
-            self.update()
+        is_head = environ['REQUEST_METHOD'].upper() == 'HEAD'       
+        #Home Office Edit start
+        if(self.filename.startswith('/usr/lib')):
+            if 'max-age=0' in CACHE_CONTROL(environ).lower():
+                self.update(force=True) # RFC 2616 13.2.6
+            else:
+                self.update()
+        #Home Office Edit end
         if not self.content:
-            if not os.path.exists(self.filename):
+            #Home office edit start
+            if self.filename.startswith('/usr/lib') and not os.path.exists(self.filename):
+            #Home office edit end
                 exc = HTTPNotFound(
                     'The resource does not exist',
                     comment="No file at %r" % self.filename)
                 return exc(environ, start_response)
             try:
-                file = open(self.filename, 'rb')
+                #Home Office Edit start
+                ofs_impl = config.get('ofs.impl')
+                if(self.filename.startswith('/usr/lib')):
+                    #then treat it as local storage
+                    file = open(self.filename, 'rb')
+                else:
+                    kw = {}
+                    kw['aws_access_key_id'] = config['ofs.s3.aws_access_key_id']
+                    kw['aws_secret_access_key'] = config['ofs.s3.aws_secret_access_key']
+                    ofs = get_impl('s3')(**kw)
+
+                    BUCKET = config['ofs.s3.bucket']
+                    self.content_length = ofs.get_metadata(BUCKET, self.filename)['_content_length']
+                    file = ofs.get_stream(BUCKET, self.filename, as_stream=True)
+                #Home Office Edit end
             except (IOError, OSError), e:
                 exc = HTTPForbidden(
                     'You are not permitted to view this file (%s)' % e)
@@ -229,7 +254,10 @@ class FileApp(DataApp):
         (lower, content_length) = retval
         if is_head:
             return ['']
-        file.seek(lower)
+        #Home Office Edit start don't bother, 0 is default and the s3 impl doesn't support seek()
+        if(lower > 0):
+            #Home Office Edit end
+            file.seek(lower)
         file_wrapper = environ.get('wsgi.file_wrapper', None)
         if file_wrapper:
             return file_wrapper(file, BLOCK_SIZE)
