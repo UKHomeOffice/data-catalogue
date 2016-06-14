@@ -106,15 +106,15 @@ spec:
             - name: SOLR_PASSWORD
               value: testing
           readinessProbe:
-            httpGet:
-              path: /user/login
-              port: 5000
+            exec:
+ -            command:
+ -              - /docker/healthcheck.sh
             initialDelaySeconds: 100
             timeoutSeconds: 2 
           livenessProbe:
-            httpGet:
-              path: /user/login
-              port: 5000
+            exec:
+ -            command:
+ -              - /docker/healthcheck.sh
             initialDelaySeconds: 100
             timeoutSeconds: 2 
           resources:
