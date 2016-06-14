@@ -107,13 +107,13 @@ spec:
               value: testing
           readinessProbe:
             httpGet:
-              path: /healthcheck
+              path: /user/login
               port: 5000
             initialDelaySeconds: 100
             timeoutSeconds: 2 
           livenessProbe:
             httpGet:
-              path: /healthcheck
+              path: /user/login
               port: 5000
             initialDelaySeconds: 100
             timeoutSeconds: 2 
