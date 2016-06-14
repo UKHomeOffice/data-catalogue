@@ -106,17 +106,17 @@ spec:
             - name: SOLR_PASSWORD
               value: testing
           readinessProbe:
-           exec:
-            command:
-              - /docker/healthcheck.sh
-           initialDelaySeconds: 60
-           timeoutSeconds: 10
+            httpGet:
+              path: /healthcheck
+              port: 5000
+            initialDelaySeconds: 100
+            timeoutSeconds: 2 
           livenessProbe:
-            exec:
-             command:
-              - /docker/healthcheck.sh
-            initialDelaySeconds: 60
-            timeoutSeconds: 10
+            httpGet:
+              path: /healthcheck
+              port: 5000
+            initialDelaySeconds: 100
+            timeoutSeconds: 2 
           resources:
            limits:
             cpu: 400m
