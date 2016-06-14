@@ -2,7 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
-import hvac
+#import hvac
 import pylons.config as config
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
@@ -96,7 +96,7 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             }
 
 
-
+'''
 class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
@@ -151,6 +151,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         with open(creds_file, 'r') as f:
             creds_string = f.readline()
         return creds_string.strip()
+'''
 
 
 

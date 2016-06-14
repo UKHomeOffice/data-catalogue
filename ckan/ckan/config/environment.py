@@ -243,8 +243,8 @@ CONFIG_FROM_ENV_VARS = {
     'ckan.site_id': 'CKAN_SITE_ID',
     'ckan.site_url': 'CKAN_SITE_URL',
 #home office addition start
-    'solr_user': 'SOLR_USER',
-    'solr_password': 'SOLR_PASSWORD',
+#    'solr_user': 'SOLR_USER',
+#    'solr_password': 'SOLR_PASSWORD',
 #home office addition end
     'ckan.storage_path': 'CKAN_STORAGE_PATH',
     'ckan.datapusher.url': 'CKAN_DATAPUSHER_URL',
