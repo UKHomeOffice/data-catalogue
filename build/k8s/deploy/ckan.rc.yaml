@@ -18,17 +18,19 @@ spec:
     spec:
       containers:
         - name: proxy
-          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.1.6
+          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.0
           imagePullPolicy: Always
           env:
             - name: PROXY_SERVICE_HOST
-              value: 'https://127.0.0.1'
+              value: 'http://127.0.0.1'
             - name: PROXY_SERVICE_PORT
               value: '5000'
             - name: NAXSI_USE_DEFAULT_RULES
               value: 'FALSE'
             - name: ENABLE_UUID_PARAM
               value: 'FALSE'
+            - name: ADD_NGINX_LOCATION_CFG
+              value: 'proxy_set_header X-Url-Scheme $scheme;'
             - name: SERVER_KEY
               value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
@@ -51,7 +53,8 @@ spec:
             - -auth=/vault/vault.yml
             - -cn=secret:platform/secrets/platform_tls:fmt=cert,file=platform_tls
             - -cn=secret:data-catalogue/postgres/creds:file=.postgres_creds
-          #  - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
+            - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
+            - -cn=secret:data-catalogue/secrets/s3:file=.s3
           env:
           - name: VAULT_ADDR
             value: https://vault.vault.svc.cluster.local:8200
@@ -67,6 +70,8 @@ spec:
             memory: 400M
         - name: data-catalogue
           image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+#          image: "quay.io/gileshinchcliff/data-catalogue:testing"
+#          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-187"
           imagePullPolicy: Always
           env:
             -
@@ -88,41 +93,34 @@ spec:
               name: DB_CREDS
               value: /etc/secrets/.postgres_creds
             -
-              name: SOLR_USER
-              value: admin
-            -
-              name: SOLR_PASSWORD
-              value: testing
-            -
               name: CKAN_SOLR_URL
-              value: "https://solr:8980/"
+              value: "https://solr:8980/solr/ckan"
             -
               name: SSL_CERT
               value: /etc/secrets/platform_tls.crt
             -
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
-    #      livenessProbe:
-    #        httpGet:
-    #          path: /
-    #          port: 80
-    #        initialDelaySeconds: 300
-    #        timeoutSeconds: 60
-          name: data-catalogue
-          ports:
-            -
-              containerPort: 5000
-              name: https
-  #        readinessProbe:
-  #          httpGet:
-  #            path: /
-  #            port: 80
-  #          initialDelaySeconds: 1
-  #          timeoutSeconds: 60
+            - name: SOLR_USER
+              value: admin
+            - name: SOLR_PASSWORD
+              value: testing
+          livenessProbe:
+            exec:
+             command:
+              - /docker/healthcheck.sh
+            initialDelaySeconds: 100
+            timeoutSeconds: 2 
+          livenessProbe:
+            exec:
+             command:
+              - /docker/healthcheck.sh
+            initialDelaySeconds: 100
+            timeoutSeconds: 2 
           resources:
            limits:
             cpu: 400m
-            memory: 400M
+            memory: 800M
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets

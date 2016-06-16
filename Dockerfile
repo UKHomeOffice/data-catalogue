@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/ckan:v1.2.6-rc1
+FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc2
 
 ENV CKAN_OVERRIDE $CKAN_HOME/ckan
 
@@ -7,11 +7,11 @@ COPY ckan/init/ $USER_SCRIPT_DIR
 COPY ckan/plugins $CKAN_PLUGINS
 COPY ckan/ckan $CKAN_OVERRIDE
 
+
 RUN yum clean all && rpm --rebuilddb
 
 RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel  ||  yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel )
 
 RUN virtualenv $CKAN_HOME && \
     . $CKAN_HOME/bin/activate && \
-    $CKAN_HOME/bin/pip install --upgrade lxml && \
-    $CKAN_HOME/bin/pip install --upgrade hvac
+    $CKAN_HOME/bin/pip install --upgrade lxml
