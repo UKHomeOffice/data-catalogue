@@ -2,10 +2,9 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
-#import hvac
 import pylons.config as config
-
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
+
 
 def get_version_number():
     value = os.environ.get("DC_VERSION", None)
@@ -96,11 +95,10 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             }
 
 
-'''
+
 class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
-        client = hvac.Client()
         database_user = os.environ.get("DATABASE_USER", None)
         database_password = os.environ.get("DATABASE_PASSWORD", None)
         database_host = os.environ.get("DATABASE_HOST", None)
@@ -151,7 +149,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         with open(creds_file, 'r') as f:
             creds_string = f.readline()
         return creds_string.strip()
-'''
+
 
 
 
