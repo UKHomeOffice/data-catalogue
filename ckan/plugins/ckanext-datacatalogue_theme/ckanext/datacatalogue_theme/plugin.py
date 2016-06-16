@@ -3,6 +3,7 @@ import ckan.plugins.toolkit as toolkit
 import json
 import os
 import pylons.config as config
+
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
 
@@ -16,6 +17,7 @@ def get_facets():
     facetsList = config.get(
         'ckan.datacatalogue.search_facets', 'organization tags')
     return facetsList.split()
+
 
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
