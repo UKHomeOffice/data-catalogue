@@ -17,6 +17,7 @@ ckan:
   container_name: ckan
   build: .
   environment:
+     - CKAN_SOLR_URL=http://solr:8983/solr/ckan
      - CKAN_SMTP_SERVER=mailcatcher:25
   ports:
     - "5000:5000"

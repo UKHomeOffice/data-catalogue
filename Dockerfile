@@ -1,5 +1,4 @@
-FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc2
-
+FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc3
 ENV CKAN_OVERRIDE $CKAN_HOME/ckan
 
 COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
