@@ -3,7 +3,6 @@ import ckan.plugins.toolkit as toolkit
 import json
 import os
 import pylons.config as config
-import requests
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
@@ -19,24 +18,6 @@ def get_facets():
         'ckan.datacatalogue.search_facets', 'organization tags')
     return facetsList.split()
 
-def scan_file(fileLocation):
-    print("Sending file for scan")
-    print(fileLocation)
-    clamav_url = config.get(
-        'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
-    r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
-
-    if(r.status_code == 200):
-        answer = r.content[18:].strip()
-        return answer == 'true'
-    else:
-        return False 
-
-class VirusFileError(Exception):
-    def __init__(self, value):
-        self.value = value
-    def __str__(self):
-        return repr(self.value)
 
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):

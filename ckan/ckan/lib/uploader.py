@@ -7,13 +7,12 @@ import logging
 import ckan.lib.munge as munge
 import ckan.logic as logic
 import ckan.plugins as plugins
-'''
-Home office addition start
-'''
-import ckanext.datacatalogue_theme.plugin as plugin
-'''
-Home office addition end
-'''
+
+
+#Home office import start
+from ofs import get_impl
+import requests
+#Home office import end
 
 config = pylons.config
 log = logging.getLogger(__name__)
@@ -21,6 +20,30 @@ log = logging.getLogger(__name__)
 _storage_path = None
 _max_resource_size = None
 _max_image_size = None
+
+#Home office method start
+
+def scan_file(fileLocation):
+    print("Sending file for scan")
+    print(fileLocation)
+    clamav_url = config.get(
+        'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
+    r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
+
+    if(r.status_code == 200):
+        answer = r.content[18:].strip()
+        return answer == 'true'
+    else:
+        return False 
+
+class VirusFileError(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+        
+#Home office method end
+
 
 
 def get_uploader(upload_to, old_filename=None):
@@ -155,7 +178,7 @@ class Upload(object):
         been validated and flushed to the db. This is so we do not store
         anything unless the request is actually good.
         max_size is size in MB maximum of the file'''
-        print("uploading 1")
+
         if self.filename:
             output_file = open(self.tmp_filepath, 'wb')
             self.upload_file.seek(0)
@@ -173,15 +196,13 @@ class Upload(object):
                         {self.file_field: ['File upload too large']}
                     )
             output_file.close()
-            '''
-            Home office addition start
-            '''
-            fileOK = plugin.scan_file(self.tmp_filepath)
-            if(!fileOk):
-                raise plugin.VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
-            '''
-            Home office addition end
-            '''
+
+            #Home office addition start
+            fileOK = scan_file(tmp_filepath)
+            if(not fileOK):
+                raise VirusFileError("The file " + tmp_filepath + " has tested positive for a virus")
+            #Home office addition end
+
             os.rename(self.tmp_filepath, self.filepath)
 
             self.clear = True
@@ -243,7 +264,6 @@ class ResourceUpload(object):
         :rtype: ``string`` or ``None``
 
         '''
-        print("uploading a file ********************************")
         if not self.storage_path:
             return
 
@@ -267,6 +287,7 @@ class ResourceUpload(object):
             output_file = open(tmp_filepath, 'wb+')
             self.upload_file.seek(0)
             current_size = 0
+
             while True:
                 current_size = current_size + 1
                 # MB chunks
@@ -280,15 +301,13 @@ class ResourceUpload(object):
                         {'upload': ['File upload too large']}
                     )
             output_file.close()
-            '''
-            Home office addition start
-            '''
-            fileOK = plugin.scan_file(self.tmp_filepath)
-            if(!fileOk):
-                raise plugin.VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
-            '''
-            Home office addition end
-            '''
+
+            #Home office addition start            
+            fileOK = scan_file(tmp_filepath)
+            if(not fileOK):
+                raise VirusFileError("The file " + tmp_filepath + " has tested positive for a virus")
+            #Home office addition end
+
             os.rename(tmp_filepath, filepath)
             return
 
@@ -302,3 +321,4 @@ class ResourceUpload(object):
                 os.remove(filepath)
             except OSError, e:
                 pass
+    
