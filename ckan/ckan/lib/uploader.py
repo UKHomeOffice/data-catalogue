@@ -29,7 +29,7 @@ def scan_file(fileLocation):
     clamav_url = config.get(
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
     try:
-        r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
+        r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
     except TypeError as e:
         print("caught the type error")
         log.error("gere is error", e)
