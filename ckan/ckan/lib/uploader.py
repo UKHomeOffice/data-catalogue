@@ -28,7 +28,14 @@ def scan_file(fileLocation):
     print(fileLocation)
     clamav_url = config.get(
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
-    r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
+    try:
+        r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
+    except TypeError as (errno, strerror):
+        print "I/O error({0}): {1}".format(errno, strerror)
+    except:
+        print "Unexpected error:", sys.exc_info()[0]
+        raise
+        
 
     if(r.status_code == 200):
         answer = r.content[18:].strip()
