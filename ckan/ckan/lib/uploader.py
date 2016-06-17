@@ -30,8 +30,9 @@ def scan_file(fileLocation):
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
     try:
         r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')})
-    except TypeError as (errno, strerror):
-        print "I/O error({0}): {1}".format(errno, strerror)
+    except TypeError as e:
+        print("caught the type error")
+        log.error("gere is error", e)
     except:
         print "Unexpected error:", sys.exc_info()[0]
         raise
