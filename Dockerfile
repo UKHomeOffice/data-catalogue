@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc7
+FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc8
 
 COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
 COPY ckan/init/ $USER_SCRIPT_DIR
