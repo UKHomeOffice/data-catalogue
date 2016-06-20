@@ -31,6 +31,8 @@ spec:
               value: 'FALSE'
             - name: ADD_NGINX_LOCATION_CFG
               value: 'proxy_set_header X-Url-Scheme $scheme;'
+            - name: LOAD_BALANCER_CIDR
+              value: '10.50.0.0/16'
             - name: SERVER_KEY
               value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
