@@ -3,17 +3,17 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: data-catalogue-test
-  name: data-catalogue-test
+    name: data-catalogue
+  name: data-catalogue
 spec:
   replicas: 1
   selector:
-    name: data-catalogue-test
+    name: data-catalogue
     version: v0
   template:
     metadata:
       labels:
-        name: data-catalogue-test
+        name: data-catalogue
         version: v0
     spec:
       containers:
