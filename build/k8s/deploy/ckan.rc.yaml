@@ -3,22 +3,22 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: data-catalogue
-  name: data-catalogue
+    name: data-catalogue-test
+  name: data-catalogue-test
 spec:
   replicas: 1
   selector:
-    name: data-catalogue
+    name: data-catalogue-test
     version: v0
   template:
     metadata:
       labels:
-        name: data-catalogue
+        name: data-catalogue-test
         version: v0
     spec:
       containers:
         - name: proxy
-          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.0
+          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.2
           imagePullPolicy: Always
           env:
             - name: PROXY_SERVICE_HOST
@@ -33,6 +33,10 @@ spec:
               value: 'proxy_set_header X-Url-Scheme $scheme;'
             - name: LOAD_BALANCER_CIDR
               value: '10.50.0.0/16'
+            - name: NAXSI_RULES_URL_CSV 
+              value: 'https://raw.githubusercontent.com/UKHomeOffice/data-catalogue/naxsi/build/nasxi.rules'
+            - name: NAXSI_RULES_MD5_CSV
+              value: '22d1073f2fadd45cdb70e382728331be'
             - name: SERVER_KEY
               value: /etc/secrets/platform_tls.key
             - name: SERVER_CERT
@@ -71,9 +75,8 @@ spec:
             cpu: 200m
             memory: 400M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
-#          image: "quay.io/gileshinchcliff/data-catalogue:testing"
-#          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-193"
+  #        image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-218"
           imagePullPolicy: Always
           env:
             -
