@@ -30,9 +30,6 @@ def scan_file(fileLocation):
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/')
     try:
         r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
-    except TypeError as e:
-        print("caught the type error")
-        log.error("gere is error", e)
     except:
         print "Unexpected error:", sys.exc_info()[0]
         raise
@@ -40,6 +37,8 @@ def scan_file(fileLocation):
 
     if(r.status_code == 200):
         answer = r.content[18:].strip()
+        print("The answer is ")
+        print(answer)
         return answer == 'true'
     else:
         return False 
