@@ -31,8 +31,8 @@ spec:
               value: 'FALSE'
             - name: ADD_NGINX_LOCATION_CFG
               value: 'proxy_set_header X-Url-Scheme $scheme;'
-            - name: LOAD_BALANCER_CIDR
-              value: '10.50.0.0/16'
+          #  - name: LOAD_BALANCER_CIDR
+          #    value: '10.50.0.0/16'
             - name: NAXSI_RULES_URL_CSV 
               value: 'https://raw.githubusercontent.com/UKHomeOffice/data-catalogue/naxsi/build/nasxi.rules'
             - name: NAXSI_RULES_MD5_CSV
