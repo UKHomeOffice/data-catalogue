@@ -107,7 +107,7 @@ spec:
               value: admin
             - name: SOLR_PASSWORD
               value: testing
-          livenessProbe:
+          readinessProbe:
             exec:
              command:
               - /docker/healthcheck.sh
