@@ -125,7 +125,7 @@ spec:
           resources:
            limits:
             cpu: 400m
-            memory: 800M
+            memory: 4G
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets
