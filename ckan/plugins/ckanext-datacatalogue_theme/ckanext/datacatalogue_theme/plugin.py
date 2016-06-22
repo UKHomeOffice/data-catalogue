@@ -2,10 +2,10 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import json
 import os
-import hvac
 import pylons.config as config
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
+
 
 def get_version_number():
     value = os.environ.get("DC_VERSION", None)
@@ -17,6 +17,7 @@ def get_facets():
     facetsList = config.get(
         'ckan.datacatalogue.search_facets', 'organization tags')
     return facetsList.split()
+
 
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -96,11 +97,10 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             }
 
 
-
+'''
 class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
-        client = hvac.Client()
         database_user = os.environ.get("DATABASE_USER", None)
         database_password = os.environ.get("DATABASE_PASSWORD", None)
         database_host = os.environ.get("DATABASE_HOST", None)
@@ -125,13 +125,17 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         print("Setting database " + database_host + ":" + database_port)
 
         #read in solr basic auth config
-        solr_user = os.environ.get("SOLR_USER", None)
-        solr_password = os.environ.get("SOLR_PASSWORD", None)
-        config['solr_user'] =solr_user
-        config['solr_password'] = solr_password
         print("Talking to solr on " + config['solr_url'])
-        print("with the user " + config['solr_user'])
-        print("and password " + config['solr_password'])
+
+        solr_user = os.environ.get("SOLR_USER", None)
+        if(solr_user is not None):
+            config['solr_user'] =solr_user
+            print("with the user " + config['solr_user'])
+
+        solr_password = os.environ.get("SOLR_PASSWORD", None)
+        if(solr_password is not None):
+            config['solr_password'] = solr_password
+            print("solr password " + config['solr_password'])
 
     def readCreds(self, creds):
         if(creds is None or ":" not in creds or creds == ":"):
@@ -147,6 +151,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         with open(creds_file, 'r') as f:
             creds_string = f.readline()
         return creds_string.strip()
+'''
 
 
 

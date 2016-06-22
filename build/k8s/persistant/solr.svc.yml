@@ -8,11 +8,11 @@ metadata:
 spec:
   ports:
     -
-      name: solr
+      name: solr-https
       port: 8980
       targetPort: 8980
     -
-      name: solr
+      name: solr-http
       port: 8983
       targetPort: 8983
   selector:

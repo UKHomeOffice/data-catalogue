@@ -3,7 +3,7 @@ FROM quay.io/ukhomeofficedigital/ckan:v1.2.6-rc17
 COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
 COPY ckan/init/ $USER_SCRIPT_DIR
 COPY ckan/plugins $CKAN_PLUGINS
-COPY ckan/ckan /app/ckan
+
 
 #add HO overrides
 #Has clamav and s3 upload code
@@ -21,5 +21,4 @@ RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel  ||  yu
 
 RUN virtualenv $CKAN_HOME && \
     . $CKAN_HOME/bin/activate && \
-    $CKAN_HOME/bin/pip install --upgrade lxml && \
-    $CKAN_HOME/bin/pip install --upgrade hvac
+    $CKAN_HOME/bin/pip install --upgrade lxml
