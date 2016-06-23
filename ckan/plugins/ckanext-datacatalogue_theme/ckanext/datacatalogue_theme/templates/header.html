@@ -47,6 +47,15 @@
               {% endblock %}
               {% endblock %}
 
+              {% block header_account_notlogged %}
+              <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
+                
+              {# changed permission user_create to sysadmin #}
+              {% if h.check_access('sysadmin') %}
+                <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+              {% endif %}
+              {% endblock %}
+
             {# removing groups #}
             {% block header_site_navigation_tabs %}
             {# changed org to ba #}
