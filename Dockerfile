@@ -19,6 +19,8 @@ RUN yum clean all && rpm --rebuilddb
 
 RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel  ||  yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel )
 
+RUN pip install boto
+
 RUN virtualenv $CKAN_HOME && \
     . $CKAN_HOME/bin/activate && \
     $CKAN_HOME/bin/pip install --upgrade lxml
