@@ -34,8 +34,8 @@ def scan_file(fileLocation):
     try:
         #TODO the verify=False needs to be configurable
         r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
-    except, e:
-        log.error("Unexpected error when scanning file for virus",e)
+    except:
+        log.error("Unexpected error when scanning file for virus")
         raise       
 
     if(r.status_code == 200):
