@@ -23,4 +23,6 @@ RUN pip install boto
 
 RUN virtualenv $CKAN_HOME && \
     . $CKAN_HOME/bin/activate && \
-    $CKAN_HOME/bin/pip install --upgrade lxml
+    $CKAN_HOME/bin/pip install --upgrade lxml && \
+    $CKAN_HOME/bin/pip install --upgrade boto
+
