@@ -25,7 +25,7 @@ BLOCK_SIZE = 4096 * 16
 __all__ = ['DataApp', 'FileApp', 'DirectoryApp', 'ArchiveStore']
 
 def isLocalFile(filename):
-    return filename.startswith('/usr/lib')
+    return filename.startswith('/var/lib')
 #    return filename.startswith('/home/chris/Dev') or filename.startswith('/usr/lib')
 
 class DataApp(object):
@@ -230,6 +230,7 @@ class FileApp(DataApp):
                 return exc(environ, start_response)
             try:
                 #Home Office Edit start
+                print(self.filename)
                 ofs_impl = config.get('ofs.impl')
                 if(isLocalFile(self.filename)):
                     #then treat it as local storage
