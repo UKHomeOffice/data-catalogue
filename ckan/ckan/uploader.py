@@ -12,8 +12,8 @@ import ckan.plugins as plugins
 #Home office import start
 from ofs import get_impl
 import requests
-import boto
-from boto.s3.key import Key
+#import boto
+#from boto.s3.key import Key
 #Home office import end
 
 config = pylons.config
@@ -60,11 +60,11 @@ def move_file_into_store(tmpFile, filepath):
         aws_secret_access_key = config['ofs.s3.aws_secret_access_key']
         ofs_s3_bucket = config['ofs.s3.bucket']
 
-        conn = boto.connect_s3(aws_access_key_id,  aws_secret_access_key)
-        bucket = conn.get_bucket(ofs_s3_bucket)
-        k = Key(bucket)
-        k.key = filepath
-        k.set_contents_from_filename(tmpFile, encrypt_key=True)    
+#        conn = boto.connect_s3(aws_access_key_id,  aws_secret_access_key)
+#        bucket = conn.get_bucket(ofs_s3_bucket)
+#        k = Key(bucket)
+#        k.key = filepath
+#        k.set_contents_from_filename(tmpFile, encrypt_key=True)    
 #Home office method end
 
 
