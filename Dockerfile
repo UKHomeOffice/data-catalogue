@@ -17,7 +17,7 @@ ADD ckan/ckan/fileapp.py /app/ckan/lib/python2.7/site-packages/paste/fileapp.py
 
 RUN yum clean all && rpm --rebuilddb
 
-RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel  ||  yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel )
+RUN (yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel boto ||  yum install -y gcc python-devel libxml2 libxml2-devel libxslt-devel boto)
 
 RUN pip install boto
 
