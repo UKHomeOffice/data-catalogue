@@ -31,16 +31,21 @@ def scan_file(fileLocation):
 
     clamav_url = config.get(
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/scan')
+    log.info("clamav_url")
+    log.info(clamav_url)
     try:
         #TODO the verify=False needs to be configurable
         r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
+        log.info("finished request")
     except:
         log.error("Unexpected error when scanning file for virus")
-        raise       
-    log.debug(r)
-
+        raise
+    log.info("the response is ")       
+    log.info(r)
+    log.info("r.status_code")       
+    log.info(r.status_code)
     if(r.status_code == 200):
-        log.debug(r.content)
+        log.info(r.content)
         answer = r.content[16:].strip()
         return answer == 'true'
     else:
