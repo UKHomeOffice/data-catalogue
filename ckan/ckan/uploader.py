@@ -25,7 +25,7 @@ _max_image_size = None
 
 #Home office method start
 
-def scan_file(fileLocation):
+def scan_file(fileLocation, fileName):
     log.info("Sending file for virus scan")
     log.info(fileLocation)
 
@@ -35,7 +35,12 @@ def scan_file(fileLocation):
     log.info(clamav_url)
     try:
         #TODO the verify=False needs to be configurable
-        r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
+        files = {'file': (fileName, open(fileLocation, 'rb'),)}
+        r = requests.post(clamav_url, },files, verify=False)
+        
+
+
+
         log.info("finished request")
     except:
         log.error("Unexpected error when scanning file for virus")
@@ -230,7 +235,7 @@ class Upload(object):
             output_file.close()
 
             #Home office addition start
-            fileOK = scan_file(self.tmp_filepath)
+            fileOK = scan_file(self.tmp_filepath, self.filename)
             if(not fileOK):
                 log.warn("The file " + self.tmp_filepath + " has tested positive for a virus")
                 raise VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
@@ -338,7 +343,7 @@ class ResourceUpload(object):
             output_file.close()
 
             #Home office addition start            
-            fileOK = scan_file(tmp_filepath)
+            fileOK = scan_file(tmp_filepath, self.filename)
             if(not fileOK):
                 log.warn("The file " + tmp_filepath + " has tested positive for a virus")
                 raise VirusFileError("The file " + tmp_filepath + " has tested positive for a virus")
