@@ -43,7 +43,9 @@ def scan_file(fileLocation):
     log.info("the response is ")       
     log.info(r)
     log.info("r.status_code")       
-    log.info(r.status_code)
+    log.info(r.status_code)       
+    log.info(r.reason)
+    log.info(r.text)
     if(r.status_code == 200):
         log.info(r.content)
         answer = r.content[16:].strip()
