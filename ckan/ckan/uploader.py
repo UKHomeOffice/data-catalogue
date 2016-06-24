@@ -35,7 +35,7 @@ def scan_file(fileLocation, fileName):
     log.info(clamav_url)
     try:
         #TODO the verify=False needs to be configurable
-        files = {'file': (fileName, open(fileLocation, 'rb'),)}
+        files = {'file': (fileName, open(fileLocation, 'rb'))}
         r = requests.post(clamav_url, },files, verify=False)
         
 
