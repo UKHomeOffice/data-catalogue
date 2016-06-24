@@ -37,9 +37,11 @@ def scan_file(fileLocation):
     except:
         log.error("Unexpected error when scanning file for virus")
         raise       
+    log.debug(r)
 
     if(r.status_code == 200):
-        answer = r.content[18:].strip()
+        log.debug(r.content)
+        answer = r.content[16:].strip()
         return answer == 'true'
     else:
         return False 
