@@ -294,7 +294,9 @@ def update_config():
 
     #Home office start
     lines = {}
-    lines = read_creds_file("/etc/secrets/.s3")
+    lines[0] = "id"
+    lines[1] = "key"
+    #lines = read_creds_file("/etc/secrets/.s3")
     config['ofs.s3.aws_access_key_id'] = lines[0]
     config['ofs.s3.aws_secret_access_key'] = lines[1]
     #Home office end
