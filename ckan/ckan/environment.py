@@ -282,7 +282,7 @@ def update_config():
     for option in CONFIG_FROM_ENV_VARS:
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
         if from_env:
-            if option == "AWS_ACCESS_KEY_ID" or option == "AWS_SECRET_ACCESS_KEY"
+            if option == "AWS_ACCESS_KEY_ID" or option == "AWS_SECRET_ACCESS_KEY":
                 print(option)
                 print(from_env[0:10])
             config[option] = from_env
