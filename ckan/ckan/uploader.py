@@ -13,7 +13,7 @@ import ckan.plugins as plugins
 from ofs import get_impl
 import requests
 import boto
-#from boto.s3.key import Key
+from boto.s3.key import Key
 #Home office import end
 
 config = pylons.config
