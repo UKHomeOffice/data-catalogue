@@ -287,6 +287,8 @@ def update_config():
                 print(from_env[0:10])
             config[option] = from_env
 
+    config['ofs.s3.bucket'] = 'datacatalogue-deveu-west-1'
+
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     site_url = config.get('ckan.site_url', '')

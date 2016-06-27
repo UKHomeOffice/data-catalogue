@@ -76,6 +76,8 @@ def move_file_into_store(tmpFile, filepath):
             print(aws_secret_access_key[0:10])
 
         ofs_s3_bucket = config['ofs.s3.bucket']
+        if ofs_s3_bucket:
+            print(ofs_s3_bucket)
 
         conn = boto.connect_s3(aws_access_key_id,  aws_secret_access_key)
         bucket = conn.get_bucket(ofs_s3_bucket)
