@@ -31,16 +31,6 @@ log = logging.getLogger(__name__)
 # Suppress benign warning 'Unbuilt egg for setuptools'
 warnings.simplefilter('ignore', UserWarning)
 
-#Home office helper method start
-def read_creds_file(creds_file):
-    creds_string_list = {}
-    with open(creds_file, 'r') as f:
-        creds_string_list[0] = f.readline().strip()
-        creds_string_list[1] = f.readline().strip()
-    return creds_string_list
-#Home office helper method end
-
-
 class _Helpers(object):
     ''' Helper object giving access to template helpers stopping
     missing functions from causing template exceptions. Useful if
@@ -254,6 +244,8 @@ CONFIG_FROM_ENV_VARS = {
 #home office addition start
     'solr_user': 'SOLR_USER',
     'solr_password': 'SOLR_PASSWORD',
+    'ofs.s3.aws_access_key_id': 'AWS_ACCESS_KEY_ID',
+    'ofs.s3.aws_secret_access_key': 'AWS_SECRET_ACCESS_KEY',
 #home office addition end
     'ckan.storage_path': 'CKAN_STORAGE_PATH',
     'ckan.datapusher.url': 'CKAN_DATAPUSHER_URL',
@@ -291,15 +283,6 @@ def update_config():
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
         if from_env:
             config[option] = from_env
-
-    #Home office start
-    lines = {}
-    lines[0] = "id"
-    lines[1] = "key"
-    #lines = read_creds_file("/etc/secrets/.s3")
-    config['ofs.s3.aws_access_key_id'] = lines[0]
-    config['ofs.s3.aws_secret_access_key'] = lines[1]
-    #Home office end
 
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

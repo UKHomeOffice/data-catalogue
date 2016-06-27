@@ -98,6 +98,9 @@ spec:
               name: DB_CREDS
               value: /etc/secrets/.postgres_creds
             -
+              name: S3_CREDS
+              value: /etc/secrets/.s3
+            -
               name: CKAN_SOLR_URL
               value: "https://solr:8980/solr/ckan"
             -
