@@ -28,7 +28,7 @@ __all__ = ['DataApp', 'FileApp', 'DirectoryApp', 'ArchiveStore']
 def isLocalFile(filename):
     print("filename")
     print(filename)
-    return (filename.startswith('/usr/lib') or filename.startswith('/app/ckan')) and not filename.startswith('/var/lib/data')
+    return (filename.startswith('/usr/lib') or filename.startswith('/app/ckan')) and not filename.startswith('/var/lib/ckan/data')
 #    return filename.startswith('/home/chris/Dev') or filename.startswith('/usr/lib')
 
 class DataApp(object):
