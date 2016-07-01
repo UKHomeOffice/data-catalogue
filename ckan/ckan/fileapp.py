@@ -24,10 +24,11 @@ BLOCK_SIZE = 4096 * 16
 
 __all__ = ['DataApp', 'FileApp', 'DirectoryApp', 'ArchiveStore']
 
+
 def isLocalFile(filename):
     print("filename")
     print(filename)
-    return (filename.startswith('/usr/lib') or filename.startswith('/app/ckan')) and !filename.startswith('/usr/lib/data')
+    return (filename.startswith('/usr/lib') or filename.startswith('/app/ckan')) and not filename.startswith('/usr/lib/data')
 #    return filename.startswith('/home/chris/Dev') or filename.startswith('/usr/lib')
 
 class DataApp(object):
