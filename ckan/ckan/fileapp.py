@@ -27,7 +27,7 @@ __all__ = ['DataApp', 'FileApp', 'DirectoryApp', 'ArchiveStore']
 def isLocalFile(filename):
     print("filename")
     print(filename)
-    return filename.startswith('/var/lib') or filename.startswith('/app/ckan')
+    return filename.startswith('/usr/lib') or filename.startswith('/app/ckan')
 #    return filename.startswith('/home/chris/Dev') or filename.startswith('/usr/lib')
 
 class DataApp(object):
@@ -214,11 +214,12 @@ class FileApp(DataApp):
             LAST_MODIFIED.update(self.headers, time=self.last_modified)
 
     def get(self, environ, start_response):
-        is_head = environ['REQUEST_METHOD'].upper() == 'HEAD'  
-        print("get") 
+        is_head = environ['REQUEST_METHOD'].upper() == 'HEAD'       
+        print("Getting a resource *******************************S")
         print(self.filename)
         #Home Office Edit start
         if(isLocalFile(self.filename)):
+            print("Is a local file")
             if 'max-age=0' in CACHE_CONTROL(environ).lower():
                 self.update(force=True) # RFC 2616 13.2.6
             else:
@@ -227,6 +228,7 @@ class FileApp(DataApp):
         if not self.content:
             #Home office edit start
             if isLocalFile(self.filename) and not os.path.exists(self.filename):
+                print("Is a local file")
             #Home office edit end
                 exc = HTTPNotFound(
                     'The resource does not exist',
@@ -234,7 +236,7 @@ class FileApp(DataApp):
                 return exc(environ, start_response)
             try:
                 #Home Office Edit start
-                print(self.filename)
+                print("Is not a local file")
                 ofs_impl = config.get('ofs.impl')
                 if(isLocalFile(self.filename)):
                     #then treat it as local storage
