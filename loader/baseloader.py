@@ -99,8 +99,10 @@ for row in range(2, sheet.max_row+1):
             pprint.pprint( " -- summary -- " + sheet.cell(row=row, column=2).value)
         if sheet.cell(row=row, column=3).value:
             pprint.pprint( " -- description -- " + sheet.cell(row=row, column=3).value)
-        pprint.pprint( " -- iaoName -- " + sheet.cell(row=row, column=5).value)
-        pprint.pprint( " -- iaoEmail -- " + sheet.cell(row=row, column=6).value)
+        if sheet.cell(row=row, column=5).value:
+            pprint.pprint( " -- iaoName -- " + sheet.cell(row=row, column=5).value)
+        if sheet.cell(row=row, column=6).value:
+            pprint.pprint( " -- iaoEmail -- " + sheet.cell(row=row, column=6).value)
         if sheet.cell(row=row, column=7).value:
             pprint.pprint( " -- personal? -- " +  label_to_value(schema['contains_personal_information'], sheet.cell(row=row, column=7).value)  )
         if sheet.cell(row=row, column=8).value:
