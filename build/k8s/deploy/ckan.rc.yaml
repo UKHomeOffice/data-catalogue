@@ -52,31 +52,33 @@ spec:
             cpu: 200m
             memory: 400M
         - name: vault-side-kick
-          image: quay.io/ukhomeofficedigital/vault-sidekick:v0.0.9-2
+          imagePullPolicy: Always
+          image: quay.io/ukhomeofficedigital/vault-sidekick:v0.2.0
           args:
             - -output=/etc/secrets
             - -tls-skip-verify=true
-            - -auth=/vault/vault.yml
             - -cn=secret:platform/secrets/platform_tls:fmt=cert,file=platform_tls
-            - -cn=secret:data-catalogue/postgres/creds:file=.postgres_creds
-            - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
-            - -cn=secret:data-catalogue/secrets/s3:file=.s3
-            - -cn=secret:services/data-catalogue/secrets/email-creds.yaml:file=.email-creds,fmt=txt
+            - -cn=secret:services/data-catalogue/secrets/.postgres:file=.postgres_creds
+            - -cn=secret:services/data-catalogue/secrets/basic_auth:file=basic_auth
+            - -cn=secret:services/data-catalogue/secrets/.s3:file=.s3
+            - -cn=secret:services/data-catalogue/secrets/email-vars:file=.email-creds,fmt=txt
           env:
           - name: VAULT_ADDR
             value: https://vault.vault.svc.cluster.local:8200
+          - name: VAULT_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: store-token
+                key: token
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets
-            - name: vault
-              mountPath: /vault
-              readOnly: true
           resources:
            limits:
             cpu: 200m
             memory: 400M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-281"
   #        image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-218"
           imagePullPolicy: Always
           env:
