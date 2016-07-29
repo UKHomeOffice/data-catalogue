@@ -61,7 +61,7 @@ spec:
             - -cn=secret:data-catalogue/postgres/creds:file=.postgres_creds
             - -cn=secret:data-catalogue/secrets/basic_auth:file=basic_auth
             - -cn=secret:data-catalogue/secrets/s3:file=.s3
-            - -cn=secret:services/data-catalogue/secrets/email-creds.yaml:file=.email-creds,fmt=txt
+            - -cn=secret:services/data-catalogue/secrets/email-creds.yaml:file=.email-creds
           env:
           - name: VAULT_ADDR
             value: https://vault.vault.svc.cluster.local:8200
