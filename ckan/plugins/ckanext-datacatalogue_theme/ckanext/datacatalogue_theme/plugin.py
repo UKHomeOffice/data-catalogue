@@ -97,15 +97,20 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             }
 
 
-'''
+
 class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
+        print("Running plugin configure")
         database_user = os.environ.get("DATABASE_USER", None)
         database_password = os.environ.get("DATABASE_PASSWORD", None)
         database_host = os.environ.get("DATABASE_HOST", None)
         database_port = os.environ.get("DATABASE_PORT", None)
         if database_user is None or database_password is None or database_host is None:
+            print("Did not find either DATABASE_USER or DATABASE_PASSWORD or DATABASE_HOST")
+            print(database_user)
+            print(database_password)
+            print(database_host)
             return
         if database_port is None:
             #use the default
@@ -121,6 +126,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         url += database_port
         url += "/ckan"
 
+        print("URL is " + url)
         config['sqlalchemy.url'] = url
         print("Setting database " + database_host + ":" + database_port)
 
@@ -136,7 +142,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         if(solr_password is not None):
             config['solr_password'] = solr_password
             print("solr password " + config['solr_password'])
-
+'''
     def readCreds(self, creds):
         if(creds is None or ":" not in creds or creds == ":"):
             return []
