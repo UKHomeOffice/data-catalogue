@@ -78,7 +78,7 @@ spec:
             cpu: 200m
             memory: 400M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-281"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
   #        image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-218"
           imagePullPolicy: Always
           env:
