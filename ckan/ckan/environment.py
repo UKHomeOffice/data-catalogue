@@ -397,6 +397,8 @@ def update_config():
 
     # for postgresql we want to enforce utf-8
     sqlalchemy_url = config.get('sqlalchemy.url', '')
+    print("sqlalchemy_url")
+    print(sqlalchemy_url)
     if sqlalchemy_url.startswith('postgresql://'):
         extras = {'client_encoding': 'utf8'}
     else:
