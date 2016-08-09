@@ -1,6 +1,7 @@
 FROM quay.io/ukhomeofficedigital/centos-base:latest
 
 ENV kb8or_version 0.6.12 
+ENV s3secret_version v0.1.3
 WORKDIR /opt
 
 RUN yum install -y wget unzip 
@@ -15,7 +16,7 @@ RUN curl -O https://storage.googleapis.com/kubernetes-release/release/v1.3.4/bin
     chmod +x kubectl && mv kubectl /usr/bin/kubectl
 
 RUN wget https://github.com/UKHomeOffice/s3secrets/releases/download/${s3secret_version}/s3secrets_${s3secret_version}_linux_x86_64 && \
-    mv s3secrets_${s3secret_version}_linux_x86_64 s3secrets && chmod +x s3secrets
+    mv s3secrets_${s3secret_version}_linux_x86_64 /opt/s3secrets && chmod +x /opt/s3secrets
 
 WORKDIR /var/lib/app_deploy
 ADD ./ ./
