@@ -110,9 +110,9 @@ spec:
               name: SSL_KEY
               value: /etc/secrets/platform_tls.key
             - name: SOLR_USER
-              value: admin
+              value: 'admin'
             - name: SOLR_PASSWORD
-              value: testing
+              value: 'testing'
           readinessProbe:
             exec:
              command:
