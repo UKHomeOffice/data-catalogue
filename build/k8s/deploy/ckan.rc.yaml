@@ -78,7 +78,7 @@ spec:
             cpu: 200m
             memory: 400M
         - name: data-catalogue
-          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-285"
+          image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-294"
           imagePullPolicy: Always
           env:
             -
@@ -93,6 +93,9 @@ spec:
                 configMapKeyRef:
                   name: datacatalogue-rds
                   key: port
+            -
+              name: DATABASE_URL
+              value: "postgresql://ckan:ckan@db/ckan"
             -
               name: DB_CREDS
               value: /etc/secrets/.postgres_creds
