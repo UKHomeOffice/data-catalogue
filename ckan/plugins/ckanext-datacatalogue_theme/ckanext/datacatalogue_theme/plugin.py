@@ -97,7 +97,7 @@ class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetF
             }
 
 
-
+'''
 class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     def configure(self, config):
@@ -142,7 +142,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         if(solr_password is not None):
             config['solr_password'] = solr_password
             print("solr password " + config['solr_password'])
-'''
+
     def readCreds(self, creds):
         if(creds is None or ":" not in creds or creds == ":"):
             return []
