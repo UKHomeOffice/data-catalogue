@@ -278,7 +278,9 @@ def update_config():
             ' removed in a future release. Use CKAN_SQLALCHEMY_URL instead.'
         log.warn(msg)
         config['sqlalchemy.url'] = ckan_db
-    print("Database user is " +os.environ.get("DATABASE_USER","Nope"))
+    print("DATABASE_HOST" + os.environ.get("DATABASE_HOST", 'No Database host'))
+    print("DATABASE_USER" + os.environ.get("DATABASE_USER", 'No Database user'))
+
     for option in CONFIG_FROM_ENV_VARS:
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
         if from_env:
