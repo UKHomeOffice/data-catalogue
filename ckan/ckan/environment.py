@@ -280,6 +280,7 @@ def update_config():
         config['sqlalchemy.url'] = ckan_db
     print("DATABASE_HOST" + os.environ.get("DATABASE_HOST", 'No Database host'))
     print("DATABASE_USER" + os.environ.get("DATABASE_USER", 'No Database user'))
+    print("S3_USER" + os.environ.get("S3_USER", 'No S3 user'))
 
     for option in CONFIG_FROM_ENV_VARS:
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
