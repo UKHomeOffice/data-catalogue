@@ -1,5 +1,7 @@
 FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc27
 
+RUN touch /var/lib/rpm/*
+
 COPY ckan/configuration/ckan.ini $CKAN_CONFIG/ckan.ini
 COPY ckan/init/ $USER_SCRIPT_DIR
 COPY ckan/plugins $CKAN_PLUGINS
