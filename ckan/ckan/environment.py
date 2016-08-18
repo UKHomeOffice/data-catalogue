@@ -281,6 +281,33 @@ def update_config():
     print("DATABASE_HOST" + os.environ.get("DATABASE_HOST", 'No Database host'))
     print("DATABASE_USER" + os.environ.get("DATABASE_USER", 'No Database user'))
     print("S3_USER" + os.environ.get("S3_USER", 'No S3 user'))
+    database_user = os.environ.get("DATABASE_USER", None)
+    database_password = os.environ.get("DATABASE_PASSWORD", None)
+    database_host = os.environ.get("DATABASE_HOST", None)
+    database_port = os.environ.get("DATABASE_PORT", None)
+    if database_user is None or database_password is None or database_host is None:
+        print("Did not find either DATABASE_USER or DATABASE_PASSWORD or DATABASE_HOST")
+        print(database_user)
+        print(database_password)
+        print(database_host)
+    else: 
+        if database_port is None:
+            #use the default
+            database_port = "5432"
+        url = "postgres://"
+        url += database_user
+        url += ":"
+        url += database_password
+        url += "@"
+        url += database_host
+        url += ":"
+        url += database_port
+        url += "/ckan"
+
+        print("URL is " + url)
+        config['sqlalchemy.url'] = url
+        print("Setting database " + database_host + ":" + database_port)
+
 
     for option in CONFIG_FROM_ENV_VARS:
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
