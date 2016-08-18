@@ -291,6 +291,7 @@ def update_config():
         print(database_password)
         print(database_host)
     else: 
+        print("Setting the database url")
         if database_port is None:
             #use the default
             database_port = "5432"
@@ -318,6 +319,7 @@ def update_config():
             config[option] = from_env
 
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    print(config['sqlalchemy.url'])
 
     site_url = config.get('ckan.site_url', '')
     if not site_url:
