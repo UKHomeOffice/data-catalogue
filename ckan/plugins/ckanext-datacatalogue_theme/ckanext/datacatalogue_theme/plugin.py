@@ -124,7 +124,7 @@ class Datacatalogue_DBPlugin(plugins.SingletonPlugin):
         url += database_host
         url += ":"
         url += database_port
-        url += "/ckan"
+        url += "/datacatalogue"
 
         print("URL is " + url)
         config['sqlalchemy.url'] = url
