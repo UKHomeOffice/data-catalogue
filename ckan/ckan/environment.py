@@ -281,6 +281,8 @@ def update_config():
     print("DATABASE_HOST" + os.environ.get("DATABASE_HOST", 'No Database host'))
     print("DATABASE_USER" + os.environ.get("DATABASE_USER", 'No Database user'))
     print("S3_USER" + os.environ.get("S3_USER", 'No S3 user'))
+    print("AWS_ACCESS_KEY_ID" + os.environ.get("AWS_ACCESS_KEY_ID", 'No AWS_ACCESS_KEY_ID'))
+
     database_user = os.environ.get("DATABASE_USER", None)
     database_password = os.environ.get("DATABASE_PASSWORD", None)
     database_host = os.environ.get("DATABASE_HOST", None)
@@ -305,7 +307,6 @@ def update_config():
         url += database_port
         url += "/datacatalogue"
 
-        print("URL is " + url)
         config['sqlalchemy.url'] = url
         print("Setting database " + database_host + ":" + database_port)
 
@@ -320,6 +321,7 @@ def update_config():
 
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print(config['sqlalchemy.url'])
+
 
     site_url = config.get('ckan.site_url', '')
     if not site_url:
