@@ -278,10 +278,6 @@ def update_config():
             ' removed in a future release. Use CKAN_SQLALCHEMY_URL instead.'
         log.warn(msg)
         config['sqlalchemy.url'] = ckan_db
-    print("DATABASE_HOST" + os.environ.get("DATABASE_HOST", 'No Database host'))
-    print("DATABASE_USER" + os.environ.get("DATABASE_USER", 'No Database user'))
-    print("S3_USER" + os.environ.get("S3_USER", 'No S3 user'))
-    print("AWS_ACCESS_KEY_ID" + os.environ.get("AWS_ACCESS_KEY_ID", 'No AWS_ACCESS_KEY_ID'))
 
     database_user = os.environ.get("DATABASE_USER", None)
     database_password = os.environ.get("DATABASE_PASSWORD", None)
@@ -289,9 +285,6 @@ def update_config():
     database_port = os.environ.get("DATABASE_PORT", None)
     if database_user is None or database_password is None or database_host is None:
         print("Did not find either DATABASE_USER or DATABASE_PASSWORD or DATABASE_HOST")
-        print(database_user)
-        print(database_password)
-        print(database_host)
     else: 
         print("Setting the database url")
         if database_port is None:
@@ -320,7 +313,6 @@ def update_config():
             config[option] = from_env
 
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    print(config['sqlalchemy.url'])
 
 
     site_url = config.get('ckan.site_url', '')

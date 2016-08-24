@@ -249,6 +249,9 @@ class FileApp(DataApp):
                     ofs = get_impl('s3')(**kw)
 
                     BUCKET = config['ofs.s3.bucket']
+                    print("Getting the file from AWS")
+                    print(BUCKET)
+                    print(self.filename)
                     self.content_length = ofs.get_metadata(BUCKET, self.filename)['_content_length']
                     file = ofs.get_stream(BUCKET, self.filename, as_stream=True)
                 #Home Office Edit end

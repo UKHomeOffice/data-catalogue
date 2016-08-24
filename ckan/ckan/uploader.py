@@ -34,9 +34,11 @@ def scan_file(fileLocation):
     try:
         r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
     except:
+        print("There was an error at clamav")
         print "Unexpected error:", sys.exc_info()[0]
-        raise       
-
+        return False       
+    print("r.status_code")
+    print(r.status_code)
     if(r.status_code == 200):
         answer = r.content[18:].strip()
         print(answer)
@@ -52,7 +54,7 @@ class VirusFileError(Exception):
 
 def move_file_into_store(tmpFile, filepath):
     ofs_impl = config.get('ofs.impl')
-    print("ofs_impl")
+    print("ofs_impl is")
     print(ofs_impl)
     if(ofs_impl != 's3'):
         #then treat it as local storage
@@ -69,6 +71,9 @@ def move_file_into_store(tmpFile, filepath):
         bucket = conn.get_bucket(ofs_s3_bucket)
         k = Key(bucket)
         k.key = filepath
+        print("Sending file to AWS")
+        print(bucket)
+        print(filepath)
         k.set_contents_from_filename(tmpFile, encrypt_key=True)    
 #Home office method end
 
@@ -232,7 +237,11 @@ class Upload(object):
 
             #Home office addition start
             fileOK = scan_file(self.tmp_filepath)
+            print("fileOK")
+            print(fileOK)
+
             if(not fileOK):
+                print("Virus found")
                 log.warn("The file " + self.tmp_filepath + " has tested positive for a virus")
                 raise VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
             print("Move file into store")
@@ -341,7 +350,10 @@ class ResourceUpload(object):
 
             #Home office addition start            
             fileOK = scan_file(tmp_filepath)
+            print("fileOK")
+            print(fileOK)
             if(not fileOK):
+                print("Found a Virus")
                 log.warn("The file " + tmp_filepath + " has tested positive for a virus")
                 raise VirusFileError("The file " + tmp_filepath + " has tested positive for a virus")
             move_file_into_store(tmp_filepath, filepath)
