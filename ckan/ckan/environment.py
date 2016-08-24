@@ -31,16 +31,6 @@ log = logging.getLogger(__name__)
 # Suppress benign warning 'Unbuilt egg for setuptools'
 warnings.simplefilter('ignore', UserWarning)
 
-#Home office helper method start
-def read_creds_file(creds_file):
-    creds_string_list = {}
-    with open(creds_file, 'r') as f:
-        creds_string_list[0] = f.readline().strip()
-        creds_string_list[1] = f.readline().strip()
-    return creds_string_list
-#Home office helper method end
-
-
 class _Helpers(object):
     ''' Helper object giving access to template helpers stopping
     missing functions from causing template exceptions. Useful if
@@ -254,6 +244,8 @@ CONFIG_FROM_ENV_VARS = {
 #home office addition start
     'solr_user': 'SOLR_USER',
     'solr_password': 'SOLR_PASSWORD',
+    'ofs.s3.aws_access_key_id': 'AWS_ACCESS_KEY_ID',
+    'ofs.s3.aws_secret_access_key': 'AWS_SECRET_ACCESS_KEY',
 #home office addition end
     'ckan.storage_path': 'CKAN_STORAGE_PATH',
     'ckan.datapusher.url': 'CKAN_DATAPUSHER_URL',
@@ -286,22 +278,50 @@ def update_config():
             ' removed in a future release. Use CKAN_SQLALCHEMY_URL instead.'
         log.warn(msg)
         config['sqlalchemy.url'] = ckan_db
+    print("DATABASE_HOST" + os.environ.get("DATABASE_HOST", 'No Database host'))
+    print("DATABASE_USER" + os.environ.get("DATABASE_USER", 'No Database user'))
+    print("S3_USER" + os.environ.get("S3_USER", 'No S3 user'))
+    print("AWS_ACCESS_KEY_ID" + os.environ.get("AWS_ACCESS_KEY_ID", 'No AWS_ACCESS_KEY_ID'))
+
+    database_user = os.environ.get("DATABASE_USER", None)
+    database_password = os.environ.get("DATABASE_PASSWORD", None)
+    database_host = os.environ.get("DATABASE_HOST", None)
+    database_port = os.environ.get("DATABASE_PORT", None)
+    if database_user is None or database_password is None or database_host is None:
+        print("Did not find either DATABASE_USER or DATABASE_PASSWORD or DATABASE_HOST")
+        print(database_user)
+        print(database_password)
+        print(database_host)
+    else: 
+        print("Setting the database url")
+        if database_port is None:
+            #use the default
+            database_port = "5432"
+        url = "postgres://"
+        url += database_user
+        url += ":"
+        url += database_password
+        url += "@"
+        url += database_host
+        url += ":"
+        url += database_port
+        url += "/datacatalogue"
+
+        config['sqlalchemy.url'] = url
+        print("Setting database " + database_host + ":" + database_port)
+
 
     for option in CONFIG_FROM_ENV_VARS:
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
         if from_env:
+            if option == "AWS_ACCESS_KEY_ID" or option == "AWS_SECRET_ACCESS_KEY":
+                print(option)
+                print(from_env[0:10])
             config[option] = from_env
 
-    #Home office start
-    lines = {}
-    lines[0] = "id"
-    lines[1] = "key"
-    #lines = read_creds_file("/etc/secrets/.s3")
-    config['ofs.s3.aws_access_key_id'] = lines[0]
-    config['ofs.s3.aws_secret_access_key'] = lines[1]
-    #Home office end
-
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    print(config['sqlalchemy.url'])
+
 
     site_url = config.get('ckan.site_url', '')
     if not site_url:

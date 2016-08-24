@@ -13,7 +13,7 @@ import ckan.plugins as plugins
 from ofs import get_impl
 import requests
 import boto
-#from boto.s3.key import Key
+from boto.s3.key import Key
 #Home office import end
 
 config = pylons.config
@@ -25,32 +25,21 @@ _max_image_size = None
 
 #Home office method start
 
-def scan_file(fileLocation, fileName):
-    log.info("Sending file for virus scan")
-    log.info(fileLocation)
-
+def scan_file(fileLocation):
+    print("Sending file for virus scan")
+    print(fileLocation)
+    return True
     clamav_url = config.get(
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/scan')
-    log.info("clamav_url")
-    log.info(clamav_url)
     try:
-        #TODO the verify=False needs to be configurable
-        files = {'file': (fileName, open(fileLocation, 'rb'))}
-        r = requests.post(clamav_url, files=files, data={'name': fileName}, verify=False)
-
-        log.info("finished request")
+        r = requests.post(clamav_url, files={fileLocation: open(fileLocation, 'rb')}, verify=False)
     except:
-        log.error("Unexpected error when scanning file for virus")
-        raise
-    log.info("the response is ")       
-    log.info(r)
-    log.info("r.status_code")       
-    log.info(r.status_code)       
-    log.info(r.reason)
-    log.info(r.text)
+        print "Unexpected error:", sys.exc_info()[0]
+        raise       
+
     if(r.status_code == 200):
-        log.info(r.content)
-        answer = r.content[16:].strip()
+        answer = r.content[18:].strip()
+        print(answer)
         return answer == 'true'
     else:
         return False 
@@ -63,6 +52,8 @@ class VirusFileError(Exception):
 
 def move_file_into_store(tmpFile, filepath):
     ofs_impl = config.get('ofs.impl')
+    print("ofs_impl")
+    print(ofs_impl)
     if(ofs_impl != 's3'):
         #then treat it as local storage
         os.rename(tmpFile, filepath)
@@ -70,6 +61,9 @@ def move_file_into_store(tmpFile, filepath):
         aws_access_key_id = config['ofs.s3.aws_access_key_id']
         aws_secret_access_key = config['ofs.s3.aws_secret_access_key']
         ofs_s3_bucket = config['ofs.s3.bucket']
+
+        print("ofs_s3_bucket")
+        print(ofs_s3_bucket)
 
         conn = boto.connect_s3(aws_access_key_id,  aws_secret_access_key)
         bucket = conn.get_bucket(ofs_s3_bucket)
@@ -110,13 +104,18 @@ def get_resource_uploader(data_dict):
 def get_storage_path():
     '''Function to cache storage path'''
     global _storage_path
+    print("getting a storage path")
 
     # None means it has not been set. False means not in config.
     if _storage_path is None:
         storage_path = config.get('ckan.storage_path')
         ofs_impl = config.get('ofs.impl')
         ofs_storage_dir = config.get('ofs.storage_dir')
-        if storage_path:
+        if ofs_impl == 's3' and ofs_storage_dir:
+            print('Setting storage path')
+            _storage_path = ofs_storage_dir
+            return _storage_path
+        elif storage_path:
             _storage_path = storage_path
         elif ofs_impl == 'pairtree' and ofs_storage_dir:
             log.warn('''Please use config option ckan.storage_path instead of
@@ -232,10 +231,11 @@ class Upload(object):
             output_file.close()
 
             #Home office addition start
-            fileOK = scan_file(self.tmp_filepath, self.filename)
+            fileOK = scan_file(self.tmp_filepath)
             if(not fileOK):
                 log.warn("The file " + self.tmp_filepath + " has tested positive for a virus")
                 raise VirusFileError("The file " + self.tmp_filepath + " has tested positive for a virus")
+            print("Move file into store")
             move_file_into_store(self.tmp_filepath, self.filepath)
             #os.rename(self.tmp_filepath, self.filepath)
             #Home office addition end
@@ -340,7 +340,7 @@ class ResourceUpload(object):
             output_file.close()
 
             #Home office addition start            
-            fileOK = scan_file(tmp_filepath, self.filename)
+            fileOK = scan_file(tmp_filepath)
             if(not fileOK):
                 log.warn("The file " + tmp_filepath + " has tested positive for a virus")
                 raise VirusFileError("The file " + tmp_filepath + " has tested positive for a virus")

@@ -58,7 +58,7 @@
     {
       "required": false,
       "field_name": "contains_personal_information",
-      "label": "Contains personal information",
+      "label": "Contains personal information, e.g. name, date of birth, nationality, passport numbers etc",
       "preset": "select_radio",
       "choices": [
         {
