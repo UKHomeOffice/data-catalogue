@@ -28,7 +28,7 @@ _max_image_size = None
 def scan_file(fileLocation):
     print("Sending file for virus scan")
     print(fileLocation)
-    return True
+
     clamav_url = config.get(
         'ckan.datacatalogue.clamav.url', 'https://clamav.platform-services.svc.cluster.local/scan')
     try:
