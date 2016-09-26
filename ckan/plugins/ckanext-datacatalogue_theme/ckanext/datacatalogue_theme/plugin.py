@@ -22,7 +22,8 @@ def get_facets():
 lower_regex = "[a-z]"
 upper_regex = "[A-Z]"
 number_regex = "[0-9]"
-special_regex = "[!@#$%&*()+\-{}^?<>_]"
+special_chars = "!@#$%&*()+\-{}^?<>_"
+special_regex = "["+special_chars+"]"
 
 
 def search_password(password):

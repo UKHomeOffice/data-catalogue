@@ -14,6 +14,10 @@ import ckan.lib.mailer as mailer
 import ckan.lib.navl.dictization_functions as dictization_functions
 import ckan.lib.authenticator as authenticator
 import ckan.plugins as p
+#change by HO
+import re
+import ckanext.datacatalogue_theme.plugin as plugin
+#End of change
 
 from ckan.common import _, c, g, request, response
 
@@ -138,8 +142,10 @@ class UserController(base.BaseController):
             h.redirect_to(locale=locale, controller='user', action='login',
                           id=None)
         user_ref = c.userobj.get_reference_preferred_for_uri()
+        #HO Change - direct users to the search rather than the dashboard
         #h.redirect_to(locale=locale, controller='user', action='dashboard')
         h.redirect_to(controller='package', action='search')
+        #End of HO change
 
     def register(self, data=None, errors=None, error_summary=None):
         context = {'model': model, 'session': model.Session, 'user': c.user,
@@ -337,6 +343,15 @@ class UserController(base.BaseController):
             # MOAN: Do I really have to do this here?
             if 'activity_streams_email_notifications' not in data_dict:
                 data_dict['activity_streams_email_notifications'] = False
+            #HO Change to implement a pattern form passwords
+            if data_dict['password2']:
+                if plugin.search_password(data_dict['password2']):
+                    print("Password matched")
+                else:
+                    print("It didn't")
+                    abort(400, _('Password does not match the required pattern, needs at least one lower case, one upper case, a number and one of '+ plugin.special_chars))
+                print("checking password fits regex" + data_dict['password2'])
+            #End of HO Change
 
             user = get_action('user_update')(context, data_dict)
             h.flash_success(_('Profile updated'))
