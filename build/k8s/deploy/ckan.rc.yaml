@@ -18,11 +18,11 @@ spec:
     spec:
       containers:
         - name: proxy
-          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.2
+          image: quay.io/ukhomeofficedigital/nginx-proxy:v1.2.0
           imagePullPolicy: Always
           env:
             - name: PROXY_SERVICE_HOST
-              value: 'http://127.0.0.1'
+              value: 'http://localhost'
             - name: PROXY_SERVICE_PORT
               value: '5000'
             - name: NAXSI_USE_DEFAULT_RULES
@@ -43,7 +43,7 @@ spec:
               value: /etc/secrets/platform_tls.crt
           ports:
            - name: https
-             containerPort: 443
+             containerPort: 443         
           volumeMounts:
             - name: secrets
               mountPath: /etc/secrets
@@ -79,7 +79,7 @@ spec:
             memory: 400M
         - name: data-catalogue
           image: "quay.io/ukhomeofficedigital/data-catalogue:${CKAN_VERSION}"
-  #        image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-218"
+  #        image: "quay.io/ukhomeofficedigital/data-catalogue:v4.0.1-324"
           imagePullPolicy: Always
           env:
             -
