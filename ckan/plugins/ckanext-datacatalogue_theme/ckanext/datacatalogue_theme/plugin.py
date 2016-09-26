@@ -3,6 +3,7 @@ import ckan.plugins.toolkit as toolkit
 import json
 import os
 import pylons.config as config
+import re
 
 from homeoffice.datacatalogue.auth_middleware import DCAuthMiddleware
 
@@ -18,6 +19,25 @@ def get_facets():
         'ckan.datacatalogue.search_facets', 'organization tags')
     return facetsList.split()
 
+lower_regex = "[a-z]"
+upper_regex = "[A-Z]"
+number_regex = "[0-9]"
+special_regex = "[!@#$%&*()+\-{}^?<>_]"
+
+
+def search_password(password):
+    if len(password) < 8:
+        return False
+    elif re.search(lower_regex, password) is None:
+        return False
+    elif re.search(upper_regex, password) is None:
+        return False
+    elif re.search(number_regex, password) is None:
+        return False
+    elif re.search(special_regex, password) is None:
+        return False
+    else:
+        return True
 
 
 class Datacatalogue_ThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):

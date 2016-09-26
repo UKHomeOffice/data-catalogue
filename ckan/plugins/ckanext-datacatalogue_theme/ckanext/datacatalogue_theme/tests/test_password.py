@@ -1,6 +1,7 @@
 import pylons.test
 import re
 from nose.tools import *
+import ckanext.datacatalogue_theme.plugin as plugin
 
 import logging
 
@@ -123,12 +124,12 @@ def test_special_chars_only():
 
 def test_length_short():
     password = "passwor"
-    assert not search_password(password)
+    assert not plugin.search_password(password)
     pass
 
 def test_length_exact():
     password = "Passwo1$"
-    assert search_password(password)
+    assert plugin.search_password(password)
     pass
 
 def test_lowercase_only():
@@ -149,40 +150,28 @@ def test_numbers_only():
 
 def test_lowercase_and_uppercase_only():
     password = "passWORD"
-    assert not search_password(password)
+    assert not plugin.search_password(password)
     pass
 
 def test_lower_upper_number_only():
     password = "Passw0rd"
-    assert not search_password(password)
+    assert not plugin.search_password(password)
     pass
 
 def test_lowercase_and_uppercase_only():
     password = "passWORD"
-    assert not search_password(password)
+    assert not plugin.search_password(password)
     pass
 
 def test_lower_upper_number_only():
     password = "Passw0rd"
-    assert not search_password(password)
+    assert not plugin.search_password(password)
     pass
 
 def test_pass():
     password = "Passw0rd%"
-    assert search_password(password)
+    assert plugin.search_password(password)
     pass
 
-def search_password(password):
-    if len(password) < 8:
-        return False
-    elif re.search(lower_regex, password) is None:
-        return False
-    elif re.search(upper_regex, password) is None:
-        return False
-    elif re.search(number_regex, password) is None:
-        return False
-    elif re.search(special_regex, password) is None:
-        return False
-    else:
-        return True
+
 
