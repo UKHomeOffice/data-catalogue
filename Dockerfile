@@ -1,4 +1,4 @@
-FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc33
+FROM quay.io/ukhomeofficedigital/ckan:v1.2.8-rc34
 
 RUN touch /var/lib/rpm/*
 
